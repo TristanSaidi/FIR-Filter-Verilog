@@ -1,0 +1,97 @@
+ 
+****************************************
+Report : timing
+        -path end
+        -delay max
+        -max_paths 10000
+        -sort_by slack
+Design : ALU
+Version: O-2018.06-SP5-1
+Date   : Fri Nov 19 18:18:51 2021
+****************************************
+
+Operating Conditions: tt_1p2v_25c   Library: scx3_cmos8rf_lpvt_tt_1p2v_25c
+Wire Load Model Mode: top
+
+Endpoint                         Path Delay     Path Required     Slack
+------------------------------------------------------------------------
+y_reg_38_/D (DFFQX1TS)              9.64 f            9.66         0.02
+y_reg_37_/D (DFFQX1TS)              9.60 f            9.64         0.04
+y_reg_35_/D (DFFQX1TS)              9.45 f            9.67         0.22
+y_reg_36_/D (DFFQX1TS)              9.37 f            9.68         0.31
+y_reg_33_/D (DFFQX1TS)              9.29 f            9.67         0.38
+y_reg_34_/D (DFFQX1TS)              9.16 f            9.68         0.52
+y_reg_32_/D (DFFQX1TS)              8.90 f            9.63         0.73
+y_reg_31_/D (DFFQX1TS)              8.71 f            9.66         0.94
+y_reg_30_/D (DFFQX1TS)              8.59 f            9.66         1.07
+y_reg_29_/D (DFFQX1TS)              8.47 f            9.68         1.22
+y_reg_28_/D (DFFQX1TS)              8.22 f            9.66         1.44
+y_reg_27_/D (DFFQX1TS)              8.01 f            9.66         1.65
+y_reg_26_/D (DFFQX1TS)              7.89 f            9.66         1.77
+y_reg_25_/D (DFFQX1TS)              7.75 f            9.68         1.93
+y_reg_24_/D (DFFQX1TS)              7.49 f            9.66         2.17
+y_reg_23_/D (DFFQX1TS)              7.37 f            9.68         2.31
+y_reg_22_/D (DFFQX1TS)              7.18 f            9.66         2.48
+y_reg_21_/D (DFFQX1TS)              6.97 f            9.68         2.71
+y_reg_20_/D (DFFQX1TS)              6.71 f            9.66         2.94
+y_reg_19_/D (DFFQX1TS)              6.59 f            9.68         3.09
+y_reg_18_/D (DFFQX1TS)              6.34 f            9.66         3.32
+y_reg_17_/D (DFFQX1TS)              6.21 f            9.68         3.47
+y_reg_16_/D (DFFQX1TS)              5.97 f            9.66         3.68
+y_reg_14_/D (DFFQX1TS)              5.87 f            9.66         3.79
+y_reg_15_/D (DFFQX1TS)              5.86 f            9.68         3.82
+y_reg_13_/D (DFFQX1TS)              5.61 f            9.66         4.05
+y_reg_12_/D (DFFQX1TS)              5.40 f            9.66         4.26
+y_reg_11_/D (DFFQX1TS)              5.32 f            9.69         4.37
+y_reg_10_/D (DFFQX1TS)              5.07 f            9.66         4.59
+y_reg_9_/D (DFFQX1TS)               4.86 f            9.66         4.80
+y_reg_8_/D (DFFQX1TS)               4.67 f            9.66         4.99
+y_reg_7_/D (DFFQX1TS)               4.24 f            9.66         5.42
+y_reg_6_/D (DFFQX1TS)               4.14 f            9.69         5.54
+y_reg_5_/D (DFFQX1TS)               3.82 f            9.68         5.87
+y_reg_4_/D (DFFQX1TS)               3.58 f            9.69         6.11
+y_reg_3_/D (DFFQX1TS)               3.21 f            9.68         6.48
+y_reg_2_/D (DFFQX1TS)               2.97 f            9.69         6.71
+y_reg_1_/D (DFFQX1TS)               2.67 f            9.68         7.02
+y_reg_0_/D (DFFXLTS)                2.15 f            9.47         7.32
+y[0] (out)                          1.67 r            9.95         8.28
+y[33] (out)                         1.62 r            9.95         8.33
+y[35] (out)                         1.55 r            9.95         8.40
+y[7] (out)                          1.50 r            9.95         8.45
+y[10] (out)                         1.49 r            9.95         8.46
+y[9] (out)                          1.47 r            9.95         8.48
+y[32] (out)                         1.46 r            9.95         8.49
+y[30] (out)                         1.42 r            9.95         8.53
+y[24] (out)                         1.42 r            9.95         8.53
+y[20] (out)                         1.42 r            9.95         8.53
+y[12] (out)                         1.42 r            9.95         8.53
+y[28] (out)                         1.41 r            9.95         8.54
+y[27] (out)                         1.41 r            9.95         8.54
+y[14] (out)                         1.41 r            9.95         8.54
+y[18] (out)                         1.41 r            9.95         8.54
+y[37] (out)                         1.41 r            9.95         8.54
+y[31] (out)                         1.41 r            9.95         8.54
+y[29] (out)                         1.41 r            9.95         8.54
+y[25] (out)                         1.41 r            9.95         8.54
+y[23] (out)                         1.41 r            9.95         8.54
+y[21] (out)                         1.41 r            9.95         8.54
+y[19] (out)                         1.41 r            9.95         8.54
+y[17] (out)                         1.41 r            9.95         8.54
+y[15] (out)                         1.41 r            9.95         8.54
+y[5] (out)                          1.41 r            9.95         8.54
+y[3] (out)                          1.41 r            9.95         8.54
+y[1] (out)                          1.41 r            9.95         8.54
+y[11] (out)                         1.41 r            9.95         8.54
+y[6] (out)                          1.41 r            9.95         8.54
+y[4] (out)                          1.41 r            9.95         8.54
+y[2] (out)                          1.41 r            9.95         8.54
+y[38] (out)                         1.41 r            9.95         8.54
+y[36] (out)                         1.41 r            9.95         8.54
+y[34] (out)                         1.41 r            9.95         8.54
+y[26] (out)                         1.41 r            9.95         8.54
+y[22] (out)                         1.41 r            9.95         8.54
+y[16] (out)                         1.41 r            9.95         8.54
+y[8] (out)                          1.41 r            9.95         8.54
+y[13] (out)                         1.41 r            9.95         8.54
+
+1
