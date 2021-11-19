@@ -18,36 +18,36 @@
 # vmap work work 
 # Modifying modelsim.ini
 # QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
-# Start time: 19:45:10 on Nov 13,2021
+# Start time: 18:14:57 on Nov 19,2021
 # vlog -reportprogress 300 "+acc" -incr ../../rtl/ALU/ALU.v 
-# -- Skipping module ALU
-# -- Skipping module multiplier
-# -- Skipping module addern
+# -- Compiling module ALU
+# -- Compiling module multiplier
+# -- Compiling module addern
 # 
 # Top level modules:
 # 	ALU
-# End time: 19:45:10 on Nov 13,2021, Elapsed time: 0:00:00
+# End time: 18:14:57 on Nov 19,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
-# Start time: 19:45:10 on Nov 13,2021
+# Start time: 18:14:57 on Nov 19,2021
 # vlog -reportprogress 300 "+acc" -incr test_ALU.v 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 19:45:11 on Nov 13,2021, Elapsed time: 0:00:01
+# End time: 18:14:58 on Nov 19,2021, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # ** Warning: (vsim-8689) Ignoring plusarg '+acc'.  Did you mean '-voptargs=+acc'?
 # vsim "+acc" -t ps -lib work testbench 
-# Start time: 19:45:11 on Nov 13,2021
+# Start time: 18:14:58 on Nov 19,2021
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading work.testbench(fast)
 # Loading work.ALU(fast)
 # Loading work.multiplier(fast)
 # Loading work.addern(fast)
-# ** Note: $finish    : test_ALU.v(44)
+# ** Note: $finish    : test_ALU.v(43)
 #    Time: 10005 ns  Iteration: 1  Instance: /testbench
 # 1
-# Break in Module testbench at test_ALU.v line 44
-# End time: 19:45:33 on Nov 13,2021, Elapsed time: 0:00:22
+# Break in Module testbench at test_ALU.v line 43
+# End time: 18:15:11 on Nov 19,2021, Elapsed time: 0:00:13
 # Errors: 0, Warnings: 1

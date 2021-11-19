@@ -8,7 +8,6 @@ module testbench();
 	reg [15:0]X;
 	reg [15:0]B;
 
-
 	
 	wire [38:0] y;
 
@@ -48,3 +47,4 @@ module testbench();
 endmodule	
 
 							
+

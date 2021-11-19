@@ -10,8 +10,8 @@ module ALU(X,B,y,clk);
 	wire [38:0]adder_out;
 	
 	
-	multiplier multiplier(X,B,multiplier_out);
-	addern adder(multiplier_out,y,adder_out);
+	multiplier multiplier(.A(X),.B(B),.Out(multiplier_out));
+	addern adder(.X(multiplier_out),.Y(y),.S(adder_out));
 
 	always @(posedge clk) begin
 		y <= adder_out;
@@ -25,7 +25,8 @@ module multiplier(A,B,Out);
 	input [15:0]A,B;
 	output [38:0]Out;
 	
-	assign Out = A * B;
+	assign Out[31:0] = A * B;
+	assign Out[38:32] = 7'b0;
 
 endmodule
 
