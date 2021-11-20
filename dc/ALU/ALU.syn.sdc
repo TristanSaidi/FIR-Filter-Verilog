@@ -1,6 +1,6 @@
 ###################################################################
 
-# Created by write_sdc on Fri Nov 19 18:18:51 2021
+# Created by write_sdc on Fri Nov 19 19:44:40 2021
 
 ###################################################################
 set sdc_version 1.7
@@ -41,6 +41,7 @@ set_driving_cell -lib_cell INVX1TS [get_ports {B[3]}]
 set_driving_cell -lib_cell INVX1TS [get_ports {B[2]}]
 set_driving_cell -lib_cell INVX1TS [get_ports {B[1]}]
 set_driving_cell -lib_cell INVX1TS [get_ports {B[0]}]
+set_driving_cell -lib_cell INVX1TS [get_ports R]
 set_driving_cell -lib_cell INVX1TS [get_ports clk]
 set_load -pin_load 1 [get_ports {y[38]}]
 set_load -pin_load 1 [get_ports {y[37]}]
@@ -113,6 +114,7 @@ set_max_capacitance 0.005 [get_ports {B[3]}]
 set_max_capacitance 0.005 [get_ports {B[2]}]
 set_max_capacitance 0.005 [get_ports {B[1]}]
 set_max_capacitance 0.005 [get_ports {B[0]}]
+set_max_capacitance 0.005 [get_ports R]
 set_max_capacitance 0.005 [get_ports clk]
 set_max_fanout 4 [get_ports {X[15]}]
 set_max_fanout 4 [get_ports {X[14]}]
@@ -146,6 +148,7 @@ set_max_fanout 4 [get_ports {B[3]}]
 set_max_fanout 4 [get_ports {B[2]}]
 set_max_fanout 4 [get_ports {B[1]}]
 set_max_fanout 4 [get_ports {B[0]}]
+set_max_fanout 4 [get_ports R]
 set_max_fanout 4 [get_ports clk]
 set_ideal_network [get_ports clk]
 create_clock [get_ports clk]  -period 10  -waveform {0 5}
@@ -186,6 +189,7 @@ set_input_delay -clock clk  0.05  [get_ports {B[3]}]
 set_input_delay -clock clk  0.05  [get_ports {B[2]}]
 set_input_delay -clock clk  0.05  [get_ports {B[1]}]
 set_input_delay -clock clk  0.05  [get_ports {B[0]}]
+set_input_delay -clock clk  0.05  [get_ports R]
 set_output_delay -clock clk  0.05  [get_ports {y[38]}]
 set_output_delay -clock clk  0.05  [get_ports {y[37]}]
 set_output_delay -clock clk  0.05  [get_ports {y[36]}]

@@ -9,96 +9,98 @@ z2
 cModel Technology
 Z0 d/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_Filter/qsim_rtl/ALU
 T_opt
-Z1 !s110 1637363698
-VUTmR2CX53bP3NTY4VXWJg1
+!s110 1637368796
+V77;1Zee6^_5c?^Fno__Bm2
 04 9 4 work testbench fast 0
-=1-989096bfd4a9-61982ff2-4c8fa-95a
+=1-989096bfd4a9-619843db-cedd3-3aff
 o-quiet -auto_acc_if_foreign -work work
-Z2 tCvgOpt 0
+Z1 tCvgOpt 0
 n@_opt
 OE;O;10.7b_1;67
 vaddern
-Z3 !s110 1637363697
+Z2 !s110 1637368794
 !i10b 1
-!s100 ZjgB_MHXoHaV]H>0bOEnR2
-Il6=4cREo6<:^[kS_ZVAoe2
-Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s100 EW1S^FMbFU@4aTgc9cgo92
+Id7VoNQb66I>4ZKP8=h3BU1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z5 w1637363634
-Z6 8../../rtl/ALU/ALU.v
-Z7 F../../rtl/ALU/ALU.v
-L0 35
-Z8 OE;L;10.7b_1;67
+Z4 w1637368783
+Z5 8../../rtl/ALU/ALU.v
+Z6 F../../rtl/ALU/ALU.v
+L0 39
+Z7 OE;L;10.7b_1;67
 r1
 !s85 0
 31
-Z9 !s108 1637363697.000000
-Z10 !s107 ../../rtl/ALU/ALU.v|
-Z11 !s90 -reportprogress|300|+acc|-incr|../../rtl/ALU/ALU.v|
+Z8 !s108 1637368794.000000
+Z9 !s107 ../../rtl/ALU/ALU.v|
+Z10 !s90 -reportprogress|300|+acc|-incr|../../rtl/ALU/ALU.v|
 !i113 0
-Z12 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
+Z11 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
 vALU
-R3
+!s10a 1637368783
+Z12 !s110 1637368361
 !i10b 1
-!s100 ;5lc8UFL>zbo;mXd4:5h^1
-ITONHkV;:^bA^eGNVBQXoR1
-R4
+!s100 ?m<IaSjDY9]5BM2mX[RG=3
+I2S7_h5FiRHkR7Sn[2Qk6V2
+R3
 R0
+w1637368306
 R5
 R6
-R7
 L0 2
-R8
+R7
 r1
 !s85 0
 31
+Z13 !s108 1637368361.000000
 R9
 R10
-R11
 !i113 0
-R12
-R2
+R11
+R1
 n@a@l@u
 vmultiplier
-R3
+R2
 !i10b 1
-!s100 56@DSYESXMgci=dKM1aU<3
-IhjZ0FH0dIXhSU??OO3n0E2
-R4
+!s100 2i?Sb;?6Y7>=3^Zd6c0Yn2
+Ij?VTf0KzhG1BW0^2kc5jj0
+R3
 R0
+R4
 R5
 R6
+L0 26
 R7
-L0 23
-R8
 r1
 !s85 0
 31
+R8
 R9
 R10
-R11
 !i113 0
-R12
-R2
-vtestbench
+R11
 R1
+vtestbench
+!s10a 1637368339
+R12
 !i10b 1
-!s100 jOJznmOVB<2c1^27k6l<N3
-IcHolTPjj@Tdd2<mA6<fNi3
-R4
+!s100 B2;khGbb9]18B4ePg9g`W0
+I^__TmJYb4;h^`ZiRVhCS^1
+R3
 R0
-w1637363077
+w1637368339
 8test_ALU.v
 Ftest_ALU.v
 L0 6
-R8
+R7
 r1
 !s85 0
 31
-R9
+R13
 !s107 test_ALU.v|
 !s90 -reportprogress|300|+acc|-incr|test_ALU.v|
 !i113 0
-R12
-R2
+R11
+R1
