@@ -33,50 +33,62 @@
  *	after the following posedge of CLK.
  */
 module sram_8blk(
-	output	reg	[19:0]	Q,		/* Only used to read <20'b Pre-Calculated Values. */
-	input	wire	[19:0]	D,		/* Only used to load <20'b Pre-Calculated Values. */
-	input	wire	[10:0]	A,		/* A[10:8] Encode Block. A[7:0] Encode Word.*/
+	output	wire	[19:0]	Q7, Q6, Q5, Q4,
+	output	wire	[19:0]	Q3, Q2, Q1, Q0,
+	input	wire	[19:0]	D,		/* Limited by Upstream Spec. */
+	input	wire	[7:0]	A7, A6, A5, A4,
+	input	wire	[7:0]	A3, A2, A1, A0,
+	input	wire	[10:0]	CADDR,		/* Only Used when Writing Pre-Computed Sums to Memory. */
 	input	wire		WEN, CEN,	/* Active Low */
 	input	wire		clk, sclk
 );
 
+	integer		j;
 	genvar		i;
-	reg	[10:0]	AI;
+	reg	[7:0]	AI [7:0];
 	reg	[19:0]	DI;
-	reg		WENI;
+	reg	[10:0]	CADDRI;
+	reg		WENI, CENI;
 	wire	[19:0]	QI [7:0];
 
 	always	@(posedge clk) begin
 		DI	<= D;
 		WENI	<= WEN;
-		AI	= A;
+		CENI	<= CEN;
+		CADDRI	<= CADDR;
+		AI[7]	<= A7;
+		AI[6]	<= A6;
+		AI[5]	<= A5;
+		AI[4]	<= A4;
+		AI[3]	<= A3;
+		AI[2]	<= A2;
+		AI[1]	<= A1;
+		AI[0]	<= A0;
 	end
 
-	always	@(clk==0) begin
-		case (AI[10:8])
-			0: Q <= QI[0];
-			1: Q <= QI[1];
-			2: Q <= QI[2];
-			3: Q <= QI[3];
-			4: Q <= QI[4];
-			5: Q <= QI[5];
-			6: Q <= QI[6];
-			7: Q <= QI[7];
-			default:
-			    Q	<= `HIZ;
-		endcase
-	end
+	assign	Q7	= QI[7];
+	assign	Q6	= QI[6];
+	assign	Q5	= QI[5];
+	assign	Q4	= QI[4];
+	assign	Q3	= QI[3];
+	assign	Q2	= QI[2];
+	assign	Q1	= QI[1];
+	assign	Q0	= QI[0];
 
 	generate
 		for (i = 0; i < 8; i = i + 1) begin
-			wire	CENI;
-			assign	CENI	= (~CEN & (AI[10:8] == i)) ? `ON:`OFF;
+			wire		CENIB;
+			wire		WENIB;
+			wire	[7:0]	AIB;
+
+			assign	WENIB	= (~WENI && ~CENI && (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
+			assign	AIB	= (~WENIB) ? CADDRI[7:0] : AI[i];
 
 			sram256w20b	SRAM_CORE(
 							.Q	(QI[i]),
-							.A	(AI[7:0]),
+							.A	(AIB),
 							.D	(DI),
-							.WEN	(WENI),
+							.WEN	(WENIB),
 							.CEN	(CENI),
 							.CLK	(sclk)
 			);
