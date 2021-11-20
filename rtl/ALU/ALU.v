@@ -1,10 +1,11 @@
+
 `timescale 1ns/1ps
 module ALU(X,B,y,clk);
 	
 	input [15:0]X,B;
 	input clk;
 
-	output reg [38:0] y = 38'b00000000000000000000000000000000000000;
+	output reg [38:0] y = 38'b0;
 
 	wire [38:0]multiplier_out;
 	wire [38:0]adder_out;
@@ -51,3 +52,4 @@ module addern(X, Y, S);
 		end
 	endgenerate
 endmodule
+

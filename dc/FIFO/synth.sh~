@@ -1,1 +1,0 @@
-dc_shell -64 -f adder12.tcl | tee adder12.log
