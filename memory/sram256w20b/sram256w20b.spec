@@ -1,0 +1,33 @@
+#user spec file, version 2008Q3V1
+#Fri Nov 19 22:17:00 EST 2021
+acroread=acroread
+asvm=on
+bits=20
+bus_notation=on
+check_instname=on
+corners=ff_1p65v_0c,ff_1p65v_0c,tt_1p2v_25c,ss_1p08v_m55c
+cust_comment=
+diodes=on
+drive=4
+frequency=1
+horiz=met3
+inside_ring_type=GND
+instname=sram256w20b
+left_bus_delim=[
+mux=2
+name_case=upper
+pin_space=0.0
+power_type=rings
+prefix=
+pwr_gnd_rename=VDD:VDD,GND:VSS
+right_bus_delim=]
+ring_width=2.0
+synopsys.libname=USERLIB
+tlf.libname=USERLIB
+top_layer=m6-m8_m4
+vclef-fp.inst2ring=blockages
+vclef-fp.site_def=off
+vert=met2
+words=256
+wp_size=8
+write_mask=off
