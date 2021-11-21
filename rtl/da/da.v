@@ -4,7 +4,7 @@
 `include "./da_control.v"
 
 module	da(
-	output	reg	[37:0]	acc,
+	output	reg	[37:0]	ACC,
 	output	wire		done,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
@@ -15,6 +15,7 @@ module	da(
 );
 
 	reg	[37:0]	X_ADDER_REG, Y_ADDER_REG;
+	wire	[38:0]	ADDER_RESULT;
 
 	wire	reset, valid_out;
 	wire	load_sreg, load_zreg, shift_sreg;
@@ -22,7 +23,6 @@ module	da(
 	wire	do_y0, do_y1;
 	wire	do_f0;
 	wire	do_acc;
-	wire	done;
 	wire	CEN, WEN;
 
 	da_control	CONTROL(
@@ -48,6 +48,13 @@ module	da(
 			.CLOAD		(CLOAD),
 			.valid_in	(valid_in)
 	);
+
+	addern		ADDER(
+				.X	(X_ADDER_REG),
+				.Y	(Y_ADDER_REG),
+				.S	(1'b0)
+	);
+	defparam	ADDER.n = 38;
 
 	wire	[19:0]	Q0, Q1, Q2, Q3;
 	wire	[19:0]	Q4, Q5, Q6, Q7;
@@ -127,7 +134,6 @@ module	da(
 			else if (do_w2) begin
 				X_ADDER_REG	<= {{18{Z4[19]}}, Z4};
 				Y_ADDER_REG	<= {{18{Z5[19]}}, Z5};
-
 			end
 			else if (do_w3) begin
 				X_ADDER_REG	<= {{18{Z6[19]}}, Z6};
@@ -147,11 +153,73 @@ module	da(
 		end
 		else begin
 			if (do_y0) begin
-
+				X_ADDER_REG	<= {{17{W0[20]}}, W0};
+				Y_ADDER_REG	<= {{17{W1[20]}}, W1};
 			end
 			else if (do_y1) begin
-
+				X_ADDER_REG	<= {{17{W2[20]}}, W2};
+				Y_ADDER_REG	<= {{17{W3[20]}}, W3};
 			end
+			else begin
+			end
+		end
+	end
+
+	reg	[22:0]	F0;
+
+	always	@(posedge clk) begin
+		if (~resetn) begin
+			F0	<= 0;
+		end
+		else begin
+			if (do_f0) begin
+				X_ADDER_REG	<= {{16{Y0[21]}}, Y0};
+				Y_ADDER_REG	<= ADDER_RESULT[37:0]; // Clock Cycle After do_y1 => y1 is on this line.
+			end
+			else begin
+			end
+		end
+	end
+
+	always	@(posedge clk) begin
+		if (~resetn) begin
+			ACC	<= 0;
+		end
+		else begin
+			if (do_acc) begin
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= ADDER_RESULT[37:0]; // Clock Cycle After do_f0 => f0 is on this line.
+			end
+			else begin
+			end
+		end
+	end
+
+	reg	captured; /* Latched Accumulated Value */
+
+	always	@(posedge clk) begin
+		if (do_w1) begin
+			W0	<= ADDER_RESULT[20:0];
+		end
+		else if (do_w2) begin
+			W1	<= ADDER_RESULT[20:0];
+		end
+		else if (do_w3) begin
+			W2	<= ADDER_RESULT[20:0];
+		end
+		else if (do_y0) begin
+			W3	<= ADDER_RESULT[20:0];
+		end
+		else if (do_y1) begin
+			Y0	<= ADDER_RESULT[20:0];
+		end
+		else if (do_f0) begin
+		end
+		else if (do_acc) begin
+		end
+		else if (done & ~captured) begin
+			ACC		<= ADDER_RESULT[20:0];
+			captured	<= 1'b1;
 		end
 	end
 endmodule /* da */

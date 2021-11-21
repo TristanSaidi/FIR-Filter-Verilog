@@ -1,0 +1,158 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/user/stud/fall19/bws2121/4823/project/qsim_rtl/da
+vaddern
+Z1 !s110 1637466705
+!i10b 1
+!s100 KQe_W<JjDJ2bJkKl]5nhd0
+I`dWoC>oQKSRz06oKbg:cO1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1637364940
+Z4 8../../rtl/da/../ALU/ALU.v
+Z5 F../../rtl/da/../ALU/ALU.v
+L0 36
+Z6 OE;L;10.7b_1;67
+r1
+!s85 0
+31
+Z7 !s108 1637466705.000000
+!s107 ../../rtl/da/./da_control.v|../../rtl/da/../sram/sram_8blk.v|../../rtl/da/../ALU/ALU.v|../../rtl/da/da.v|
+Z8 !s90 +acc|-incr|../../rtl/da/da.v|
+!i113 0
+Z9 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z10 tCvgOpt 0
+vALU
+R1
+!i10b 1
+!s100 D13K]T?`=8gnLnUZO3^:P3
+I^NX=3ea`60`1kFAK7Sedc1
+R2
+R0
+R3
+R4
+R5
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+Z11 !s107 ../../rtl/da/./da_control.v|../../rtl/da/../sram/sram_8blk.v|../../rtl/da/../ALU/ALU.v|../../rtl/da/da.v|
+R8
+!i113 0
+R9
+R10
+n@a@l@u
+vda
+R1
+!i10b 1
+!s100 Y_A1SK;NUfBA>>m5m8Dfn1
+IAGVizgJYaW:^[A3DhO@D51
+R2
+R0
+w1637466166
+8../../rtl/da/da.v
+F../../rtl/da/da.v
+L0 6
+R6
+r1
+!s85 0
+31
+R7
+R11
+R8
+!i113 0
+R9
+R10
+vda_control
+R1
+!i10b 1
+!s100 G4aH4[SCI^6o]fF8V`TzV0
+I8ik<i:GlbbbhnCL^4:jOE0
+R2
+R0
+w1637466114
+8../../rtl/da/./da_control.v
+F../../rtl/da/./da_control.v
+L0 17
+R6
+r1
+!s85 0
+31
+R7
+R11
+R8
+!i113 0
+R9
+R10
+vmultiplier
+R1
+!i10b 1
+!s100 3kBn31dK?f_4N@2>]93ZE1
+IhEM?<HNFb_1eQ^<R@d36B1
+R2
+R0
+R3
+R4
+R5
+L0 24
+R6
+r1
+!s85 0
+31
+R7
+R11
+R8
+!i113 0
+R9
+R10
+vsram256w20b
+R1
+!i10b 1
+!s100 :e>^jPB0gOm@g?R?eWD:T3
+IYN`^o<@eUGY]TaFS9JGea0
+R2
+R0
+w1637379969
+8../../memory/sram256w20b/sram256w20b.v
+F../../memory/sram256w20b/sram256w20b.v
+L0 53
+R6
+r1
+!s85 0
+31
+R7
+!s107 ../../memory/sram256w20b/sram256w20b.v|
+!s90 +acc|-incr|../../memory/sram256w20b/sram256w20b.v|
+!i113 0
+R9
+R10
+vsram_8blk
+R1
+!i10b 1
+!s100 70_TlSBmS794zG>ZX2l[^2
+IgMSE3o4j=8Azjf23SjLZ:0
+R2
+R0
+w1637435619
+8../../rtl/da/../sram/sram_8blk.v
+F../../rtl/da/../sram/sram_8blk.v
+L0 35
+R6
+r1
+!s85 0
+31
+R7
+R11
+R8
+!i113 0
+R9
+R10

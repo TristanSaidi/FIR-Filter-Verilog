@@ -1,6 +1,4 @@
 
-`include "../ALU/ALU.v"
-
 `define ON	1'b0
 `define OFF	1'b1
 
@@ -59,8 +57,8 @@ module da_control(
 			i		<= 0;
 		end
 		else begin
-			case (CS):
-				S0:
+			case (CS)
+				S0: begin
 					if (start) begin
 						NS		<= S1;
 						do_acc		<= 0;
@@ -103,7 +101,8 @@ module da_control(
 							WEN	<= `OFF;
 						end
 					end
-				S1:
+				end
+				S1: begin
 					NS		<= S2;
 					do_acc		<= 0;
 					reset		<= 1;
@@ -121,7 +120,8 @@ module da_control(
 					i		<= 0;
 					CEN		<= `ON;
 					WEN		<= `OFF;
-				S2:
+				end
+				S2: begin
 					NS		<= S3;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -138,7 +138,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S3:
+				end
+				S3: begin
 					NS		<= S4;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -155,7 +156,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S4:
+				end
+				S4: begin
 					NS		<= S5;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -172,7 +174,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S5:
+				end
+				S5: begin
 					NS		<= S6;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -189,7 +192,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S6:
+				end
+				S6: begin
 					NS		<= S7;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -206,7 +210,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S7:
+				end
+				S7: begin
 					NS		<= S8;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -223,7 +228,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S8:
+				end
+				S8: begin
 					NS		<= S9;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -240,7 +246,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S9:
+				end
+				S9: begin
 					NS		<= S10;
 					do_acc		<= 1;
 					reset		<= 0;
@@ -258,7 +265,8 @@ module da_control(
 					done		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				S10:
+				end
+				S10: begin
 					do_acc		<= 1;
 					reset		<= 0;
 					load_sreg	<= 0;
@@ -280,7 +288,8 @@ module da_control(
 					else begin
 						NS	<= S12;
 					end
-				S11:
+				end
+				S11: begin
 					do_acc		<= 0;
 					load_sreg	<= 0;
 					load_zreg	<= 0;
@@ -301,7 +310,8 @@ module da_control(
 					else begin
 						NS		<= S11;
 					end
-				S12:
+				end
+				S12: begin
 					NS		<= S2;
 					do_acc		<= 0;
 					reset		<= 0;
@@ -319,7 +329,8 @@ module da_control(
 					i		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
-				default:
+				end
+				default: begin
 					NS		<= S0;
 					do_acc		<= 0;
 					reset		<= 1;
@@ -337,6 +348,7 @@ module da_control(
 					i		<= 0;
 					CEN		<= `OFF;
 					WEN		<= `OFF;
+				end
 			endcase
 		end
 	end
