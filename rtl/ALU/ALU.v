@@ -1,3 +1,4 @@
+
 `timescale 1ns/1ps
 module ALU(X,B,R,y,clk);
 	
@@ -8,6 +9,7 @@ module ALU(X,B,R,y,clk);
 
 	wire signed [38:0]multiplier_out;
 	wire signed [38:0]adder_out;
+
 	
 	
 	multiplier multiplier(.A(X),.B(B),.Out(multiplier_out));
@@ -55,3 +57,4 @@ module addern(X, Y, S);
 		end
 	endgenerate
 endmodule
+

@@ -1,137 +1,0 @@
-
-                                 PrimeTime (R)
-
-               Version P-2019.03-SP2 for linux64 - May 30, 2019 
-
-                    Copyright (c) 1988 - 2019 Synopsys, Inc.
-   This software and the associated documentation are proprietary to Synopsys,
- Inc. This software may only be used in accordance with the terms and conditions
- of a written license agreement with Synopsys, Inc. All other use, reproduction,
-            or distribution of this software is strictly prohibited.
-#################################################
-# Primetime 
-# Script for static timing analysis
-# MS 7/2015
-#################################################
-#################################################
-# Units are defined in the .lib file
-# time: ns
-#################################################
-## Global
-set sh_enable_page_mode true
-false
-set power_enable_analysis true
-Information: Checked out license 'PrimePower' (PT-019)
-true
-## Setting files/paths
-set verilog_files {../../dc/ALU/ALU.nl.v}
-../../dc/ALU/ALU.nl.v
-set my_toplevel ALU
-ALU
-set search_path ". /courses/ee6321/share/ibm13rflpvt/synopsys/"
-. /courses/ee6321/share/ibm13rflpvt/synopsys/
-set link_path "* scx3_cmos8rf_lpvt_tt_1p2v_25c.db" 
-* scx3_cmos8rf_lpvt_tt_1p2v_25c.db
-## Read design
-read_db "scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
-Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
-1
-read_verilog $verilog_files
-1
-link_design -keep_sub_designs $my_toplevel
-Loading verilog file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_Filter/dc/ALU/ALU.nl.v'
-Warning: -keep_sub_design option of link_design will be made obsolete and removed from future releases of PrimeTime starting with the 2017.12 release. (PT-007)
-Linking design ALU...
-Information: 466 (88.43%) library cells are unused in library scx3_cmos8rf_lpvt_tt_1p2v_25c..... (LNK-045)
-Information: total 466 library cells are unused (LNK-046)
-Design 'ALU' was successfully linked.
-Information: There are 1074 leaf cells, ports, hiers and 1157 nets in the design (LNK-047)
-1
-## Timing Constraints
-source ./timing.tcl
-Warning: Collection '_sel3 ([get_clocks  { {clk} }])' has inappropriate type (clock). (SEL-002)
-Error: Nothing matched for port_list (SEL-005)
-Warning: Setting input delay on clock port (clk) relative to a clock (clk) defined at the same port. Command is ignored. (UITE-489)
-1
-1
-###################################################
-## Run STA 
-###################################################
-set rpt_file "./ALU_pt.rpt"
-./ALU_pt.rpt
-check_timing
-Information: Checking 'no_input_delay'.
-Information: Checking 'no_driving_cell'.
-Information: Checking 'unconstrained_endpoints'.
-Information: Checking 'unexpandable_clocks'.
-Information: Checking 'latch_fanout'.
-Information: Checking 'no_clock'.
-Information: Checking 'partial_input_delay'.
-Information: Checking 'generic'.
-Information: Checking 'loops'.
-Information: Checking 'generated_clocks'.
-Information: Checking 'pulse_clock_non_pulse_clock_merge'.
-Information: Checking 'pll_configuration'.
-check_timing succeeded.
-1
-report_design >> ${rpt_file}
-report_reference >> ${rpt_file}
-report_constraint >> ${rpt_file}
-report_constraint -all_violators -significant_digits 4 >> ${rpt_file}
-report_timing -significant_digits 4 -delay_type min_max >> ${rpt_file}
-## Power analysis
-set power_analysis_mode "time_based"
-time_based
-read_vcd "../../qsim_dc/ALU/ALU.vcd" -strip_path "testbench/ALU"
-
-======================================================================
-Summary:
-Total number of nets = 1157
-Number of annotated nets = 1157 (100.00%)
-Total number of leaf cells = 1000
-Number of fully annotated leaf cells = 1000 (100.00%)
-======================================================================
-
-1
-report_switching_activity >> ${rpt_file}
-report_switching_activity -list_not_annotated >> ${rpt_file}
-update_power
-Information: Running time_based power analysis... (PWR-601)
-Information: The waveform options are:
-		File name:	primetime_px.fsdb
-		File format:	fsdb
-		Time interval:	0.001ns
-		Hierarchical level:	all
-
-Information: Power analysis is running, please wait ...
-
- Last event time =  215.479 ns  Last event time =  397.055 ns  Last event time =  575.703 ns  Last event time =  766.017 ns  Last event time =  945.789 ns  Last event time =  1156.69 ns  Last event time =  1327.67 ns  Last event time =  1505.41 ns  Last event time =  1705.71 ns  Last event time =  1889.87 ns  Last event time =  2087.15 ns  Last event time =  2265.52 ns  Last event time =  2443.25 ns  Last event time =   2648.6 ns  Last event time =  2835.72 ns  Last event time =  3015.34 ns  Last event time =  3195.17 ns  Last event time =   3378.6 ns  Last event time =  3591.98 ns  Last event time =  3790.43 ns  Last event time =  3980.91 ns  Last event time =  4126.85 ns  Last event time =  4307.14 ns  Last event time =  4495.21 ns  Last event time =  4685.41 ns  Last event time =  4885.84 ns  Last event time =  5078.26 ns  Last event time =  5275.09 ns  Last event time =  5468.62 ns  Last event time =  5639.51 ns  Last event time =  5841.91 ns  Last event time =  6015.11 ns  Last event time =  6198.44 ns  Last event time =  6369.52 ns  Last event time =  6536.54 ns  Last event time =   6715.2 ns  Last event time =  6910.02 ns  Last event time =   7108.7 ns  Last event time =   7285.4 ns  Last event time =  7465.98 ns  Last event time =  7647.16 ns  Last event time =  7825.98 ns  Last event time =  7995.43 ns  Last event time =   8160.2 ns  Last event time =  8338.35 ns  Last event time =  8515.68 ns  Last event time =  8688.32 ns  Last event time =  8885.75 ns  Last event time =     9075 ns  Last event time =  9245.51 ns  Last event time =  9426.44 ns  Last event time =   9605.2 ns  Last event time =  9805.41 ns  Last event time =  9995.84 ns Information: analysis is done for time window (0ns - 10.007ns)
-
-Information: Total simulation time = 10.007000 ns
-1
-report_power >> ${rpt_file}
-report_power -hierarchy  >> ${rpt_file}
-write_sdf -context verilog "./ALU.sdf"
-1
-# Exiting primetime
-quit
-Information: Defining new variable 'clk_name'. (CMD-041)
-Information: Defining new variable 'rpt_file'. (CMD-041)
-Information: Defining new variable 'clk_uncertainty'. (CMD-041)
-Information: Defining new variable 'clk_period'. (CMD-041)
-Information: Defining new variable 'clk_port'. (CMD-041)
-Information: Defining new variable 'my_toplevel'. (CMD-041)
-Information: Defining new variable 'typical_wire_load'. (CMD-041)
-Information: Defining new variable 'typical_output_delay'. (CMD-041)
-Information: Defining new variable 'verilog_files'. (CMD-041)
-Information: Defining new variable 'typical_input_delay'. (CMD-041)
-Information: Defining new variable 'clk_transition'. (CMD-041)
-
-Timing updates: 1 (1 implicit, 0 explicit) (0 incremental, 1 full, 0 logical)
-Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
-Maximum memory usage for this session: 1068.57 MB
-CPU usage for this session: 4 seconds 
-Elapsed time for this session: 5 seconds
-Diagnostics summary: 1 error, 3 warnings, 16 informationals
-
-Thank you for using pt_shell!
