@@ -8,151 +8,188 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/user/stud/fall19/bws2121/4823/project/qsim_rtl/da
+T_opt
+Z1 !s110 1637469160
+VG><1zCKY9_5PM[m^VkRbk0
+04 9 4 work testbench fast 0
+=1-e4b97aea3ea5-6199cbe8-7dc6d-4ba
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+OE;O;10.7b_1;67
 vaddern
-Z1 !s110 1637466705
+Z3 !s10a 1637469038
+Z4 !s110 1637468272
 !i10b 1
-!s100 KQe_W<JjDJ2bJkKl]5nhd0
-I`dWoC>oQKSRz06oKbg:cO1
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-R0
-Z3 w1637364940
-Z4 8../../rtl/da/../ALU/ALU.v
-Z5 F../../rtl/da/../ALU/ALU.v
-L0 36
-Z6 OE;L;10.7b_1;67
+!s100 T7HFgHo?f<6;YT=CIT04d0
+INScU>Og`WV^Wo4aQ_EW;W0
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 d/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_Filter/qsim_rtl/da
+Z7 w1637458899
+Z8 8../../rtl/da/../ALU/ALU.v
+Z9 F../../rtl/da/../ALU/ALU.v
+L0 41
+Z10 OE;L;10.7b_1;67
 r1
 !s85 0
 31
-Z7 !s108 1637466705.000000
-!s107 ../../rtl/da/./da_control.v|../../rtl/da/../sram/sram_8blk.v|../../rtl/da/../ALU/ALU.v|../../rtl/da/da.v|
-Z8 !s90 +acc|-incr|../../rtl/da/da.v|
+Z11 !s108 1637468271.000000
+Z12 !s107 ../../rtl/da/./da_control.v|../../rtl/da/../sram/sram_8blk.v|../../rtl/da/../ALU/ALU.v|../../rtl/da/da.v|
+Z13 !s90 +acc|-incr|../../rtl/da/da.v|
 !i113 0
-Z9 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z10 tCvgOpt 0
-vALU
-R1
-!i10b 1
-!s100 D13K]T?`=8gnLnUZO3^:P3
-I^NX=3ea`60`1kFAK7Sedc1
+Z14 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-R0
+vALU
 R3
 R4
+!i10b 1
+!s100 mBL5OL;Ygd]ccIB5nTe1o0
+IT]zfUn@nj@bAm09S37]jK2
 R5
-L0 3
 R6
+R7
+R8
+R9
+L0 3
+R10
 r1
 !s85 0
 31
-R7
-Z11 !s107 ../../rtl/da/./da_control.v|../../rtl/da/../sram/sram_8blk.v|../../rtl/da/../ALU/ALU.v|../../rtl/da/da.v|
-R8
+R11
+R12
+R13
 !i113 0
-R9
-R10
+R14
+R2
 n@a@l@u
 vda
-R1
+!s10a 1637469069
+!s110 1637469092
 !i10b 1
-!s100 Y_A1SK;NUfBA>>m5m8Dfn1
-IAGVizgJYaW:^[A3DhO@D51
-R2
-R0
-w1637466166
+!s100 bhD:<Se8AMIzTcJJ41ATh3
+IN?BOXl^o4n5bH1M9A505X0
+R5
+R6
+w1637469069
 8../../rtl/da/da.v
 F../../rtl/da/da.v
 L0 6
-R6
+R10
 r1
 !s85 0
 31
-R7
-R11
-R8
+!s108 1637469092.000000
+R12
+R13
 !i113 0
-R9
-R10
+R14
+R2
 vda_control
-R1
+!s10a 1637466819
+Z15 !s110 1637466705
 !i10b 1
 !s100 G4aH4[SCI^6o]fF8V`TzV0
 I8ik<i:GlbbbhnCL^4:jOE0
-R2
+R5
 R0
 w1637466114
 8../../rtl/da/./da_control.v
 F../../rtl/da/./da_control.v
 L0 17
-R6
+R10
 r1
 !s85 0
 31
-R7
-R11
-R8
+Z16 !s108 1637466705.000000
+R12
+R13
 !i113 0
-R9
-R10
-vmultiplier
-R1
-!i10b 1
-!s100 3kBn31dK?f_4N@2>]93ZE1
-IhEM?<HNFb_1eQ^<R@d36B1
+R14
 R2
-R0
+vmultiplier
 R3
 R4
+!i10b 1
+!s100 ;X5;E8h=48abj>i1dzoOX3
+I?8K;kKUhRc?A6hie_Ndaj2
 R5
-L0 24
 R6
+R7
+R8
+R9
+L0 28
+R10
 r1
 !s85 0
 31
-R7
 R11
-R8
+R12
+R13
 !i113 0
-R9
-R10
+R14
+R2
 vsram256w20b
-R1
+!s10a 1637458643
+R15
 !i10b 1
 !s100 :e>^jPB0gOm@g?R?eWD:T3
 IYN`^o<@eUGY]TaFS9JGea0
-R2
+R5
 R0
 w1637379969
 8../../memory/sram256w20b/sram256w20b.v
 F../../memory/sram256w20b/sram256w20b.v
 L0 53
-R6
+R10
 r1
 !s85 0
 31
-R7
+R16
 !s107 ../../memory/sram256w20b/sram256w20b.v|
 !s90 +acc|-incr|../../memory/sram256w20b/sram256w20b.v|
 !i113 0
-R9
-R10
+R14
+R2
 vsram_8blk
-R1
+!s10a 1637458644
+R15
 !i10b 1
 !s100 70_TlSBmS794zG>ZX2l[^2
 IgMSE3o4j=8Azjf23SjLZ:0
-R2
+R5
 R0
 w1637435619
 8../../rtl/da/../sram/sram_8blk.v
 F../../rtl/da/../sram/sram_8blk.v
 L0 35
-R6
+R10
 r1
 !s85 0
 31
-R7
-R11
-R8
+R16
+R12
+R13
 !i113 0
-R9
+R14
+R2
+vtestbench
+R1
+!i10b 1
+!s100 E_KK63AGRdSjojn[2jQmk2
+II:NI:19dichHAdZf0F;@S0
+R5
+R6
+w1637468406
+8./tb_da.v
+F./tb_da.v
+L0 9
 R10
+r1
+!s85 0
+31
+!s108 1637469160.000000
+!s107 ./tb_da.v|
+!s90 -svext|+acc|-incr|./tb_da.v|
+!i113 0
+o-svext +acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2

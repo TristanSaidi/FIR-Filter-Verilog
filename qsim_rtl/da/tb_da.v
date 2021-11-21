@@ -46,7 +46,18 @@ module testbench();
 			.resetn		(resetn)
 	);
 
-	integer	[255:0]	ROM [7:0];	// TODO : Implement Testbench Internal Memory
+	integer ROM0[255:0];
+	integer ROM1[255:0];
+	integer ROM2[255:0];
+	integer ROM3[255:0];
+	integer ROM4[255:0];
+	integer ROM5[255:0];
+	integer ROM6[255:0];
+	integer ROM7[255:0];
+	
+	
+	
+	
 
 	integer	CADDR_INT, CIN_INT;
 	integer	ROM_INDEX;
@@ -73,9 +84,20 @@ module testbench();
 			ADDRESS_INDEX			= CADDR[7:0];
 			CIN				<= i;
 			CIN_INT				= CIN;
-			ROM[ROM_INDEX][ADDRESS_INDEX]	= CIN_INT;
+			case(ROM_INDEX)
+                        	0: ROM0[ADDRESS_INDEX] = CIN_INT;                   
+				1: ROM1[ADDRESS_INDEX] = CIN_INT;
+				2: ROM2[ADDRESS_INDEX] = CIN_INT;
+				3: ROM3[ADDRESS_INDEX] = CIN_INT;				
+				4: ROM4[ADDRESS_INDEX] = CIN_INT;
+				5: ROM5[ADDRESS_INDEX] = CIN_INT;
+				6: ROM6[ADDRESS_INDEX] = CIN_INT;
+				7: ROM7[ADDRESS_INDEX] = CIN_INT;
+			endcase
 			valid_in			<= 1'b1;
 			CLOAD				<= 1'b1;
+				
+				
 		end
 		else begin
 			CADDR				<= {11{1'bZ}};
@@ -102,14 +124,14 @@ module testbench();
 		end
 		else begin
 			$fwrite(qsim_out, "\nCOMPUTE||\n");
-			$fwrite(qsim_out, "\tA7[%3d] = %6d\n", A7_INT, ROM[7][A7_INT]);
-			$fwrite(qsim_out, "\tA6[%3d] = %6d\n", A6_INT, ROM[6][A6_INT]);
-			$fwrite(qsim_out, "\tA5[%3d] = %6d\n", A5_INT, ROM[5][A5_INT]);
-			$fwrite(qsim_out, "\tA4[%3d] = %6d\n", A4_INT, ROM[4][A4_INT]);
-			$fwrite(qsim_out, "\tA3[%3d] = %6d\n", A3_INT, ROM[3][A3_INT]);
-			$fwrite(qsim_out, "\tA2[%3d] = %6d\n", A2_INT, ROM[2][A2_INT]);
-			$fwrite(qsim_out, "\tA1[%3d] = %6d\n", A1_INT, ROM[1][A1_INT]);
-			$fwrite(qsim_out, "\tA0[%3d] = %6d\n", A0_INT, ROM[0][A0_INT]);
+			$fwrite(qsim_out, "\tA7[%3d] = %6d\n", A7_INT, ROM7[A7_INT]);
+			$fwrite(qsim_out, "\tA6[%3d] = %6d\n", A6_INT, ROM6[A6_INT]);
+			$fwrite(qsim_out, "\tA5[%3d] = %6d\n", A5_INT, ROM5[A5_INT]);
+			$fwrite(qsim_out, "\tA4[%3d] = %6d\n", A4_INT, ROM4[A4_INT]);
+			$fwrite(qsim_out, "\tA3[%3d] = %6d\n", A3_INT, ROM3[A3_INT]);
+			$fwrite(qsim_out, "\tA2[%3d] = %6d\n", A2_INT, ROM2[A2_INT]);
+			$fwrite(qsim_out, "\tA1[%3d] = %6d\n", A1_INT, ROM1[A1_INT]);
+			$fwrite(qsim_out, "\tA0[%3d] = %6d\n", A0_INT, ROM0[A0_INT]);
 			$fwrite(qsim_out, "\tACC\t= %12d", ACC_INT);
 		end
 	end

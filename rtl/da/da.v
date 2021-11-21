@@ -14,7 +14,7 @@ module	da(
 	input	wire		start, clk, sclk, resetn
 );
 
-	reg	[37:0]	X_ADDER_REG, Y_ADDER_REG;
+	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
 	wire	[38:0]	ADDER_RESULT;
 
 	wire	reset, valid_out;
@@ -52,9 +52,9 @@ module	da(
 	addern		ADDER(
 				.X	(X_ADDER_REG),
 				.Y	(Y_ADDER_REG),
-				.S	(1'b0)
+				.S	(ADDER_RESULT)
 	);
-	defparam	ADDER.n = 38;
+	defparam	ADDER.n = 39;
 
 	wire	[19:0]	Q0, Q1, Q2, Q3;
 	wire	[19:0]	Q4, Q5, Q6, Q7;
