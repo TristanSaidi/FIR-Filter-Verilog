@@ -15,18 +15,16 @@
 		registers).
  */
 module da_control(
-	output	reg	reset, valid_out,
-	output	reg	load_sreg, load_zreg, shift_sreg,
-	output	reg	do_w0, do_w1, do_w2, do_w3,
-	output	reg	do_y0, do_y1,
-	output	reg	do_f0,
-	output	reg	do_acc,
-	output	reg	done,
-	output	reg	CEN, WEN, 
-	input	wire	resetn, start, clk, CLOAD, valid_in
+	output	reg		valid_out,
+	output	reg		load_zreg,
+	output	reg		do_w0, do_w1, do_w2, do_w3,
+	output	reg		do_y0, do_y1,
+	output	reg		do_f0,
+	output	reg		do_acc,
+	output	reg		CEN, WEN,
+	input	wire		resetn, start, clk, CLOAD, valid_in
 );
 
-	reg	[3:0]	i;
 	reg	[3:0]	NS;
 	wire	[3:0]	CS;
 	assign	CS	= NS;
@@ -40,317 +38,215 @@ module da_control(
 
 	always	@(negedge clk) begin
 		if (~resetn) begin
-			NS		<= S0;
-			do_acc		<= 0;
-			reset		<= 0;
-			load_sreg	<= 0;
-			do_w0		<= 0;
-			do_w1		<= 0;
-			do_w2		<= 0;
-			do_w3		<= 0;
-			do_y0		<= 0;
-			do_y1		<= 0;
-			do_f0		<= 0;
-			done		<= 0;
-			CEN		<= `OFF;
-			WEN		<= `OFF;
-			i		<= 0;
+			NS		= S0;
+			do_acc		= 0;
+			do_w0		= 0;
+			do_w1		= 0;
+			do_w2		= 0;
+			do_w3		= 0;
+			do_y0		= 0;
+			do_y1		= 0;
+			do_f0		= 0;
+			valid_out	= 0;
+			CEN		= `OFF;
+			WEN		= `OFF;
 		end
 		else begin
 			case (CS)
 				S0: begin
 					if (start) begin
-						NS		<= S1;
-						do_acc		<= 0;
-						reset		<= 1;
-						load_sreg	<= 1;
-						shift_sreg	<= 0;
-						do_w0		<= 0;
-						do_w1		<= 0;
-						do_w2		<= 0;
-						do_w3		<= 0;
-						do_y0		<= 0;
-						do_y1		<= 0;
-						do_f0		<= 0;
-						done		<= 0;
-						i		<= 0;
-						CEN		<= `ON;
-						WEN		<= `OFF;
+						NS		= S1;
+						do_acc		= 0;
+						load_zreg	= 1;
+						do_w0		= 0;
+						do_w1		= 0;
+						do_w2		= 0;
+						do_w3		= 0;
+						do_y0		= 0;
+						do_y1		= 0;
+						do_f0		= 0;
+						valid_out	= 0;
+						CEN		= `ON;
+						WEN		= `OFF;
 					end
 					else begin
-						NS		<= S0;
-						do_acc		<= 0;
-						reset		<= 0;
-						load_sreg	<= 0;
-						shift_sreg	<= 0;
-						do_w0		<= 0;
-						do_w1		<= 0;
-						do_w2		<= 0;
-						do_w3		<= 0;
-						do_y0		<= 0;
-						do_y1		<= 0;
-						do_f0		<= 0;
-						i		<= 0;
-						done		<= 0;
+						NS		= S0;
+						do_acc		= 0;
+						load_zreg	= 0;
+						do_w0		= 0;
+						do_w1		= 0;
+						do_w2		= 0;
+						do_w3		= 0;
+						do_y0		= 0;
+						do_y1		= 0;
+						do_f0		= 0;
+						valid_out	= 0;
 						if (CLOAD & valid_in) begin
-							CEN	<= `ON;
-							WEN	<= `ON;
+							CEN	= `ON;
+							WEN	= `ON;
 						end
 						else begin
-							CEN	<= `OFF;
-							WEN	<= `OFF;
+							CEN	= `OFF;
+							WEN	= `OFF;
 						end
 					end
 				end
 				S1: begin
-					NS		<= S2;
-					do_acc		<= 0;
-					reset		<= 1;
-					load_sreg	<= 1;
-					shift_sreg	<= 0;
-					load_zreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					i		<= 0;
-					CEN		<= `ON;
-					WEN		<= `OFF;
+					NS		= S2;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 1;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S2: begin
-					NS		<= S3;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 1;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S3;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 1;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S3: begin
-					NS		<= S4;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 1;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S4;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 1;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S4: begin
-					NS		<= S5;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 1;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S5;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 1;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S5: begin
-					NS		<= S6;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 1;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S6;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 1;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S6: begin
-					NS		<= S7;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 1;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S7;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 1;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S7: begin
-					NS		<= S8;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 1;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S8;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 1;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S8: begin
-					NS		<= S9;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 1;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S9;
+					do_acc		= 1;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 				S9: begin
-					NS		<= S10;
-					do_acc		<= 1;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 1;
-					i		<= i + 1;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S10;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 1;
+					CEN		= `OFF;
+					WEN		= `OFF;
+					NS		= S0;
 				end
-				S10: begin
-					do_acc		<= 1;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
-					if (i == 4'b1111) begin
-						NS	<= S11;
-					end
-					else begin
-						NS	<= S12;
-					end
-				end
-				S11: begin
-					do_acc		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 1;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
-					if (start) begin
-						NS		<= S1;
-					end
-					else begin
-						NS		<= S11;
-					end
-				end
-				S12: begin
-					NS		<= S2;
-					do_acc		<= 0;
-					reset		<= 0;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 1;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					i		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
-				end
+
+
+
 				default: begin
-					NS		<= S0;
-					do_acc		<= 0;
-					reset		<= 1;
-					load_sreg	<= 0;
-					load_zreg	<= 0;
-					shift_sreg	<= 0;
-					do_w0		<= 0;
-					do_w1		<= 0;
-					do_w2		<= 0;
-					do_w3		<= 0;
-					do_y0		<= 0;
-					do_y1		<= 0;
-					do_f0		<= 0;
-					done		<= 0;
-					i		<= 0;
-					CEN		<= `OFF;
-					WEN		<= `OFF;
+					NS		= S0;
+					do_acc		= 0;
+					load_zreg	= 0;
+					do_w0		= 0;
+					do_w1		= 0;
+					do_w2		= 0;
+					do_w3		= 0;
+					do_y0		= 0;
+					do_y1		= 0;
+					do_f0		= 0;
+					valid_out	= 0;
+					CEN		= `OFF;
+					WEN		= `OFF;
 				end
 			endcase
 		end
 	end
-
 endmodule /* da_control */
+

@@ -11,6 +11,8 @@ clean:
 	rm -rf *.log *.syn *.rpt *.mr *.nl.v *.sdf *.svf *.vcd transcript *.wlf
 	rm -rf *.result
 	rm -f error* output*
+	rm -rf rom
+	touchdir rom
 all: clean
 	make run
 

@@ -43,7 +43,6 @@ module sram_8blk(
 	input	wire		clk, sclk
 );
 
-	integer		j;
 	genvar		i;
 	reg	[7:0]	AI [7:0];
 	reg	[19:0]	DI;
@@ -77,7 +76,6 @@ module sram_8blk(
 
 	generate
 		for (i = 0; i < 8; i = i + 1) begin
-			wire		CENIB;
 			wire		WENIB;
 			wire	[7:0]	AIB;
 

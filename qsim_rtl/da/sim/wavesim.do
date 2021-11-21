@@ -8,5 +8,6 @@ vlog -svext +acc -incr ./tb_da.v
 
 vsim -t ps -lib work testbench
 do "waveformat.do"
+#do "sramformat.do"
 run -all
 

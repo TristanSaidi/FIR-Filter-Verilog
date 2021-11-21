@@ -50,7 +50,7 @@ module testbench();
 		WENI	= WEN;
 		CADDRI	= CADDR;
 		CENI	= CEN;
-		CEN	= `ON;
+		CEN	= `ON;//$urandom%2;
 		if (writing) begin
 			D	<= (i % 256);
 			WEN	<= `ON;
@@ -68,14 +68,14 @@ module testbench();
 			D	<= `HIZ;
 			WEN	<= `OFF;
 			CADDR	<= {10{1'bZ}};
-			A7	<= i;
-			A6	<= i;
-			A5	<= i;
-			A4	<= i;
-			A3	<= i;
-			A2	<= i;
-			A1	<= i;
-			A0	<= i;
+			A7	<= i;//$urandom%256;
+			A6	<= i;//$urandom%256;
+			A5	<= i;//$urandom%256;
+			A4	<= i;//$urandom%256;
+			A3	<= i;//$urandom%256;
+			A2	<= i;//$urandom%256;
+			A1	<= i;//$urandom%256;
+			A0	<= i;//$urandom%256;
 		end
 	end
 	always	@(posedge clk) begin

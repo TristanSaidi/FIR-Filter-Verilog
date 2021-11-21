@@ -3,3 +3,8 @@ In runsim.do use:
 1) vlog -suppress 12110 
 2) vsim -suppress 12110 
 
+
+
+VERIFICATION SCOREBOARD:
+	1.)	We've verified that the TB stores and prints out the correct
+		ROM Values at the specified address.

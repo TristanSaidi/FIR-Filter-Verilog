@@ -1,0 +1,17 @@
+# do ./sim/runsim.do
+# QuestaSim vmap 10.7b_1 Lib Mapping Utility 2018.07 Jul 26 2018
+# vmap work work 
+# Copying /tools/mentor/questa_10.7b_1/questasim/linux/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
+# Start time: 15:11:01 on Nov 21,2021
+# vlog "+acc" -incr ../../memory/sram256w20b/sram256w20b.v 
+# -- Compiling module sram256w20b
+# 
+# Top level modules:
+# 	sram256w20b
+# End time: 15:11:02 on Nov 21,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
+# Start time: 15:11:02 on Nov 21,2021
+# vlog "+acc" -incr ../../rtl/da/da.v 
