@@ -46,7 +46,7 @@ module testbench();
 			.resetn		(resetn)
 	);
 
-	integer	[255:0]	ROM [7:0];
+	integer	[255:0]	ROM [7:0];	// TODO : Implement Testbench Internal Memory
 
 	integer	CADDR_INT, CIN_INT;
 	integer	ROM_INDEX;
