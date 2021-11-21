@@ -23,7 +23,6 @@ module	da(
 	wire	do_y0, do_y1;
 	wire	do_f0;
 	wire	do_acc;
-	wire	done;
 	wire	CEN, WEN;
 
 	da_control	CONTROL(
@@ -208,11 +207,8 @@ module	da(
 		else if (do_w3) begin
 			W2	<= ADDER_RESULT[20:0];
 		end
-		else if (do_w4) begin
-			W3	<= ADDER_RESULT[20:0];
-		end
 		else if (do_y0) begin
-			W4	<= ADDER_RESULT[20:0];
+			W3	<= ADDER_RESULT[20:0];
 		end
 		else if (do_y1) begin
 			Y0	<= ADDER_RESULT[20:0];
