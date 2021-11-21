@@ -115,6 +115,11 @@ module	da(
 			Z2		<= Q2;
 			Z1		<= Q1;
 			Z0		<= Q0;
+			W3		<= 0;
+			W2		<= 0;
+			W1		<= 0;
+			W0		<= 0;
+			Y0		<= 0;
 		end
 		else if (do_w0) begin
 			X_ADDER_REG	<= {{18{Z0[19]}}, Z0};

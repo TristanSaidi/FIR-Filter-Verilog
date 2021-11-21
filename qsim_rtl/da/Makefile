@@ -12,7 +12,11 @@ clean:
 	rm -rf *.result
 	rm -f error* output*
 	rm -rf rom
-	touchdir rom
+	mkdir rom
+	chmod 700 rom
+	rm -rf reports
+	mkdir reports
+	chmod 700 reports
 all: clean
 	make run
 

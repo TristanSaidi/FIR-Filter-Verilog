@@ -13,8 +13,7 @@ def main():
 	rom7	= open("./rom/rom7", "r")
 	inputs	= open("./control.rpt", "r")
 	outputs	= open("./output.rpt", "r")
-
-
+	
 
 
 if __name__ == "__main__":

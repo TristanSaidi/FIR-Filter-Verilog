@@ -39,6 +39,7 @@ module da_control(
 	always	@(negedge clk) begin
 		if (~resetn) begin
 			NS		= S0;
+			load_zreg	= 0;
 			do_acc		= 0;
 			do_w0		= 0;
 			do_w1		= 0;
@@ -86,7 +87,7 @@ module da_control(
 							WEN	= `ON;
 						end
 						else begin
-							CEN	= `OFF;
+							CEN	= `ON;
 							WEN	= `OFF;
 						end
 					end
@@ -103,7 +104,7 @@ module da_control(
 					do_y1		= 0;
 					do_f0		= 0;
 					valid_out	= 0;
-					CEN		= `OFF;
+					CEN		= `ON;
 					WEN		= `OFF;
 				end
 				S2: begin

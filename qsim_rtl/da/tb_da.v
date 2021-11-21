@@ -1,11 +1,11 @@
 
 `timescale 1ns/1ps
-`define QSIM_OUT_FN_1		"./output.rpt"
-`define QSIM_OUT_FN_2		"./control.rpt"
+`define QSIM_OUT_FN_1		"./reports/output.rpt"
+`define QSIM_OUT_FN_2		"./reports/control.rpt"
 `define HALF_CLK_PERIOD 	#10.000
 `define QRTR_CLK_PERIOD		#5.000
 `define TOTAL_ROM_SIZE		(256 * 8)
-`define ITER			200
+`define ITER			500
 `define ON			1'b0
 `define OFF			1'b1
 
@@ -145,7 +145,6 @@ module testbench();
 				else begin
 					iteration	= iteration + 1;
 				end
-				cycle		= 0;
 			end
 			CADDR				= 11'b0;
 			CIN				= 20'b0;
@@ -159,7 +158,12 @@ module testbench();
 			A2				= i; // $urandom%2048;
 			A1				= i; // $urandom%2048;
 			A0				= i; // $urandom%2048;
-			cycle				= cycle + 1;
+			if (cycle == 15) begin
+				cycle	= 0;
+			end
+			else begin
+				cycle	= cycle + 1;
+			end
 		end
 	end
 
