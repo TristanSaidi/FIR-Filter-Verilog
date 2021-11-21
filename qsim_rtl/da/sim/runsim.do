@@ -4,7 +4,7 @@ vmap work work
 
 vlog +acc -incr ../../memory/sram256w20b/sram256w20b.v
 vlog +acc -incr ../../rtl/da/da.v
-vlog -svext +acc -incr ./tb_da.sv
+vlog +acc -incr ./tb_da.v
 
 vsim -c -t ps -lib work testbench
 onerror {resume}
