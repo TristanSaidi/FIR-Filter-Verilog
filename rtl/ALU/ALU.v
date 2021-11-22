@@ -41,20 +41,7 @@ endmodule
 module addern(X, Y, S);
 	parameter n = 39;
 	input wire signed [n-1:0] X, Y;
-	output wire signed [n-1:0]S;
-	wire [n:0]C;
-	
-	genvar k;
-	assign C[0] = 0;
-	generate
-		for(k = 0; k < n; k = k+1) begin
-			wire z1, z2, z3;
-			xor(S[k],X[k],Y[k],C[k]);
-			and(z1, X[k], Y[k]);
-			and(z2, X[k], C[k]);
-			and(z3, Y[k], C[k]);
-			or(C[k+1],z1,z2,z3);
-		end
-	endgenerate
+	output wire signed [n:0]S;
+	assign	S	= X + Y;
 endmodule
 

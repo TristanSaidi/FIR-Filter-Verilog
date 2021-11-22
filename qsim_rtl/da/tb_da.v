@@ -86,7 +86,7 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= (i % 256);
+			CIN				= -(i % 256);
 			CIN_INT				= CIN;
 			case(ROM_INDEX)
                         	0: begin

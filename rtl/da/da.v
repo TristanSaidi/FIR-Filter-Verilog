@@ -4,18 +4,18 @@
 `include "./da_control.v"
 
 module	da(
-	output	wire	[37:0]	ACC_OUT,
+	output	wire	signed	[38:0]	ACC_OUT,
 	output	wire		valid_out,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
-	input	wire	[19:0]	CIN,
+	input	wire	signed	[19:0]	CIN,
 	input	wire	[10:0]	CADDR,
 	input	wire		CLOAD, valid_in,
 	input	wire		start, clk, sclk, resetn
 );
-	reg	[37:0]	ACC;
-	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
-	wire	[38:0]	ADDER_RESULT;
+	reg	signed	[38:0]	ACC;
+	reg	signed	[38:0]	X_ADDER_REG, Y_ADDER_REG;
+	wire	signed	[38:0]	ADDER_RESULT;
 
 	assign	ACC_OUT	= ACC;
 	wire	load_zreg;
@@ -52,11 +52,11 @@ module	da(
 	);
 	defparam	ADDER.n = 39;
 
-	wire	[19:0]	Q0, Q1, Q2, Q3;
-	wire	[19:0]	Q4, Q5, Q6, Q7;
+	wire	signed	[19:0]	Q0, Q1, Q2, Q3;
+	wire	signed	[19:0]	Q4, Q5, Q6, Q7;
 
-	reg	[19:0]	Z0, Z1, Z2, Z3;
-	reg	[19:0]	Z4, Z5, Z6, Z7;
+	reg	signed	[19:0]	Z0, Z1, Z2, Z3;
+	reg	signed	[19:0]	Z4, Z5, Z6, Z7;
 
 	sram_8blk	ROM_BANK(
 					.Q7	(Q7),
@@ -83,8 +83,8 @@ module	da(
 					.sclk	(sclk)
 );
 
-	reg	[20:0]	W3, W2, W1, W0;
-	reg	[21:0]	Y0;
+	reg	signed	[20:0]	W3, W2, W1, W0;
+	reg	signed	[21:0]	Y0;
 	reg		prev_doacc;
 
 	always	@(posedge clk) begin
@@ -122,41 +122,41 @@ module	da(
 			Y0		<= 0;
 		end
 		else if (do_w0) begin
-			X_ADDER_REG	<= {{18{Z0[19]}}, Z0};
-			Y_ADDER_REG	<= {{18{Z1[19]}}, Z1};
+			X_ADDER_REG	<= {{19{Z0[19]}}, Z0};
+			Y_ADDER_REG	<= {{19{Z1[19]}}, Z1};
 		end
 		else if (do_w1) begin
-			X_ADDER_REG	<= {{18{Z2[19]}}, Z2};
-			Y_ADDER_REG	<= {{18{Z3[19]}}, Z3};
+			X_ADDER_REG	<= {{19{Z2[19]}}, Z2};
+			Y_ADDER_REG	<= {{19{Z3[19]}}, Z3};
 			W0		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w2) begin
-			X_ADDER_REG	<= {{18{Z4[19]}}, Z4};
-			Y_ADDER_REG	<= {{18{Z5[19]}}, Z5};
+			X_ADDER_REG	<= {{19{Z4[19]}}, Z4};
+			Y_ADDER_REG	<= {{19{Z5[19]}}, Z5};
 			W1		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w3) begin
-			X_ADDER_REG	<= {{18{Z6[19]}}, Z6};
-			Y_ADDER_REG	<= {{18{Z7[19]}}, Z7};
+			X_ADDER_REG	<= {{19{Z6[19]}}, Z6};
+			Y_ADDER_REG	<= {{19{Z7[19]}}, Z7};
 			W2		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y0) begin
-			X_ADDER_REG	<= {{17{W0[20]}}, W0};
-			Y_ADDER_REG	<= {{17{W1[20]}}, W1};
+			X_ADDER_REG	<= {{18{W0[20]}}, W0};
+			Y_ADDER_REG	<= {{18{W1[20]}}, W1};
 			W3		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y1) begin
-			X_ADDER_REG	<= {{17{W2[20]}}, W2};
-			Y_ADDER_REG	<= {{17{W3[20]}}, W3};
-			Y0		<= ADDER_RESULT[20:0];
+			X_ADDER_REG	<= {{18{W2[20]}}, W2};
+			Y_ADDER_REG	<= {{18{W3[20]}}, W3};
+			Y0		<= ADDER_RESULT[21:0];
 		end
 		else if (do_f0) begin
-			X_ADDER_REG	<= {{16{Y0[21]}}, Y0};
-			Y_ADDER_REG	<= ADDER_RESULT[37:0]; // Clock Cycle After do_y1 => y1 is on this line.
+			X_ADDER_REG	<= {{17{Y0[21]}}, Y0};
+			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_y1 => y1 is on this line.
 		end
 		else if (do_acc) begin
-			X_ADDER_REG	<= (ACC << 1);
-			Y_ADDER_REG	<= ADDER_RESULT[37:0]; // Clock Cycle After do_f0 => f0 is on this line.
+			X_ADDER_REG	<= (ACC << 1); // CHECK THIS LATER
+			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
 			prev_doacc	<= 1'b1;
 		end
 		else if (prev_doacc) begin
