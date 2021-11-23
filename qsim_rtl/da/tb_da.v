@@ -5,7 +5,7 @@
 `define HALF_CLK_PERIOD 	#10.000
 `define QRTR_CLK_PERIOD		#5.000
 `define TOTAL_ROM_SIZE		(256 * 8)
-`define ITER			500
+`define ITER			10
 `define ON			1'b0
 `define OFF			1'b1
 
@@ -70,6 +70,7 @@ module testbench();
 	integer A7_INT, A6_INT, A5_INT, A4_INT;
 	integer A3_INT, A2_INT, A1_INT, A0_INT;
 	integer	ACC_OUT_INT;
+	integer	calculated;
 
 	always	@(posedge clk) begin
 		A7_INT	= A7;
@@ -86,7 +87,7 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= -(i % 256);
+			CIN				= $urandom%524288;//($urandom%2097152 - 1048576);
 			CIN_INT				= CIN;
 			case(ROM_INDEX)
                         	0: begin
@@ -135,12 +136,14 @@ module testbench();
 				resetn	= `OFF;
 			end
 			else begin
+				start	= 0;
 				resetn	= `OFF;
 			end
 			if (cycle == 15) begin
 				if (iteration == 15) begin
 					iteration	= 0;
 					$fwrite(qsim_out_1, "%d\n", ACC_OUT);
+					calculated	= calculated + 1;
 				end
 				else begin
 					iteration	= iteration + 1;
@@ -150,14 +153,21 @@ module testbench();
 			CIN				= 20'b0;
 			CLOAD				= 1'b0;
 			valid_in			= 1'b0;
-			A7				= i; // $urandom%2048;
-			A6				= i; // $urandom%2048;
-			A5				= i; // $urandom%2048;
-			A4				= i; // $urandom%2048;
-			A3				= i; // $urandom%2048;
-			A2				= i; // $urandom%2048;
-			A1				= i; // $urandom%2048;
-			A0				= i; // $urandom%2048;
+			A7				= $urandom%2048;
+			A6				= $urandom%2048;
+			A5				= $urandom%2048;
+			A4				= $urandom%2048;
+			A3				= $urandom%2048;
+			A2				= $urandom%2048;
+			A1				= $urandom%2048;
+			A0				= $urandom%2048;
+			if (cycle == 1) begin
+				$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
+					A7, A6, A5, A4, A3, A2, A1, A0);
+				if (iteration == 15) begin
+					$fwrite(qsim_out_2, "\n");
+				end
+			end
 			if (cycle == 15) begin
 				cycle	= 0;
 			end
@@ -173,6 +183,7 @@ module testbench();
 		writing		= 3;
 		cycle		= 0;
 		iteration	= 0;
+		calculated	= 0;
 		rom7		= $fopen("./rom/rom7", "w");
 		rom6		= $fopen("./rom/rom6", "w");
 		rom5		= $fopen("./rom/rom5", "w");
@@ -197,7 +208,7 @@ module testbench();
 		end
 		writing	= 0;
 		/* COMPUTE LOOP */
-		for (i = 0; i < `ITER; i = i + 1) begin
+		for (i = 0; calculated < `ITER; i = i + 1) begin
 			@(posedge clk);
 		end
 		@(posedge clk);

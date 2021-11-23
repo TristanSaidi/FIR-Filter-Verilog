@@ -18,6 +18,14 @@ add wave -noupdate /testbench/DUT.do_f0
 add wave -noupdate /testbench/DUT.do_acc
 add wave -noupdate /testbench/valid_out
 add wave -noupdate /testbench/DUT.i
+add wave -noupdate -radix unsigned /testbench/A7
+add wave -noupdate -radix unsigned /testbench/A6
+add wave -noupdate -radix unsigned /testbench/A5
+add wave -noupdate -radix unsigned /testbench/A4
+add wave -noupdate -radix unsigned /testbench/A3
+add wave -noupdate -radix unsigned /testbench/A2
+add wave -noupdate -radix unsigned /testbench/A1
+add wave -noupdate -radix unsigned /testbench/A0
 add wave -noupdate -radix decimal /testbench/DUT.Z7
 add wave -noupdate -radix decimal /testbench/DUT.Z6
 add wave -noupdate -radix decimal /testbench/DUT.Z5
