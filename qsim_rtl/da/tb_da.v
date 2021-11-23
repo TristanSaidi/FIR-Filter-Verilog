@@ -18,20 +18,18 @@ module testbench();
 	integer			rom4, rom5, rom6, rom7;
 	integer			cycle, iteration;
 
-	wire signed	[37:0]	ACC_OUT;
+	wire signed	[38:0]	ACC_OUT;
 	wire			valid_out;
 	reg unsigned	[7:0]	A7, A6, A5, A4;
 	reg unsigned	[7:0]	A3, A2, A1, A0;
 	reg signed	[19:0]	CIN;
 	reg unsigned	[10:0]	CADDR;
 	reg			CLOAD, valid_in;
-	reg			start, clk, sclk, resetn;
+	reg			start, clk, resetn, reset;
 
 	always begin
 		`HALF_CLK_PERIOD
 		clk	= ~clk;
-		`QRTR_CLK_PERIOD
-		sclk	= clk;
 	end
 
 	da	DUT(
@@ -50,8 +48,8 @@ module testbench();
 			.CLOAD		(CLOAD),
 			.valid_in	(valid_in),
 			.start		(start),
+			.reset		(reset),
 			.clk		(clk),
-			.sclk		(sclk),
 			.resetn		(resetn)
 	);
 
@@ -87,7 +85,7 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= $urandom%524288;//($urandom%2097152 - 1048576);
+			CIN				= (i % 256);//$urandom%524288;//($urandom%2097152 - 1048576);
 			CIN_INT				= CIN;
 			case(ROM_INDEX)
                         	0: begin
@@ -128,16 +126,16 @@ module testbench();
 		end
 		else if (writing==0) begin
 			if ((cycle == 0) && (iteration == 0)) begin
-				resetn	= `ON;
-				start	= 0;
-			end
-			else if (cycle == 2) begin
+				reset	= 1;
 				start	= 1;
-				resetn	= `OFF;
+			end
+			else if (cycle == 0) begin
+				start	= 1;
+				reset	= 0;
 			end
 			else begin
 				start	= 0;
-				resetn	= `OFF;
+				reset	= 0;
 			end
 			if (cycle == 15) begin
 				if (iteration == 15) begin
@@ -153,14 +151,14 @@ module testbench();
 			CIN				= 20'b0;
 			CLOAD				= 1'b0;
 			valid_in			= 1'b0;
-			A7				= $urandom%2048;
-			A6				= $urandom%2048;
-			A5				= $urandom%2048;
-			A4				= $urandom%2048;
-			A3				= $urandom%2048;
-			A2				= $urandom%2048;
-			A1				= $urandom%2048;
-			A0				= $urandom%2048;
+			A7				= i;//$urandom%2048;
+			A6				= i;//$urandom%2048;
+			A5				= i;//$urandom%2048;
+			A4				= i;//$urandom%2048;
+			A3				= i;//$urandom%2048;
+			A2				= i;//$urandom%2048;
+			A1				= i;//$urandom%2048;
+			A0				= i;//$urandom%2048;
 			if (cycle == 1) begin
 				$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
 					A7, A6, A5, A4, A3, A2, A1, A0);
@@ -193,7 +191,6 @@ module testbench();
 		rom1		= $fopen("./rom/rom1", "w");
 		rom0		= $fopen("./rom/rom0", "w");
 		clk		= 0;
-		sclk		= 0;
 		@(posedge clk);
 		resetn		= `ON;
 		start		= 0;

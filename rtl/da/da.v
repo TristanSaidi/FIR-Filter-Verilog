@@ -1,21 +1,20 @@
 
-`include "../ALU/ALU.v"
-`include "../sram/sram_8blk.v"
+`include "../sram/sc_sram_8blk.v"
 `include "./da_control.v"
 
 module	da(
-	output	wire	signed	[38:0]	ACC_OUT,
+	output	wire	[38:0]	ACC_OUT,
 	output	wire		valid_out,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
-	input	wire	signed	[19:0]	CIN,
+	input	wire	[19:0]	CIN,
 	input	wire	[10:0]	CADDR,
 	input	wire		CLOAD, valid_in,
-	input	wire		start, clk, sclk, resetn
+	input	wire		start, clk, reset, resetn
 );
-	reg	signed	[38:0]	ACC;
-	reg	signed	[38:0]	X_ADDER_REG, Y_ADDER_REG;
-	wire	signed	[38:0]	ADDER_RESULT;
+	reg	[38:0]	ACC;
+	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
+	wire	[38:0]	ADDER_RESULT;
 
 	assign	ACC_OUT	= ACC;
 	wire	load_zreg;
@@ -24,6 +23,8 @@ module	da(
 	wire	do_f0;
 	wire	do_acc;
 	wire	CEN, WEN;
+
+	assign	ADDER_RESULT	= X_ADDER_REG + Y_ADDER_REG;
 
 	da_control	CONTROL(
 			.valid_out	(valid_out),
@@ -44,13 +45,6 @@ module	da(
 			.CLOAD		(CLOAD),
 			.valid_in	(valid_in)
 	);
-
-	addern		ADDER(
-				.X	(X_ADDER_REG),
-				.Y	(Y_ADDER_REG),
-				.S	(ADDER_RESULT)
-	);
-	defparam	ADDER.n = 39;
 
 	wire	signed	[19:0]	Q0, Q1, Q2, Q3;
 	wire	signed	[19:0]	Q4, Q5, Q6, Q7;
@@ -79,8 +73,7 @@ module	da(
 					.CADDR	(CADDR),
 					.WEN	(WEN),
 					.CEN	(CEN),
-					.clk	(clk),
-					.sclk	(sclk)
+					.clk	(clk)
 );
 
 	reg	signed	[20:0]	W3, W2, W1, W0;
@@ -159,9 +152,15 @@ module	da(
 			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
 			prev_doacc	<= 1'b1;
 		end
-		else if (prev_doacc) begin
+		else if (prev_doacc & ~reset) begin
 			ACC		<= ADDER_RESULT;
 			prev_doacc	<= 1'b0;
+		end
+		else begin
+		end
+
+		if (reset) begin
+			ACC		<= 0;
 		end
 	end
 endmodule /* da */

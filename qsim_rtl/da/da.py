@@ -65,6 +65,7 @@ def main():
 		for j, row in enumerate(element):
 			row_value	= 0
 			for rom_number, address in enumerate(row):
+				rom_number	= 7 - rom_number
 				address_value	= rom[rom_number][address]
 				row_value	+= address_value
 			acc_value = (acc_value * 2) + row_value

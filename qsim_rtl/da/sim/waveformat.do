@@ -3,6 +3,7 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate /testbench/clk
 add wave -noupdate -radix decimal /testbench/cycle
 add wave -noupdate -radix decimal /testbench/iteration
+add wave -noupdate /testbench/reset
 add wave -noupdate /testbench/CLOAD
 add wave -noupdate /testbench/valid_in
 add wave -noupdate /testbench/resetn
