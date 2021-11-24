@@ -2,6 +2,8 @@
 set sh_enable_page_mode true
 set power_enable_analysis true
 
+set SIG_FIGS 6
+
 ##################################################
 # Set files and paths
 ##################################################
@@ -23,8 +25,8 @@ check_timing
 report_design >> ${rpt_file}
 report_reference >> ${rpt_file}
 report_constraint >> ${rpt_file}
-report_constraint -all_violators -significant_digits 6 >> ${top_level}.constraints.report
-report_timing -significant_digits 6 -delay_type min_max >> ${rpt_file}
+report_constraint -all_violators -significant_digits ${SIG_FIGS} >> ${top_level}.constraints.report
+report_timing -significant_digits ${SIG_FIGS} -delay_type min_max >> ${rpt_file}
 
 set power_analysis_mode "time_based"
 read_vcd "../../qsim_dc/${top_level}/${top_level}.vcd" -strip_path "testbench/DUT"

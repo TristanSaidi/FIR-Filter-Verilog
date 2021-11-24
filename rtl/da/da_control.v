@@ -87,7 +87,7 @@ module da_control(
 							WEN	= `ON;
 						end
 						else begin
-							CEN	= `ON;
+							CEN	= `OFF;
 							WEN	= `OFF;
 						end
 					end
@@ -104,7 +104,7 @@ module da_control(
 					do_y1		= 0;
 					do_f0		= 0;
 					valid_out	= 0;
-					CEN		= `ON;
+					CEN		= `OFF;
 					WEN		= `OFF;
 				end
 				S2: begin

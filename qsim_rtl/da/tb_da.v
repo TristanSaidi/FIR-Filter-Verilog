@@ -1,31 +1,44 @@
 
 `timescale 1ns/1ps
 `define QSIM_OUT_FN_1		"./reports/output.rpt"
-`define QSIM_OUT_FN_2		"./reports/control.rpt"
+`define QSIM_OUT_FN_2		"./reports/input.rpt"
 `define HALF_CLK_PERIOD 	#10.000
 `define QRTR_CLK_PERIOD		#5.000
 `define TOTAL_ROM_SIZE		(256 * 8)
-`define ITER			10
+`define ITER			100
 `define ON			1'b0
 `define OFF			1'b1
+`define MAX_CYCLES		11
 
 module testbench();
 
-	integer			i, writing;
-	integer			qsim_out_1, qsim_out_2;
-	integer			qsim_out_3, qsim_out_4;
-	integer			rom0, rom1, rom2, rom3;
-	integer			rom4, rom5, rom6, rom7;
-	integer			cycle, iteration;
+	integer		i, writing;
+	integer		qsim_out_1, qsim_out_2;
+	integer		rom0, rom1, rom2, rom3;
+	integer		rom4, rom5, rom6, rom7;
+	integer		CADDR_INT, CIN_INT;
+	integer		ROM_INDEX;
+	integer 	ADDRESS_INDEX;
+	integer		calculated;
+	integer		cycle, iteration;
 
-	wire signed	[38:0]	ACC_OUT;
-	wire			valid_out;
-	reg unsigned	[7:0]	A7, A6, A5, A4;
-	reg unsigned	[7:0]	A3, A2, A1, A0;
-	reg signed	[19:0]	CIN;
-	reg unsigned	[10:0]	CADDR;
-	reg			CLOAD, valid_in;
-	reg			start, clk, resetn, reset;
+	wire	[38:0]	ACC_OUT;
+	wire		valid_out;
+	reg	[7:0]	A7, A6, A5, A4;
+	reg	[7:0]	A3, A2, A1, A0;
+	reg	[19:0]	CIN;
+	reg	[10:0]	CADDR;
+	reg		CLOAD, valid_in;
+	reg		start, clk, resetn, reset;
+
+	integer ROM0[255:0];
+	integer ROM1[255:0];
+	integer ROM2[255:0];
+	integer ROM3[255:0];
+	integer ROM4[255:0];
+	integer ROM5[255:0];
+	integer ROM6[255:0];
+	integer ROM7[255:0];
 
 	always begin
 		`HALF_CLK_PERIOD
@@ -33,7 +46,7 @@ module testbench();
 	end
 
 	da	DUT(
-			.ACC_OUT		(ACC_OUT),
+			.ACC_OUT	(ACC_OUT),
 			.valid_out	(valid_out),
 			.A7		(A7),
 			.A6		(A6),
@@ -53,43 +66,20 @@ module testbench();
 			.resetn		(resetn)
 	);
 
-	integer ROM0[255:0];
-	integer ROM1[255:0];
-	integer ROM2[255:0];
-	integer ROM3[255:0];
-	integer ROM4[255:0];
-	integer ROM5[255:0];
-	integer ROM6[255:0];
-	integer ROM7[255:0];
 
-	integer	CADDR_INT, CIN_INT;
-	integer	ROM_INDEX;
-	integer ADDRESS_INDEX;
-	integer A7_INT, A6_INT, A5_INT, A4_INT;
-	integer A3_INT, A2_INT, A1_INT, A0_INT;
-	integer	ACC_OUT_INT;
-	integer	calculated;
 
 	always	@(posedge clk) begin
-		A7_INT	= A7;
-		A6_INT	= A6;
-		A5_INT	= A5;
-		A4_INT	= A4;
-		A3_INT	= A3;
-		A2_INT	= A2;
-		A1_INT	= A1;
-		A0_INT	= A0;
 		`QRTR_CLK_PERIOD
 		if (writing==1) begin
 			CADDR				= i;
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= (i % 256);//$urandom%524288;//($urandom%2097152 - 1048576);
-			CIN_INT				= CIN;
+			CIN				= ($urandom%2097152) - 1048576;
+			CIN_INT				= $signed(CIN);
 			case(ROM_INDEX)
                         	0: begin
-					ROM0[ADDRESS_INDEX] = CIN_INT;
+					ROM0[ADDRESS_INDEX] 	= CIN_INT;
 					$fwrite(rom0, "%d\n", CIN_INT);
 				end
 				1: begin
@@ -137,36 +127,38 @@ module testbench();
 				start	= 0;
 				reset	= 0;
 			end
-			if (cycle == 15) begin
+			if (cycle == `MAX_CYCLES) begin
 				if (iteration == 15) begin
 					iteration	= 0;
-					$fwrite(qsim_out_1, "%d\n", ACC_OUT);
+					$fwrite(qsim_out_1, "%d\n", $signed(ACC_OUT));
 					calculated	= calculated + 1;
 				end
 				else begin
 					iteration	= iteration + 1;
 				end
 			end
-			CADDR				= 11'b0;
+			CADDR				= {11{1'b0}};
 			CIN				= 20'b0;
 			CLOAD				= 1'b0;
 			valid_in			= 1'b0;
-			A7				= i;//$urandom%2048;
-			A6				= i;//$urandom%2048;
-			A5				= i;//$urandom%2048;
-			A4				= i;//$urandom%2048;
-			A3				= i;//$urandom%2048;
-			A2				= i;//$urandom%2048;
-			A1				= i;//$urandom%2048;
-			A0				= i;//$urandom%2048;
-			if (cycle == 1) begin
+			A7				= $urandom%2048;
+			A6				= $urandom%2048;
+			A5				= $urandom%2048;
+			A4				= $urandom%2048;
+			A3				= $urandom%2048;
+			A2				= $urandom%2048;
+			A1				= $urandom%2048;
+			A0				= $urandom%2048;
+			if (cycle == 0) begin
 				$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
-					A7, A6, A5, A4, A3, A2, A1, A0);
+					$unsigned(A7), $unsigned(A6), $unsigned(A5),
+					$unsigned(A4), $unsigned(A3), $unsigned(A2),
+					$unsigned(A1), $unsigned(A0));
 				if (iteration == 15) begin
 					$fwrite(qsim_out_2, "\n");
 				end
 			end
-			if (cycle == 15) begin
+			if (cycle == `MAX_CYCLES) begin
 				cycle	= 0;
 			end
 			else begin
@@ -179,8 +171,8 @@ module testbench();
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
 		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
 		writing		= 3;
-		cycle		= 0;
-		iteration	= 0;
+		cycle		= {32{1'bZ}};
+		iteration	= {32{1'bZ}};
 		calculated	= 0;
 		rom7		= $fopen("./rom/rom7", "w");
 		rom6		= $fopen("./rom/rom6", "w");
@@ -199,10 +191,13 @@ module testbench();
 		@(posedge clk);
 		resetn		= `OFF;
 		writing		= 1;
+		@(posedge clk);
 		/* LOAD PRE-COMPUTED-VALUES LOOP */
 		for (i = 0; i < `TOTAL_ROM_SIZE; i = i + 1) begin
 			@(posedge clk);
 		end
+		cycle		= 0;
+		iteration	= 0;
 		writing	= 0;
 		/* COMPUTE LOOP */
 		for (i = 0; calculated < `ITER; i = i + 1) begin

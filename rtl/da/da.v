@@ -1,7 +1,13 @@
 
-`include "../sram/sc_sram_8blk.v"
+`include "../sram/nlsc_sram_8blk.v"
 `include "./da_control.v"
 
+/*
+ *  CEN and WEN are evaluated on the posedge, but are not latched internally
+ *  inside of the SRAM. This is so that we can shut the sram on/off
+ *  dynamically. da_control guarantees that it does not cause HOLD/SETUP
+ *  Time violations.
+ */
 module	da(
 	output	wire	[38:0]	ACC_OUT,
 	output	wire		valid_out,
@@ -46,11 +52,11 @@ module	da(
 			.valid_in	(valid_in)
 	);
 
-	wire	signed	[19:0]	Q0, Q1, Q2, Q3;
-	wire	signed	[19:0]	Q4, Q5, Q6, Q7;
+	wire	[19:0]	Q0, Q1, Q2, Q3;
+	wire	[19:0]	Q4, Q5, Q6, Q7;
 
-	reg	signed	[19:0]	Z0, Z1, Z2, Z3;
-	reg	signed	[19:0]	Z4, Z5, Z6, Z7;
+	reg	[19:0]	Z0, Z1, Z2, Z3;
+	reg	[19:0]	Z4, Z5, Z6, Z7;
 
 	sram_8blk	ROM_BANK(
 					.Q7	(Q7),
@@ -76,8 +82,8 @@ module	da(
 					.clk	(clk)
 );
 
-	reg	signed	[20:0]	W3, W2, W1, W0;
-	reg	signed	[21:0]	Y0;
+	reg	[20:0]	W3, W2, W1, W0;
+	reg	[21:0]	Y0;
 	reg		prev_doacc;
 
 	always	@(posedge clk) begin
@@ -108,11 +114,6 @@ module	da(
 			Z2		<= Q2;
 			Z1		<= Q1;
 			Z0		<= Q0;
-			W3		<= 0;
-			W2		<= 0;
-			W1		<= 0;
-			W0		<= 0;
-			Y0		<= 0;
 		end
 		else if (do_w0) begin
 			X_ADDER_REG	<= {{19{Z0[19]}}, Z0};

@@ -7,8 +7,8 @@
 # Define the clock timing
 ################################################## 
 
-set clk_name [list "clk" "sclk"]
-set clk_port [list "clk" "sclk"]
+set clk_name "clk"
+set clk_port "clk"
 set clk_period 20.0
 set clk_uncertainty 0.01
 set clk_transition 0.01
@@ -17,7 +17,6 @@ set typical_output_delay 0.1
 set typical_wire_load 0.005
 
 create_clock -name "clk" -period $clk_period [get_ports "clk"]
-create_clock -name "sclk" -period $clk_period [get_ports "sclk"]
 set_drive 0 $clk_port
 
 set_clock_uncertainty $clk_uncertainty [get_clocks $clk_name]

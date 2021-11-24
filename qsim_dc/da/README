@@ -1,10 +1,10 @@
-Set VoptFLow=0 in modelsim.ini for the tool to work
-In runsim.do use:
-1) vlog -suppress 12110 
-2) vsim -suppress 12110 
 
+Directories:
+	./rom/		- Contains the contents of the eight LUTs used by DA.
+	./reports/
+		\--	output.rpt	- Values of ACC_OUT after sixteen iterations.
+		\--	input.rpt	- Values of Addresses over sixteen iterations.
+		\--	error.rpt	- (Match/Error) of python scripts expected value.
+						versus the value seen in output.rpt.
+	./sim/		- Contains "runsim.do", "wavesim.do", and "waveformat.do"
 
-
-VERIFICATION SCOREBOARD:
-	1.)	We've verified that the TB stores and prints out the correct
-		ROM Values at the specified address.

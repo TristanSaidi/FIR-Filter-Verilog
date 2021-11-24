@@ -12,6 +12,7 @@ chmod 600 ./reports/tt/*
 chmod 600 ./reports/*.rpt
 mv *.log ./misc/
 mv *.svf ./misc/
+mv log ./misc/
 chmod 600 ./misc/*
 exit
 

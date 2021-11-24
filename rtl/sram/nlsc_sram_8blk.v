@@ -24,15 +24,12 @@ module sram_8blk(
 	reg	[7:0]	AI [7:0];
 	reg	[19:0]	DI;
 	reg	[10:0]	CADDRI;
-	reg		WENI, CENI;
 	wire	[19:0]	QI [7:0];
 
 	assign	clk_bar	= ~clk;
 
 	always	@(posedge clk) begin
 		DI	<= D;
-		WENI	<= WEN;
-		CENI	<= CEN;
 		CADDRI	<= CADDR;
 		AI[7]	<= A7;
 		AI[6]	<= A6;
@@ -60,7 +57,7 @@ module sram_8blk(
 			/* For Correct Waveforms to appear, CADDRI needs to be defined	*/
 			/* Despite the fact that ~WENI && ~CENI condition evaluates to	*/
 			/* zero. I.e. in testbench have CADDRI set to 0 not Z.		*/
-			assign	WENIB	= (~WENI & ~CENI & (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
+			assign	WENIB	= (~WEN & ~CEN & (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
 			assign	AIB	= (~WENIB) ? CADDRI[7:0] : AI[i];
 
 			sram256w20b	SRAM_CORE(
@@ -68,7 +65,7 @@ module sram_8blk(
 							.A	(AIB),
 							.D	(DI),
 							.WEN	(WENIB),
-							.CEN	(CENI),
+							.CEN	(CEN),
 							.CLK	(clk_bar)
 			);
 		end

@@ -4,7 +4,7 @@ import numpy as np
 
 
 def read_rom(name):
-	rom	= open("./rom/{}".format(name), "r")
+	rom	= open(name, "r")
 	array	= np.loadtxt(rom, delimiter=",")
 	x	= list(array)
 	array	= np.asarray(x).astype("int")
@@ -46,18 +46,21 @@ def read_outputs(name):
 
 # Assumes CSV Input File: <start><A7
 def main():
-	rom0	= read_rom("rom0")
-	rom1	= read_rom("rom1")
-	rom2	= read_rom("rom2")
-	rom3	= read_rom("rom3")
-	rom4	= read_rom("rom4")
-	rom5	= read_rom("rom5")
-	rom6	= read_rom("rom6")
-	rom7	= read_rom("rom7")
+	if (len(sys.argv) != 5):
+		print("Usage python ./da.py <ROM Path> <Input File> <Output File> <Report Path>")
+		sys.exit(0)
+	rom0	= read_rom(sys.argv[1] + "rom0")
+	rom1	= read_rom(sys.argv[1] + "rom1")
+	rom2	= read_rom(sys.argv[1] + "rom2")
+	rom3	= read_rom(sys.argv[1] + "rom3")
+	rom4	= read_rom(sys.argv[1] + "rom4")
+	rom5	= read_rom(sys.argv[1] + "rom5")
+	rom6	= read_rom(sys.argv[1] + "rom6")
+	rom7	= read_rom(sys.argv[1] + "rom7")
 	rom	= [rom0, rom1, rom2, rom3, rom4, rom5, rom6, rom7]
-	inputs	= read_inputs("./reports/control.rpt")
-	outputs	= read_outputs("./reports/output.rpt")
-	results	= open(sys.argv[1], "w")
+	inputs	= read_inputs(sys.argv[2])
+	outputs	= read_outputs(sys.argv[3])
+	results	= open(sys.argv[4], "w")
 	matches	= 0;
 	errors	= 0;
 	for i, element in enumerate(inputs):
@@ -77,6 +80,7 @@ def main():
 			results.write("ERROR|| EXPECTED VALUE: {:>12d}\t ACTUAL VALUE: {:>12d}\n".format(acc_value, int(outputs[i])))
 	print("MATCHES: {}".format(matches))
 	print("ERRORS:  {}".format(errors))
+	print("Error Report Written to {}".format(sys.argv[4]))
 	print("DONE.")
 	return
 		

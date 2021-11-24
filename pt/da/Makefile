@@ -10,6 +10,7 @@ clean:
 	rm -rf *.sdf
 	rm -f *.report*
 	rm -rf *.fsdb	
+	rm -f primetime_px*
 all:
 	make clean
 	make run
