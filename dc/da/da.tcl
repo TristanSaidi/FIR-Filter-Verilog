@@ -14,7 +14,6 @@ current_design ${top_level}
 link
 
 
-
 compile_ultra
 source -verbose "./mmcm.tcl"
 write -hierarchy -format verilog -output "./reports/${top_level}.nl.v"

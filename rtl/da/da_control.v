@@ -36,7 +36,7 @@ module da_control(
 	localparam S12	= 4'b1100, S13	= 4'b1101, S14	= 4'b1110, S15	= 4'b1111;
 	/* STATE TABLE [END] */
 
-	always	@(negedge clk) begin
+	always	@(posedge clk) begin
 		if (~resetn) begin
 			NS		= S0;
 			load_zreg	= 0;
@@ -87,7 +87,7 @@ module da_control(
 							WEN	= `ON;
 						end
 						else begin
-							CEN	= `ON;
+							CEN	= `OFF;
 							WEN	= `OFF;
 						end
 					end
@@ -104,7 +104,7 @@ module da_control(
 					do_y1		= 0;
 					do_f0		= 0;
 					valid_out	= 0;
-					CEN		= `ON;
+					CEN		= `OFF;
 					WEN		= `OFF;
 				end
 				S2: begin

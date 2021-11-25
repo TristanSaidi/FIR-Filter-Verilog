@@ -3,6 +3,11 @@
 `define OFF 1'b1
 `define HIZ {20{1'bZ}}
 
+/* 
+ * Timing Information:
+ * 	Inputs to sram_8blk must arrive before posedge clk.
+ *	Outputs from sram_8blk arrive before the next posedge.
+ */
 module sram_8blk(
 	output	wire	[19:0]	Q7, Q6, Q5, Q4,
 	output	wire	[19:0]	Q3, Q2, Q1, Q0,
@@ -11,15 +16,18 @@ module sram_8blk(
 	input	wire	[7:0]	A3, A2, A1, A0,
 	input	wire	[10:0]	CADDR,		/* Only Used when Writing Pre-Computed Sums to Memory. */
 	input	wire		WEN, CEN,	/* Active Low */
-	input	wire		clk, sclk
+	input	wire		clk
 );
 
 	genvar		i;
+	wire		clk_bar;
 	reg	[7:0]	AI [7:0];
 	reg	[19:0]	DI;
 	reg	[10:0]	CADDRI;
 	reg		WENI, CENI;
 	wire	[19:0]	QI [7:0];
+
+	assign	clk_bar	= ~clk;
 
 	always	@(posedge clk) begin
 		DI	<= D;
@@ -49,8 +57,10 @@ module sram_8blk(
 		for (i = 0; i < 8; i = i + 1) begin
 			wire		WENIB;
 			wire	[7:0]	AIB;
-
-			assign	WENIB	= (~WENI && ~CENI && (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
+			/* For Correct Waveforms to appear, CADDRI needs to be defined	*/
+			/* Despite the fact that ~WENI && ~CENI condition evaluates to	*/
+			/* zero. I.e. in testbench have CADDRI set to 0 not Z.		*/
+			assign	WENIB	= (~WENI & ~CENI & (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
 			assign	AIB	= (~WENIB) ? CADDRI[7:0] : AI[i];
 
 			sram256w20b	SRAM_CORE(
@@ -59,7 +69,7 @@ module sram_8blk(
 							.D	(DI),
 							.WEN	(WENIB),
 							.CEN	(CENI),
-							.CLK	(sclk)
+							.CLK	(clk_bar)
 			);
 		end
 	endgenerate

@@ -1,13 +1,12 @@
-
-`include "../sram/sram_8blk.v"
+`include "../sram/nlsc_sram_8blk.v"
 `include "./da_control.v"
 
-module addern(X, Y, S);
-	parameter n = 38;
-	input wire [n:0] X, Y;
-	output wire [n:0]S;
-	assign	S	= X + Y;
-endmodule
+/*
+ *  CEN and WEN are evaluated on the posedge, but are not latched internally
+ *  inside of the SRAM. This is so that we can shut the sram on/off
+ *  dynamically. da_control guarantees that it does not cause HOLD/SETUP
+ *  Time violations.
+ */
 
 module	da(
 	output	wire	[38:0]	ACC_OUT,
@@ -17,7 +16,7 @@ module	da(
 	input	wire	[19:0]	CIN,
 	input	wire	[10:0]	CADDR,
 	input	wire		CLOAD, valid_in,
-	input	wire		start, clk, sclk, resetn
+	input	wire		start, clk, reset, resetn
 );
 	reg	[38:0]	ACC;
 	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
@@ -30,6 +29,8 @@ module	da(
 	wire	do_f0;
 	wire	do_acc;
 	wire	CEN, WEN;
+
+	assign	ADDER_RESULT	= X_ADDER_REG + Y_ADDER_REG;
 
 	da_control	CONTROL(
 			.valid_out	(valid_out),
@@ -85,8 +86,7 @@ module	da(
 					.CADDR	(CADDR),
 					.WEN	(WEN),
 					.CEN	(CEN),
-					.clk	(clk),
-					.sclk	(sclk)
+					.clk	(clk)
 );
 
 	reg	[20:0]	W3, W2, W1, W0;
@@ -121,11 +121,6 @@ module	da(
 			Z2		<= Q2;
 			Z1		<= Q1;
 			Z0		<= Q0;
-			W3		<= 0;
-			W2		<= 0;
-			W1		<= 0;
-			W0		<= 0;
-			Y0		<= 0;
 		end
 		else if (do_w0) begin
 			X_ADDER_REG	<= {{19{Z0[19]}}, Z0};
@@ -165,9 +160,15 @@ module	da(
 			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
 			prev_doacc	<= 1'b1;
 		end
-		else if (prev_doacc) begin
+		else if (prev_doacc & ~reset) begin
 			ACC		<= ADDER_RESULT;
 			prev_doacc	<= 1'b0;
+		end
+		else begin
+		end
+
+		if (reset) begin
+			ACC		<= 0;
 		end
 	end
 endmodule /* da */
