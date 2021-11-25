@@ -1,21 +1,27 @@
 
-`include "../ALU/ALU.v"
 `include "../sram/sram_8blk.v"
 `include "./da_control.v"
 
+module addern(X, Y, S);
+	parameter n = 38;
+	input wire [n:0] X, Y;
+	output wire [n:0]S;
+	assign	S	= X + Y;
+endmodule
+
 module	da(
-	output	wire	signed	[38:0]	ACC_OUT,
+	output	wire	[38:0]	ACC_OUT,
 	output	wire		valid_out,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
-	input	wire	signed	[19:0]	CIN,
+	input	wire	[19:0]	CIN,
 	input	wire	[10:0]	CADDR,
 	input	wire		CLOAD, valid_in,
 	input	wire		start, clk, sclk, resetn
 );
-	reg	signed	[38:0]	ACC;
-	reg	signed	[38:0]	X_ADDER_REG, Y_ADDER_REG;
-	wire	signed	[38:0]	ADDER_RESULT;
+	reg	[38:0]	ACC;
+	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
+	wire	[38:0]	ADDER_RESULT;
 
 	assign	ACC_OUT	= ACC;
 	wire	load_zreg;
@@ -50,13 +56,13 @@ module	da(
 				.Y	(Y_ADDER_REG),
 				.S	(ADDER_RESULT)
 	);
-	defparam	ADDER.n = 39;
 
-	wire	signed	[19:0]	Q0, Q1, Q2, Q3;
-	wire	signed	[19:0]	Q4, Q5, Q6, Q7;
 
-	reg	signed	[19:0]	Z0, Z1, Z2, Z3;
-	reg	signed	[19:0]	Z4, Z5, Z6, Z7;
+	wire	[19:0]	Q0, Q1, Q2, Q3;
+	wire	[19:0]	Q4, Q5, Q6, Q7;
+
+	reg	[19:0]	Z0, Z1, Z2, Z3;
+	reg	[19:0]	Z4, Z5, Z6, Z7;
 
 	sram_8blk	ROM_BANK(
 					.Q7	(Q7),
@@ -83,8 +89,8 @@ module	da(
 					.sclk	(sclk)
 );
 
-	reg	signed	[20:0]	W3, W2, W1, W0;
-	reg	signed	[21:0]	Y0;
+	reg	[20:0]	W3, W2, W1, W0;
+	reg	[21:0]	Y0;
 	reg		prev_doacc;
 
 	always	@(posedge clk) begin
@@ -165,4 +171,6 @@ module	da(
 		end
 	end
 endmodule /* da */
+
+
 

@@ -8,6 +8,7 @@ vlog +acc -incr ../../memory/sram256w20b/sram256w20b.v
 vlog +acc -incr ./tb_da.v
 
 vsim -c -t ps -lib work testbench
+vsim -voptargs=+acc -t ps -lib work -sdftyp da=../../dc/da/da.syn.sdf testbench 
 onerror {resume}
 onfinish {exit}
 run -all

@@ -18,7 +18,7 @@ module testbench();
 	integer			rom4, rom5, rom6, rom7;
 	integer			cycle, iteration;
 
-	wire signed	[37:0]	ACC_OUT;
+	wire signed	[38:0]	ACC_OUT;
 	wire			valid_out;
 	reg unsigned	[7:0]	A7, A6, A5, A4;
 	reg unsigned	[7:0]	A3, A2, A1, A0;
@@ -86,7 +86,7 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= -(i % 256);
+			CIN				= $urandom%20-10;
 			CIN_INT				= CIN;
 			case(ROM_INDEX)
                         	0: begin

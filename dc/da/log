@@ -1,0 +1,613 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version O-2018.06-SP5-1 for linux64 - Mar 08, 2019 
+
+                    Copyright (c) 1988 - 2019 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+source "./design.tcl"
+. /courses/ee6321/share/ibm13rflpvt/synopsys/ ../../memory/sram256w20b/
+dw_foundation.sldb
+* scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db dw_foundation.sldb
+scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+Loading db file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'scx3_cmos8rf_lpvt_tt_1p2v_25c'
+  Loading link library 'USERLIB'
+  Loading link library 'gtech'
+Loading verilog file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/da.v'
+Detecting input file type automatically (-rtl or -netlist).
+Opening include file /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/../sram/sram_8blk.v
+Opening include file /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/./da_control.v
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/da.v
+Opening include file /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/../sram/sram_8blk.v
+Opening include file /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/./da_control.v
+Warning:  /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/../sram/sram_8blk.v:78: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+
+Inferred memory devices in process
+	in routine sram_8blk line 53 in file
+		'/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/../sram/sram_8blk.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       DI_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|      WENI_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      CENI_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     CADDRI_reg      | Flip-flop |  11   |  Y  | N  | N  | N  | N  | N  | N  |
+|       AI_reg        | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 39 in file
+	'/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/./da_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            56            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine da_control line 39 in file
+		'/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/./da_control.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      do_f0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       CEN_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    valid_out_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       WEN_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       NS_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|    load_zreg_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     do_acc_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w1_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w2_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w3_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_y0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_y1_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine da line 96 in file
+		'/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/da.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   Y_ADDER_REG_reg   | Flip-flop |  39   |  Y  | N  | N  | N  | N  | N  | N  |
+|   X_ADDER_REG_reg   | Flip-flop |  39   |  Y  | N  | N  | N  | N  | N  | N  |
+|       ACC_reg       | Flip-flop |  39   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Y0_reg        | Flip-flop |  22   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z6_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z2_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W0_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W1_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W2_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W3_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z0_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z1_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z3_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z4_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z5_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|   prev_doacc_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       Z7_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Current design is now '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/sram_8blk.db:sram_8blk'
+Loaded 4 designs.
+Current design is 'sram_8blk'.
+addern          da              da_control      sram_8blk (*)
+Current design is 'da'.
+
+  Linking design 'da'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (4 designs)               /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/da.db, etc
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library) /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  USERLIB (library)           /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db
+  dw_foundation.sldb (library) /tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+source "./constraints.tcl"
+1
+##################################################
+# Define design optimization constraints
+##################################################
+# Set timing environment through another .tcl file
+source -verbose "./timing.tcl"
+20.00
+0.01
+0.01
+clk sclk
+clk sclk
+0.1
+0.1
+0.005
+1
+1
+1
+1
+1
+1
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+1
+1
+1
+1
+1
+1
+set_fix_multiple_port_nets -all -buffer_constants
+1
+check_design
+1
+current_design ${top_level}
+Current design is 'da'.
+{da}
+link
+
+  Linking design 'da'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (4 designs)               /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/rtl/da/da.db, etc
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library)
+                              /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  USERLIB (library)           /homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db
+  dw_foundation.sldb (library)
+                              /tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db"
+Analyzing: "/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.5 |     *     |
+| Licensed DW Building Blocks        | O-2018.06-DWBB_201806.5 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'da'
+
+  Loading target library 'USERLIB'
+Loaded alib file './alib-52/scx3_cmos8rf_lpvt_tt_1p2v_25c.db.alib'
+Loaded alib file './alib-52/sram256w20b_tt_1p2v_25c_syn.db.alib' (placeholder)
+  Building model 'DW01_NAND2'
+Information: Ungrouping hierarchy CONTROL before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy ADDER before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy ROM_BANK before Pass 1 (OPT-776)
+Information: Ungrouping 3 of 4 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'da'
+ Implement Synthetic for 'da'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'HOLDX1TS' in the library 'scx3_cmos8rf_lpvt_tt_1p2v_25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'da'. (DDB-72)
+  Mapping Optimization (Phase 1)
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:06  275224.0      0.00       0.0     568.9                           757866.0000      0.00  
+    0:00:06  275224.0      0.00       0.0     568.9                           757866.0000      0.00  
+    0:00:06  275224.0      0.00       0.0     568.9                           757866.0000      0.00  
+    0:00:06  275224.0      0.00       0.0     568.9                           757866.0000      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:07  275209.6      0.00       0.0     568.9                           757843.3750      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:07  275209.6      0.00       0.0     568.9                           757782.1250      0.00  
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:00:08  276815.2      0.00       0.0       0.0                           758860.1875      0.00  
+    0:00:08  276815.2      0.00       0.0       0.0                           758860.1875      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:08  276815.2      0.00       0.0       0.0                           758860.1875      0.00  
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:09  276381.8      0.00       0.0       0.0                           758462.0000      0.00  
+    0:00:09  276374.6      0.00       0.0       0.0                           758472.8750      0.00  
+    0:00:09  276374.6      0.00       0.0       0.0                           758472.8750      0.00  
+    0:00:09  276374.6      0.00       0.0       0.0                           758472.8750      0.00  
+    0:00:10  276373.1      0.00       0.0       0.0                           758468.8750      0.00  
+    0:00:10  276367.4      0.00       0.0       0.0                           758462.0625      0.00  
+    0:00:10  276367.4      0.00       0.0       0.0                           758462.0625      0.00  
+    0:00:10  276367.4      0.00       0.0       0.0                           758462.0625      0.00  
+    0:00:10  276367.4      0.00       0.0       0.0                           758462.0625      0.00  
+    0:00:10  276365.9      0.00       0.0       0.0                           758458.0625      0.00  
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+Loading db file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: The trip points for the library named USERLIB differ from those in the library named scx3_cmos8rf_lpvt_tt_1p2v_25c. (TIM-164)
+  Loading target library 'USERLIB'
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+source -verbose "./mmcm.tcl"
+20
+./reports/da.run.rpt
+da.dc.rpt
+da.area.rpt
+da.power.rpt
+da.timing.rpt
+da.reg.rpt
+da.viol.rpt
+./reports/tt
+da.syn.sdf
+da.syn.sdc
+Using operating conditions 'tt_1p2v_25c' found in library 'scx3_cmos8rf_lpvt_tt_1p2v_25c'.
+1
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/dc/da/reports/tt/da.syn.sdf'. (WT-3)
+1
+1
+1
+write -hierarchy -format verilog -output "./reports/${top_level}.nl.v"
+Writing verilog file '/homes/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/dc/da/reports/da.nl.v'.
+1
+write -hierarchy -format ddc -output "./reports/${top_level}.ddc"
+Writing ddc file './reports/da.ddc'.
+1
+quit
+
+Thank you...

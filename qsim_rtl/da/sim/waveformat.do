@@ -27,6 +27,7 @@ add wave -noupdate -radix decimal /testbench/DUT.Z2
 add wave -noupdate -radix decimal /testbench/DUT.Z1
 add wave -noupdate -radix decimal /testbench/DUT.Z0
 add wave -noupdate -radix decimal /testbench/DUT.ADDER_RESULT
+add wave -noupdate -radix decimal /testbench/DUT.W3
 add wave -noupdate -radix decimal /testbench/DUT.W2
 add wave -noupdate -radix decimal /testbench/DUT.W1
 add wave -noupdate -radix decimal /testbench/DUT.W0

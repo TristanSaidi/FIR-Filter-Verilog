@@ -6,15 +6,9 @@ add wave -noupdate /testbench/valid_in
 add wave -noupdate /testbench/start
 add wave -noupdate /testbench/done
 add wave -noupdate /testbench/valid_out
-add wave -noupdate -radix unsigned /testbench/A7_INT
-add wave -noupdate -radix unsigned /testbench/A6_INT
-add wave -noupdate -radix unsigned /testbench/A5_INT
-add wave -noupdate -radix unsigned /testbench/A4_INT
-add wave -noupdate -radix unsigned /testbench/A3_INT
-add wave -noupdate -radix unsigned /testbench/A2_INT
-add wave -noupdate -radix unsigned /testbench/A1_INT
-add wave -noupdate -radix unsigned /testbench/A0_INT
-add wave -noupdate -radix decimal /testbench/ACC
+add wave -noupdate -radix signed /testbench/CIN
+add wave -noupdate -radix signed /testbench/i
+add wave -noupdate -radix signed /testbench/ACC_OUT
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
