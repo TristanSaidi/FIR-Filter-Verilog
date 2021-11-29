@@ -6,12 +6,12 @@ set power_enable_analysis true
 # Set files and paths
 ##################################################
 
-set top_level sram_8blk
+set top_level sram
 set search_path "/courses/ee6321/share/ibm13rflpvt/synopsys/ ../../memory/sram256w20b/"
 set link_path "* scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db"
 read_db "scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
 read_db "sram256w20b_tt_1p2v_25c_syn.db"
-set verilog_files {../../dc/sram/reports/sram_8blk.nl.v}
+set verilog_files {../../dc/sram/reports/sram.nl.v}
 read_verilog $verilog_files
 link_design -keep_sub_designs $top_level
 
@@ -27,12 +27,12 @@ report_constraint -all_violators -significant_digits 6 >> ${top_level}.constrain
 report_timing -significant_digits 6 -delay_type min_max >> ${rpt_file}
 
 set power_analysis_mode "time_based"
-read_vcd "../../qsim_dc/sram/sram_8blk.vcd" -strip_path "testbench/DUT"
+read_vcd "../../qsim_dc/sram/sram.vcd" -strip_path "testbench/DUT"
 report_switching_activity >> ${rpt_file}
 report_switching_activity -list_not_annotated >> ${rpt_file}
 update_power
 report_power >> ${rpt_file}
 report_power -hierarchy -verbose >> ${rpt_file}
 
-write_sdf -context verilog "./sram_8blk.pt.sdf"
+write_sdf -context verilog "./sram.pt.sdf"
 quit
