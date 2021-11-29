@@ -17,9 +17,9 @@ module testbench();
 	integer		rom7, rom6, rom5, rom4;
 	integer		rom3, rom2, rom1, rom0;
 	reg		clk, WEN, CEN;
-	wire	unsigned	[19:0]	Q7, Q6, Q5, Q4;
-	wire	unsigned	[19:0]	Q3, Q2, Q1, Q0;
-	reg	unsigned	[19:0]	D;
+	wire			[19:0]	Q7, Q6, Q5, Q4;
+	wire			[19:0]	Q3, Q2, Q1, Q0;
+	reg			[19:0]	D;
 	reg	unsigned	[10:0]	CADDR;
 	reg	unsigned	[7:0]	A7, A6, A5, A4;
 	reg	unsigned	[7:0]	A3, A2, A1, A0;
@@ -84,35 +84,19 @@ module testbench();
 		end
 		else if (writing == 0) begin
 			WEN	= `OFF;
+			CEN	= `ON;
 			D	= `HIZ;
-			if ((i % 2) == 0) begin
-				A7	= `HIZ;
-				A6	= `HIZ;
-				A5	= `HIZ;
-				A4	= `HIZ;
-				A3	= `HIZ;
-				A2	= `HIZ;
-				A1	= `HIZ;
-				A0	= `HIZ;
-				CADDR	= {11{1'bZ}};
-				CEN	= `OFF;
-				`HALF_CLK_PERIOD
-				CEN	= `ON;
-			end
-			else begin
-				CEN	= `ON;
-				CADDR	= {11{1'bZ}};
-				A7	= $urandom%2048;
-				A6	= $urandom%2048;
-				A5	= $urandom%2048;
-				A4	= $urandom%2048;
-				A3	= $urandom%2048;
-				A2	= $urandom%2048;
-				A1	= $urandom%2048;
-				A0	= $urandom%2048;
-				$fwrite(qsim_out_1, "%d,%d,%d,%d,%d,%d,%d,%d\n",
-					A7, A6, A5, A4, A3, A2, A1, A0);
-			end
+			CADDR	= {11{1'bZ}};
+			A7	= $urandom%2048;
+			A6	= $urandom%2048;
+			A5	= $urandom%2048;
+			A4	= $urandom%2048;
+			A3	= $urandom%2048;
+			A2	= $urandom%2048;
+			A1	= $urandom%2048;
+			A0	= $urandom%2048;
+			$fwrite(qsim_out_1, "%d,%d,%d,%d,%d,%d,%d,%d\n",
+				A7, A6, A5, A4, A3, A2, A1, A0);
 		end
 		else begin
 		end
@@ -120,10 +104,8 @@ module testbench();
 
 	always	@(posedge clk) begin
 		if (writing == 0) begin
-			if ((i % 2) == 1) begin
-				$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
-					Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
-			end
+			$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
+				Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
 		end
 	end
 
