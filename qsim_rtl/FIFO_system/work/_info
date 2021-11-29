@@ -1,0 +1,109 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/user/stud/fall21/tls2160/Desktop/CSEE4823/FIR_FILTER/qsim_rtl/FIFO_system
+T_opt
+!s110 1638213926
+VzM2FY2ioQ3SZ8=SH2]eZ=1
+04 9 4 work testbench fast 0
+=1-989096bfc525-61a52925-e2c67-3a04
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OE;O;10.7b_1;67
+R0
+vfifo_interface
+Z2 !s10a 1637946887
+Z3 !s110 1638213925
+!i10b 1
+!s100 ziYWfMcYP7TB:deH2a<gE2
+IO:>]DePBfA1io<S;0I7;Y3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z5 w1637946887
+Z6 8../../rtl/FIFO_system/FIFO_system.v
+Z7 F../../rtl/FIFO_system/FIFO_system.v
+L0 36
+Z8 OE;L;10.7b_1;67
+r1
+!s85 0
+31
+Z9 !s108 1638213925.000000
+Z10 !s107 ../../rtl/FIFO_system/FIFO_system.v|
+Z11 !s90 -reportprogress|300|+acc|-incr|../../rtl/FIFO_system/FIFO_system.v|
+!i113 0
+Z12 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vFIFO_system
+R2
+R3
+!i10b 1
+!s100 m@2_fhYSBz1`L]iiSFFo]0
+I?jWgz4WA<UDP=l@A`6lSj2
+R4
+R0
+R5
+R6
+R7
+L0 707
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 0
+R12
+R1
+n@f@i@f@o_system
+vrshiftregne
+R2
+R3
+!i10b 1
+!s100 MdUX58O2zZ7N:1AWJG7El1
+Ic9f12E7IH6?9AfoCblH>I0
+R4
+R0
+R5
+R6
+R7
+L0 3
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 0
+R12
+R1
+vtestbench
+!s10a 1638213905
+R3
+!i10b 1
+!s100 m0jZOI9kR3YKZIRdbF4oM2
+ILMHFDiP[b9lNLA@OZ12^W0
+R4
+R0
+w1638213905
+8test_FIFO_system.v
+Ftest_FIFO_system.v
+L0 7
+R8
+r1
+!s85 0
+31
+R9
+!s107 test_FIFO_system.v|
+!s90 -reportprogress|300|+acc|-incr|test_FIFO_system.v|
+!i113 0
+R12
+R1
