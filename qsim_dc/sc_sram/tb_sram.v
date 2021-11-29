@@ -95,8 +95,7 @@ module testbench();
 				A1	= `HIZ;
 				A0	= `HIZ;
 				CADDR	= {11{1'bZ}};
-				CEN	= `OFF;
-				`HALF_CLK_PERIOD
+
 				CEN	= `ON;
 			end
 			else begin
