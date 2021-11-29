@@ -22,16 +22,6 @@ module testbench();
 	integer		calculated;
 	integer		cycle, iteration;
 
-<<<<<<< HEAD
-	wire signed	[38:0]	ACC_OUT;
-	wire			valid_out;
-	reg unsigned	[7:0]	A7, A6, A5, A4;
-	reg unsigned	[7:0]	A3, A2, A1, A0;
-	reg signed	[19:0]	CIN;
-	reg unsigned	[10:0]	CADDR;
-	reg			CLOAD, valid_in;
-	reg			start, clk, sclk, resetn;
-=======
 	wire	[38:0]	ACC_OUT;
 	wire		valid_out;
 	reg	[7:0]	A7, A6, A5, A4;
@@ -49,7 +39,6 @@ module testbench();
 	integer ROM5[255:0];
 	integer ROM6[255:0];
 	integer ROM7[255:0];
->>>>>>> ce7a782fd9519626104be539f3fd7ff10a831f1b
 
 	always begin
 		`HALF_CLK_PERIOD
@@ -86,13 +75,8 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-<<<<<<< HEAD
-			CIN				= $urandom%20-10;
-			CIN_INT				= CIN;
-=======
 			CIN				= ($urandom%2097152) - 1048576;
 			CIN_INT				= $signed(CIN);
->>>>>>> ce7a782fd9519626104be539f3fd7ff10a831f1b
 			case(ROM_INDEX)
                         	0: begin
 					ROM0[ADDRESS_INDEX] 	= CIN_INT;

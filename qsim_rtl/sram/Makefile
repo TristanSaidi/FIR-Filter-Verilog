@@ -10,8 +10,12 @@ clean:
 	rm -rf work modelsim.ini
 	rm -rf *.log *.syn *.rpt *.mr *.nl.v *.sdf *.svf *.vcd transcript *.wlf
 	rm -rf *.result
-	rm -f reads writes
-	rm -f error* output*
+	rm -f error* output* reads writes
+	rm -rf rom reports
+	mkdir rom
+	mkdir reports
+	chmod 700 rom
+	chmod 700 reports
 all: clean
 	make run
 

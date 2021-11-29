@@ -1,4 +1,5 @@
-`include "../sram/nlsc_sram_8blk.v"
+
+`include "../sram/sram_8blk.v"
 `include "./da_control.v"
 
 /*
@@ -52,20 +53,13 @@ module	da(
 			.valid_in	(valid_in)
 	);
 
-	addern		ADDER(
-				.X	(X_ADDER_REG),
-				.Y	(Y_ADDER_REG),
-				.S	(ADDER_RESULT)
-	);
-
-
 	wire	[19:0]	Q0, Q1, Q2, Q3;
 	wire	[19:0]	Q4, Q5, Q6, Q7;
 
 	reg	[19:0]	Z0, Z1, Z2, Z3;
 	reg	[19:0]	Z4, Z5, Z6, Z7;
 
-	sram_8blk	ROM_BANK(
+	sram	ROM_BANK(
 					.Q7	(Q7),
 					.Q6	(Q6),
 					.Q5	(Q5),
