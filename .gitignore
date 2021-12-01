@@ -16,3 +16,11 @@
 **/*errors*
 **/*output*
 **/*.nfs*
+**/*.qdb*
+**/*.qdg*
+**/*.qpt*
+**/*work/
+**/rom*/
+**/*.ini
+**/*_vmake*
+
