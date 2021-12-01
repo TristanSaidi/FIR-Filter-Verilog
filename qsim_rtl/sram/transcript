@@ -1,0 +1,104 @@
+# //  Questa Sim
+# //  Version 10.7b_1 linux Jul 26 2018
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do ./sim/wavesim.do
+# QuestaSim vmap 10.7b_1 Lib Mapping Utility 2018.07 Jul 26 2018
+# vmap work work 
+# Copying /tools/mentor/questa_10.7b_1/questasim/linux/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
+# Start time: 18:14:31 on Nov 29,2021
+# vlog -reportprogress 300 "+acc" -incr ../../rtl/sram/sram.v 
+# -- Compiling module sram
+# 
+# Top level modules:
+# 	sram
+# End time: 18:14:31 on Nov 29,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
+# Start time: 18:14:31 on Nov 29,2021
+# vlog -reportprogress 300 "+acc" -incr ../../memory/sram256w20b/sram256w20b.v 
+# -- Compiling module sram256w20b
+# 
+# Top level modules:
+# 	sram256w20b
+# End time: 18:14:31 on Nov 29,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 10.7b_1 Compiler 2018.07 Jul 26 2018
+# Start time: 18:14:31 on Nov 29,2021
+# vlog -reportprogress 300 "+acc" -incr ./tb_sram.v 
+# ** Warning: ./tb_sram.v(23): (vlog-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# ** Warning: ./tb_sram.v(24): (vlog-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# ** Warning: ./tb_sram.v(25): (vlog-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 18:14:31 on Nov 29,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
+# vsim -t ps -lib work testbench 
+# Start time: 18:14:31 on Nov 29,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: ./tb_sram.v(23): (vopt-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# ** Warning: ./tb_sram.v(24): (vopt-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# ** Warning: ./tb_sram.v(25): (vopt-2608) Keyword "unsigned" not allowed here in Verilog 2001.
+# Loading work.testbench(fast)
+# Loading work.sram(fast)
+# Loading work.sram256w20b(fast)
+# ** Error: (vish-4014) No objects found matching '/testbench/Q'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 25
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.Q'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 27
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.WENI'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 38
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.CENI'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 39
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[7].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 40
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[6].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 41
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[5].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 42
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[4].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 43
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[3].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 44
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[2].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 45
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[1].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 46
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[0].WENIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 47
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[7].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 48
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[6].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 49
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[5].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 50
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[4].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 51
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[3].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 52
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[2].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 53
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[1].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 54
+# ** Error: (vish-4014) No objects found matching '/testbench/DUT.genblk[0].AIB'.
+# Executing ONERROR command at macro ././sim/waveformat.do line 55
+# ** Note: $finish    : ./tb_sram.v(145)
+#    Time: 46130 ns  Iteration: 1  Instance: /testbench
+# 1
+# Break in Module testbench at ./tb_sram.v line 145
+# End time: 18:15:10 on Nov 29,2021, Elapsed time: 0:00:39
+# Errors: 60, Warnings: 3

@@ -15,7 +15,7 @@
 		registers).
  */
 module da_control(
-	output	reg		valid_out,
+	output	reg		done,
 	output	reg		load_zreg,
 	output	reg		do_w0, do_w1, do_w2, do_w3,
 	output	reg		do_y0, do_y1,
@@ -48,7 +48,7 @@ module da_control(
 			do_y0		= 0;
 			do_y1		= 0;
 			do_f0		= 0;
-			valid_out	= 0;
+			done		= 0;
 			CEN		= `OFF;
 			WEN		= `OFF;
 		end
@@ -66,7 +66,7 @@ module da_control(
 						do_y0		= 0;
 						do_y1		= 0;
 						do_f0		= 0;
-						valid_out	= 0;
+						done		= 0;
 						CEN		= `ON;
 						WEN		= `OFF;
 					end
@@ -81,7 +81,7 @@ module da_control(
 						do_y0		= 0;
 						do_y1		= 0;
 						do_f0		= 0;
-						valid_out	= 0;
+						done		= 0;
 						if (CLOAD & valid_in) begin
 							CEN	= `ON;
 							WEN	= `ON;
@@ -103,7 +103,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -118,7 +118,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -133,7 +133,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -148,7 +148,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -163,7 +163,7 @@ module da_control(
 					do_y0		= 1;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -178,7 +178,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 1;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -193,7 +193,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 1;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -208,7 +208,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
@@ -223,7 +223,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 1;
+					done		= 1;
 					CEN		= `OFF;
 					WEN		= `OFF;
 					NS		= S0;
@@ -242,7 +242,7 @@ module da_control(
 					do_y0		= 0;
 					do_y1		= 0;
 					do_f0		= 0;
-					valid_out	= 0;
+					done		= 0;
 					CEN		= `OFF;
 					WEN		= `OFF;
 				end
