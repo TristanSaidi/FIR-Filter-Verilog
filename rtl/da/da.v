@@ -11,7 +11,7 @@
 
 module	da(
 	output	wire	[38:0]	ACC_OUT,
-	output	wire		valid_out,
+	output	wire		done,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
 	input	wire	[19:0]	CIN,
@@ -34,7 +34,7 @@ module	da(
 	assign	ADDER_RESULT	= X_ADDER_REG + Y_ADDER_REG;
 
 	da_control	CONTROL(
-			.valid_out	(valid_out),
+			.done	(done),
 			.load_zreg	(load_zreg),
 			.do_w0		(do_w0),
 			.do_w1		(do_w1),
