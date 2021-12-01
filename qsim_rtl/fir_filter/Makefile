@@ -8,14 +8,11 @@ wave: clean
 	vsim -do "./sim/wavesim.do"
 clean:
 	rm -rf work modelsim.ini
+	rm -f vish*
 	rm -rf *.log *.syn *.rpt *.mr *.nl.v *.sdf *.svf *.vcd transcript *.wlf
 	rm -rf *.result
 	rm -f error* output* reads writes
-	rm -rf rom reports
-	mkdir rom
-	mkdir reports
-	chmod 700 rom
-	chmod 700 reports
+	rm -rf rom
 all: clean
 	make run
 
