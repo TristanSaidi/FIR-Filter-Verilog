@@ -1,5 +1,5 @@
 
-`include "../sram/sram_8blk.v"
+`include "../sram/sram.v"
 `include "./da_control.v"
 
 /*
