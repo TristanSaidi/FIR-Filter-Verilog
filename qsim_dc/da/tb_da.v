@@ -75,13 +75,10 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-<<<<<<< HEAD
-			CIN				= $urandom%20-10;
-			CIN_INT				= CIN;
-=======
+
 			CIN				= ($urandom%2097152) - 1048576;
 			CIN_INT				= $signed(CIN);
->>>>>>> ce7a782fd9519626104be539f3fd7ff10a831f1b
+
 			case(ROM_INDEX)
                         	0: begin
 					ROM0[ADDRESS_INDEX] 	= CIN_INT;
