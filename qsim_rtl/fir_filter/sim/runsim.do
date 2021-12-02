@@ -7,6 +7,7 @@ vmap work work
 vlog +acc -incr ./tb_fir_filter.v
 
 vsim -c -t ps -lib work testbench
+set WLFUseThreads
 onerror {resume}
 onfinish {exit}
 run -all

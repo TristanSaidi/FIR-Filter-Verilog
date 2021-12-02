@@ -2,34 +2,38 @@
 `timescale 1ns/1ps
 `define QSIM_IN_FN_1 		"./reports/golden_block.rpt"
 `define QSIM_OUT_FN_1		"./reports/outputs.rpt"
-`define HALF_CLK_PERIOD		#1.00
-`define FAST_SLOW_CLK_RATIO	100
-`define ITER 			10000
+`define HALF_FAST_CLK_CYCLE	#2.00
+`define HALF_SLOW_CLK_CYCLE	#20.00
+`define FAST_SLOW_CLK_RATIO	10
+`define QRTR_FAST_CLK_CYCLE	#1.00
+`define QRTR_SLOW_CLK_CYCLE	#10.00
+`define ITER 			10
+`define PRECOMP			2048
 
 module testbench();
 
 	integer	qsim_in_1, qsim_out_1;
-	integer	i, j;
+	integer	i;
 	integer	writing;
 
 
-	wire	[15:0]		y;
+	wire	[15:0]		Y;
 	wire			valid_out;
-	reg	[15:0]		x;
+	reg	[15:0]		X;
 	reg	[19:0]		CIN;
 	reg	[10:0]		CADDR;
 	reg			CLOAD;
 	reg			valid_in;
 	reg			clk_slow, clk_fast;
 	reg			resetn;
-	integer	CIN_INT	[2047:0];
-	integer	X_INT	[`ITER:0];
-	integer	Y_INT	[`ITER:0];
+	integer	CIN_INT;
+	integer	X_INT;
+	integer	Y_INT;
 
-	/*fir_filter	DUT(
-		.dout		(y),
+	fir_filter	DUT(
+		.dout		(Y),
 		.valid_out	(valid_out),
-		.din		(x),
+		.din		(X),
 		.CIN		(CIN),
 		.CADDR		(CADDR),
 		.CLOAD		(CLOAD),
@@ -37,34 +41,65 @@ module testbench();
 		.clk_fast	(clk_fast),
 		.clk_slow	(clk_slow),
 		.resetn		(resetn)
-	);*/
+	);
 
-	/*always	begin
-		`HALF_CLK_PERIOD
+	always begin
+		`HALF_FAST_CLK_CYCLE
 		clk_fast	= ~clk_fast;
-		if ((i % `FAST_SLOW_CLK_RATIO) == 0) begin
-			clk_slow	= ~clk_slow;
-		end
-	end*/
+	end
+	always begin
+		`HALF_SLOW_CLK_CYCLE;
+		clk_slow	= ~clk_slow;
+	end
 
-	integer	ret_value;
+	integer	j;
+	always	@(posedge clk_fast) begin
+		j = j + 1;
+	end
+	always	@(negedge clk_fast) begin
+		`QRTR_FAST_CLK_CYCLE;
+		if (((j + 1) % `FAST_SLOW_CLK_RATIO) == 0) begin
+			if (writing == 1) begin
+				CIN_INT		= i;
+				CIN		= CIN_INT;
+				CADDR		= i;
+				CLOAD		= 1'b1;
+				valid_in	= 1'b1;
+				$fwrite(qsim_out_1, "%0d\n", CIN_INT);
+				`HALF_FAST_CLK_CYCLE;
+				valid_in	= 1'b0;
+				CLOAD		= 1'b0;
+			end
+			else if (writing == 0) begin
+				$fwrite(qsim_out_1, "%0d,%0d\n", X_INT, Y_INT);
+				X		= i;
+				X_INT		= X;
+				valid_in	= 1'b1;
+				`HALF_FAST_CLK_CYCLE;
+				valid_in	= 1'b0;
+			end
+		end
+	end
 
 	initial begin
-		qsim_in_1	= $fopen(`QSIM_IN_FN_1, "r");
+		writing		= 3;
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
-		for (j = 0; j < 2048; j = j + 1) begin
-			$fscanf(qsim_in_1, "%d\n", CIN_INT[j]);
-			$display(CIN_INT[j]);
+		clk_slow	= 0;
+		clk_fast	= 0;
+		@(posedge clk_slow);
+		clk_fast	= 1;
+		resetn		= 0;
+		@(posedge clk_slow);
+		resetn		= 1;
+		writing		= 1;
+		j		= 0;
+		for (i = 0; i < `PRECOMP; i = i + 1) begin
+			@(posedge clk_slow);
 		end
-		for (j = 0; j < 2048; j = j + 1) begin
-			$fwrite(qsim_out_1, "%0d\n", CIN_INT[j]);
-			$display(CIN_INT[j]);
-		end
-		for (j = 0; j < `ITER; j = j + 1) begin
-			ret_value	= $fscanf(qsim_in_1, "%d,%d\n", X_INT[j], Y_INT[j]);
-		end
-		for (j = 0; j < `ITER; j = j + 1) begin
-			$fwrite(qsim_out_1, "%0d,%0d\n", X_INT[j], Y_INT[j]);
+		writing		= 0;
+		j		= 0;
+		for (i = 0; i < `ITER; i = i + 1) begin
+			@(posedge clk_slow);
 		end
 		$fclose(qsim_in_1);
 		$fclose(qsim_out_1);
