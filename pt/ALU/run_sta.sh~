@@ -1,1 +1,0 @@
-pt_shell -file adder12.tcl > adder12.log &
