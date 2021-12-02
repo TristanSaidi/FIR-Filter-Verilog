@@ -7,8 +7,8 @@ vlib work
 vmap work work
 
 # Include Netlist and Testbench
-vlog +acc -incr ../../rtl/FIFO_system/FIFO_system.v 
-vlog +acc -incr tb_FIFO_system.v 
+vlog +acc -incr ../../rtl/Control/Control.v 
+vlog +acc -incr test_Control.v 
 
 # Run Simulator 
 vsim +acc -t ps -lib work testbench 
