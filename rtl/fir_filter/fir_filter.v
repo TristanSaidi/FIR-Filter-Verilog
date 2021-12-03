@@ -69,8 +69,7 @@ module fir_filter(
 			.global_valid_out (valid_out)
 	);
 
-
-	assign dout = ACC_OUT[38:23];
+	assign	dout = ACC_OUT[38:23];
 
 endmodule /* fir_filter */
 

@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 module Control(
-	input reg	clk,
+	input wire	clk,
 	input wire	valid_in,
 	input wire	resetn,
 	output reg	enable_FIFO, resetn_FIFO, reset_DA, resetn_DA, start_DA, global_valid_out

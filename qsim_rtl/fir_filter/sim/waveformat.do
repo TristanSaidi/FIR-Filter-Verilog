@@ -8,6 +8,12 @@ add wave -noupdate /testbench/CLOAD
 add wave -noupdate /testbench/valid_in
 add wave -noupdate /testbench/valid_out
 add wave -noupdate /testbench/resetn
+add wave -noupdate /testbench/DUT.start_DA
+add wave -noupdate /testbench/DUT.reset_DA
+add wave -noupdate /testbench/DUT.resetn_DA
+add wave -noupdate /testbench/DUT.resetn_FIFO
+add wave -noupdate /testbench/DUT.resetn_DA
+add wave -noupdate /testbench/DUT.done
 add wave -noupdate -radix unsigned /testbench/CADDR
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
