@@ -42,7 +42,7 @@ module testbench();
 
 
 
-		for (i = 0; i < 64; i = i+1) begin
+		for (i = 0; i < 128; i = i+1) begin
 			
 
 			@(negedge clk1);
