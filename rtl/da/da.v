@@ -16,7 +16,7 @@ module	da(
 	input	wire	[7:0]	A3, A2, A1, A0,
 	input	wire	[19:0]	CIN,
 	input	wire	[10:0]	CADDR,
-	input	wire		CLOAD, valid_in,
+	input	wire		CLOAD,
 	input	wire		start, clk, reset, resetn
 );
 	reg	[38:0]	ACC;
@@ -49,8 +49,7 @@ module	da(
 			.resetn		(resetn),
 			.start		(start),
 			.clk		(clk),
-			.CLOAD		(CLOAD),
-			.valid_in	(valid_in)
+			.CLOAD		(CLOAD)
 	);
 
 	wire	[19:0]	Q0, Q1, Q2, Q3;

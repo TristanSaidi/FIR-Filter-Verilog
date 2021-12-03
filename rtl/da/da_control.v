@@ -22,7 +22,7 @@ module da_control(
 	output	reg		do_f0,
 	output	reg		do_acc,
 	output	reg		CEN, WEN,
-	input	wire		resetn, start, clk, CLOAD, valid_in
+	input	wire		resetn, start, clk, CLOAD
 );
 
 	reg	[3:0]	NS;
