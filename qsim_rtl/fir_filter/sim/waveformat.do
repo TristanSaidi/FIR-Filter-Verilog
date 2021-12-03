@@ -4,6 +4,7 @@ add wave -noupdate -radix unsigned /testbench/i
 add wave -noupdate -radix unsigned /testbench/j
 add wave -noupdate /testbench/clk_fast
 add wave -noupdate /testbench/clk_slow
+add wave -noupdate /testbench/CIN
 add wave -noupdate /testbench/CLOAD
 add wave -noupdate /testbench/valid_in
 add wave -noupdate /testbench/valid_out
@@ -31,6 +32,16 @@ add wave -noupdate -radix decimal /testbench/DUT.resetn_DA
 add wave -noupdate -radix decimal /testbench/DUT.enable_FIFO
 add wave -noupdate -radix decimal /testbench/DUT.resetn_FIFO
 add wave -noupdate -radix decimal /testbench/DUT.done
+add wave -noupdate -radix decimal /testbench/DUT/da.Q0
+add wave -noupdate -radix decimal /testbench/DUT/da.Q1
+add wave -noupdate -radix decimal /testbench/DUT/da.Q2
+add wave -noupdate -radix decimal /testbench/DUT/da.Q3
+add wave -noupdate -radix decimal /testbench/DUT/da.Q4
+add wave -noupdate -radix decimal /testbench/DUT/da.Q5
+add wave -noupdate -radix decimal /testbench/DUT/da.Q6
+add wave -noupdate -radix decimal /testbench/DUT/da.Q7
+add wave -noupdate -radix decimal /testbench/DUT/da.CEN
+add wave -noupdate -radix decimal /testbench/DUT/da.WEN
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1

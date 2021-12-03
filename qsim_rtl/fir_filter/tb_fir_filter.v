@@ -63,22 +63,13 @@ module testbench();
 				CIN_INT		= i;
 				CIN		= CIN_INT;
 				CADDR		= i;
-				CLOAD		= 1'b1;
-				valid_in	= 1'b1;
 				$fwrite(qsim_out_1, "%0d\n", CIN_INT);
-				`HALF_FAST_CLK_CYCLE;
-				`HALF_FAST_CLK_CYCLE;
-				valid_in	= 1'b0;
-				CLOAD		= 1'b0;
+
 			end
 			else if (writing == 0) begin
 				$fwrite(qsim_out_1, "%0d,%0d\n", X_INT, Y_INT);
 				X		= i;
 				X_INT		= X;
-				valid_in	= 1'b1;
-				`HALF_FAST_CLK_CYCLE;
-				`HALF_FAST_CLK_CYCLE;
-				valid_in	= 1'b0;
 			end
 		end
 	end
@@ -89,14 +80,18 @@ module testbench();
 		clk_slow	= 0;
 		clk_fast	= 0;
 		resetn 		= 0;
+		valid_in	= 0;
 		@(posedge clk_slow);
 		clk_fast	= 1;
 		@(posedge clk_slow);
+		CLOAD		= 1;
 		writing		= 1;
 		j		= 0;
 		for (i = 0; i < `PRECOMP; i = i + 1) begin
 			@(posedge clk_slow);
 		end
+		CLOAD		= 0;
+		valid_in 	= 1;
 		resetn		= 1;
 		writing		= 0;
 		j		= 0;

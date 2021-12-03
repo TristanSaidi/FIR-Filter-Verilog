@@ -82,7 +82,7 @@ module da_control(
 						do_y1		= 0;
 						do_f0		= 0;
 						done		= 0;
-						if (CLOAD & valid_in) begin
+						if (CLOAD) begin
 							CEN	= `ON;
 							WEN	= `ON;
 						end
