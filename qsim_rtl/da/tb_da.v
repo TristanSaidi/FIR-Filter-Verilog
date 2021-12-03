@@ -23,7 +23,7 @@ module testbench();
 	integer		cycle, iteration;
 
 	wire	[38:0]	ACC_OUT;
-	wire		valid_out;
+	wire		done;
 	reg	[7:0]	A7, A6, A5, A4;
 	reg	[7:0]	A3, A2, A1, A0;
 	reg	[19:0]	CIN;
@@ -47,7 +47,7 @@ module testbench();
 
 	da	DUT(
 			.ACC_OUT	(ACC_OUT),
-			.valid_out	(valid_out),
+			.done	(done),
 			.A7		(A7),
 			.A6		(A6),
 			.A5		(A5),
