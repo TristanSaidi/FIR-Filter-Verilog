@@ -23,6 +23,7 @@ add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X5
 add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X6
 add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X7
 add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface/SREG_0.Y
+
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1

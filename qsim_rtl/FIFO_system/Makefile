@@ -4,7 +4,7 @@
 
 run: clean
 	vsim -c -do "./sim/runsim.do"
-wave: clean
+wave: 
 	vsim -do "./sim/wavesim.do"
 clean:
 	rm -rf work modelsim.ini
