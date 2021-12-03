@@ -17,9 +17,9 @@ module rshiftregne#(
 	reg	[(n-1):0]	Y;
 	assign	Q	= Y[0];
 
-	always	@(posedge clk) begin
+	always	@(negedge clk) begin
 		if (~resetn) begin
-			Y	<= 0;
+			Y	<= 16'b0;
 		end
 		else if (load) begin
 			Y	<= X;
@@ -709,19 +709,20 @@ module FIFO_system(
 	input		[15:0]	w,
 	output	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0
 );	
+	wire		[7:0]	I7,I6,I5,I4,I3,I2,I1,I0;
 	reg		[15:0]	array	[0:63];
 	reg			load;
 	integer 	k;
 	integer 	i;
 	fifo_interface		fifo_interface(
-				.A7		(A7),
-				.A6		(A6),
-				.A5		(A5),
-				.A4		(A4),
-				.A3		(A3),
-				.A2		(A2),
-				.A1		(A1),
-				.A0		(A0),
+				.A7		(I7),
+				.A6		(I6),
+				.A5		(I5),
+				.A4		(I4),
+				.A3		(I3),
+				.A2		(I2),
+				.A1		(I1),
+				.A0		(I0),
 				.X63		(array[63]),
 				.X62		(array[62]),
 				.X61		(array[61]),
@@ -791,8 +792,14 @@ module FIFO_system(
 				.enable		(enable),
 				.load		(load)
 				);
-				
-	
+	assign A0 = resetn ? I0: 8'b0;			
+	assign A1 = resetn ? I1: 8'b0;	
+	assign A2 = resetn ? I2: 8'b0;			
+	assign A3 = resetn ? I3: 8'b0;	
+	assign A4 = resetn ? I4: 8'b0;			
+	assign A5 = resetn ? I5: 8'b0;	
+	assign A6 = resetn ? I6: 8'b0;			
+	assign A7 = resetn ? I7: 8'b0;		
 	always @(posedge clk) begin
 
 		if (!resetn) begin

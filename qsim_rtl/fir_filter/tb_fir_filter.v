@@ -88,16 +88,16 @@ module testbench();
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
 		clk_slow	= 0;
 		clk_fast	= 0;
+		resetn 		= 0;
 		@(posedge clk_slow);
 		clk_fast	= 1;
-		resetn		= 0;
 		@(posedge clk_slow);
-		resetn		= 1;
 		writing		= 1;
 		j		= 0;
 		for (i = 0; i < `PRECOMP; i = i + 1) begin
 			@(posedge clk_slow);
 		end
+		resetn		= 1;
 		writing		= 0;
 		j		= 0;
 		for (i = 0; i < `ITER; i = i + 1) begin

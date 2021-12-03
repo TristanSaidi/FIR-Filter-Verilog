@@ -84,5 +84,5 @@ for i = 1:127
         end
     end
 end
-disp(error_count);
+disp("Errors: "+error_count);
 

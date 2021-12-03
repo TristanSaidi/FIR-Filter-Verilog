@@ -17,7 +17,18 @@ add wave -noupdate /testbench/DUT.done
 add wave -noupdate -radix unsigned /testbench/CADDR
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
-
+add wave -noupdate -radix decimal /testbench/DUT.A7
+add wave -noupdate -radix decimal /testbench/DUT.A6
+add wave -noupdate -radix decimal /testbench/DUT.A5
+add wave -noupdate -radix decimal /testbench/DUT.A4
+add wave -noupdate -radix decimal /testbench/DUT.A3
+add wave -noupdate -radix decimal /testbench/DUT.A2
+add wave -noupdate -radix decimal /testbench/DUT.A1
+add wave -noupdate -radix decimal /testbench/DUT.A0
+add wave -noupdate -radix decimal /testbench/DUT.start_DA
+add wave -noupdate -radix decimal /testbench/DUT.enable_FIFO
+add wave -noupdate -radix decimal /testbench/DUT.resetn_FIFO
+add wave -noupdate -radix decimal /testbench/DUT.done
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
