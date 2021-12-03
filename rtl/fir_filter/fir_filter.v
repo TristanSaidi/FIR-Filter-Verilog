@@ -36,7 +36,7 @@ module fir_filter(
 			.CLOAD		(CLOAD),
 			.valid_in	(valid_in),
 			.start		(start_DA),
-			.clk		(clk),
+			.clk		(clk_fast),
 			.reset		(reset_DA),
 			.resetn		(resetn_DA)
 	);
