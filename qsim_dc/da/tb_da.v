@@ -28,7 +28,7 @@ module testbench();
 	reg	[7:0]	A3, A2, A1, A0;
 	reg	[19:0]	CIN;
 	reg	[10:0]	CADDR;
-	reg		CLOAD, valid_in;
+	reg		CLOAD;
 	reg		start, clk, resetn, reset;
 
 	integer ROM0[255:0];
@@ -59,7 +59,6 @@ module testbench();
 			.CIN		(CIN),
 			.CADDR		(CADDR),
 			.CLOAD		(CLOAD),
-			.valid_in	(valid_in),
 			.start		(start),
 			.reset		(reset),
 			.clk		(clk),
@@ -113,7 +112,6 @@ module testbench();
 					$fwrite(rom7, "%d\n", CIN_INT);
 				end
 			endcase
-			valid_in			<= 1'b1;
 			CLOAD				<= 1'b1;
 		end
 		else if (writing==0) begin
@@ -145,7 +143,6 @@ module testbench();
 			CADDR				= {11{1'b0}};
 			CIN				= 20'b0;
 			CLOAD				= 1'b0;
-			valid_in			= 1'b0;
 			A7				= $urandom%2048;
 			A6				= $urandom%2048;
 			A5				= $urandom%2048;
@@ -195,7 +192,6 @@ module testbench();
 		resetn		= `ON;
 		start		= 0;
 		CLOAD		= 0;
-		valid_in	= 0;
 		@(posedge clk);
 		resetn		= `OFF;
 		writing		= 1;

@@ -34,7 +34,6 @@ module fir_filter(
 			.CIN		(CIN),
 			.CADDR		(CADDR),
 			.CLOAD		(CLOAD),
-			.valid_in	(valid_in),
 			.start		(start_DA),
 			.clk		(clk),
 			.reset		(reset_DA),
