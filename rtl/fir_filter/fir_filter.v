@@ -1,6 +1,8 @@
-
+`include "../da/da.v"
+`include "../FIFO_system/FIFO_system.v"
+`include "../Control/Control.v"
 module fir_filter(
-	output	wire	[15:0]	dout,
+	output	reg	[15:0]	dout,
 	output	wire		valid_out,
 	input	wire	[15:0]	din,
 	input	wire	[19:0]	CIN,
@@ -13,11 +15,12 @@ module fir_filter(
 );
 
 	wire	[38:0]	ACC_OUT;
-	wire		done, start, reset;
+	wire		done, start_DA, reset_DA, reset_FIFO;
+	wire		resetn_FIFO, resetn_DA, enable_FIFO; 
 	wire	[7:0]	A7, A6, A5, A4;
 	wire	[7:0]	A3, A2, A1, A0;
 
-	da	UDA(
+	da	da(
 			.ACC_OUT	(ACC_OUT),
 			.done		(done),
 			.A7		(A7),
@@ -32,13 +35,13 @@ module fir_filter(
 			.CADDR		(CADDR),
 			.CLOAD		(CLOAD),
 			.valid_in	(valid_in),
-			.start		(start),
+			.start		(start_DA),
 			.clk		(clk),
-			.reset		(reset),
-			.resetn		(resetn)
+			.reset		(reset_DA),
+			.resetn		(resetn_DA)
 	);
 
-	FIFO_SYSTEM	UFIFO_SYSTEM(
+	FIFO_system	FIFO_system(
 			.A7		(A7),
 			.A6		(A6),
 			.A5		(A5),
@@ -50,17 +53,25 @@ module fir_filter(
 			.w		(din),
 			.enable		(done),
 			.clk		(clk_slow),
-			.clk2		(clk_fast),
-			.resetn		(resetn)
+			.clk2		(done),
+			.resetn		(resetn_FIFO)
 	);
 
-	fir_filter_control	CONTROLLER(
-			.valid_out	(valid_out),
-			.start		(start),
-			.reset		(reset),
+	Control		Control(
+			.clk		(clk_slow),
 			.valid_in	(valid_in),
-			.clk_slow	(clk_slow)
+			.resetn		(resetn),
+			.enable_FIFO	(enable_FIFO),
+			.resetn_FIFO	(resetn_FIFO),
+			.reset_DA	(reset_DA),
+			.resetn_DA	(resetn_DA),
+			.start_DA	(start_DA),
+			.global_valid_out (valid_out)
 	);
+
+	always @(posedge clk_slow) begin
+		dout <= ACC_OUT[38:23];
+	end
 
 endmodule /* fir_filter */
 

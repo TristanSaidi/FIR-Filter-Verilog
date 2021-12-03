@@ -6,10 +6,12 @@ add wave -noupdate /testbench/clk_fast
 add wave -noupdate /testbench/clk_slow
 add wave -noupdate /testbench/CLOAD
 add wave -noupdate /testbench/valid_in
-#add wave -noupdate /testbench/valid_out
+add wave -noupdate /testbench/valid_out
+add wave -noupdate /testbench/resetn
 add wave -noupdate -radix unsigned /testbench/CADDR
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
+
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
