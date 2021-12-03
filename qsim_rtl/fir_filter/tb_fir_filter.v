@@ -67,6 +67,7 @@ module testbench();
 				valid_in	= 1'b1;
 				$fwrite(qsim_out_1, "%0d\n", CIN_INT);
 				`HALF_FAST_CLK_CYCLE;
+				`HALF_FAST_CLK_CYCLE;
 				valid_in	= 1'b0;
 				CLOAD		= 1'b0;
 			end
@@ -75,6 +76,7 @@ module testbench();
 				X		= i;
 				X_INT		= X;
 				valid_in	= 1'b1;
+				`HALF_FAST_CLK_CYCLE;
 				`HALF_FAST_CLK_CYCLE;
 				valid_in	= 1'b0;
 			end
