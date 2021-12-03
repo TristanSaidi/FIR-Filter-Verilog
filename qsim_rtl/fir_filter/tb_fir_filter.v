@@ -26,9 +26,13 @@ module testbench();
 	reg			valid_in;
 	reg			clk_slow, clk_fast;
 	reg			resetn;
+	integer 		COEF_ARRAY		[63:0];
+	integer 		COMP_ARRAY		[63:0];
+	integer 		COUNT_REG;
 	integer	CIN_INT;
 	integer	X_INT;
 	integer	Y_INT;
+	integer k;
 
 	fir_filter	DUT(
 		.dout		(Y),
@@ -60,7 +64,7 @@ module testbench();
 		`QRTR_FAST_CLK_CYCLE;
 		if (((j + 1) % `FAST_SLOW_CLK_RATIO) == 0) begin
 			if (writing == 1) begin
-				CIN_INT		= i;
+				CIN_INT		= COMP_ARRAY[i];
 				CIN		= CIN_INT;
 				CADDR		= i;
 				$fwrite(qsim_out_1, "%0d\n", CIN_INT);
@@ -81,9 +85,45 @@ module testbench();
 		clk_fast	= 0;
 		resetn 		= 0;
 		valid_in	= 0;
+		for (k = 0; k < 64; k = k+1) begin
+			@(posedge clk_fast);
+			COMP_ARRAY[k] = 0;
+			COEF_ARRAY[k] = $urandom%65535;		
+		end
+		for (k = 0; k < 8; k = k+1) begin
+			for (COUNT_REG = 0; COUNT_REG < 256; COUNT_REG = COUNT_REG+1) begin
+				@(posedge clk_slow);
+				if(COUNT_REG == 1)begin
+					COMP_ARRAY[j*8] = COMP_ARRAY[j*8] + COEF_ARRAY[j*8];
+				end
+				if(COUNT_REG>>1 == 1)begin
+					COMP_ARRAY[j*8+1] = COMP_ARRAY[j*8+1] + COEF_ARRAY[j*8+1];
+				end
+				if(COUNT_REG>>2 == 1)begin
+					COMP_ARRAY[j*8+2] = COMP_ARRAY[j*8+2] + COEF_ARRAY[j*8+2];
+				end
+				if(COUNT_REG>>3 == 1)begin
+					COMP_ARRAY[j*8+3] = COMP_ARRAY[j*8+3] + COEF_ARRAY[j*8+3];
+				end
+				if(COUNT_REG>>4 == 1)begin
+					COMP_ARRAY[j*8+4] = COMP_ARRAY[j*8+4] + COEF_ARRAY[j*8+4];
+				end
+				if(COUNT_REG>>5 == 1)begin
+					COMP_ARRAY[j*8+5] = COMP_ARRAY[j*8+5] + COEF_ARRAY[j*8+5];
+				end
+				if(COUNT_REG>>6 == 1)begin
+					COMP_ARRAY[j*8+6] = COMP_ARRAY[j*8+6] + COEF_ARRAY[j*8+6];
+				end
+				if(COUNT_REG>>7 == 1)begin
+					COMP_ARRAY[j*8+7] = COMP_ARRAY[j*8+7] + COEF_ARRAY[j*8+7];
+				end
+
+			end
+		end
 		@(posedge clk_slow);
 		clk_fast	= 1;
 		@(posedge clk_slow);
+		resetn 		= 1;
 		CLOAD		= 1;
 		writing		= 1;
 		j		= 0;

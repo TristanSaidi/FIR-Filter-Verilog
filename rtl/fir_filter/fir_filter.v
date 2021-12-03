@@ -2,7 +2,7 @@
 `include "../FIFO_system/FIFO_system.v"
 `include "../Control/Control.v"
 module fir_filter(
-	output	wire	[15:0]	dout,
+	output	wire	[38:0]	dout,
 	output	wire		valid_out,
 	input	wire	[15:0]	din,
 	input	wire	[19:0]	CIN,
@@ -60,6 +60,7 @@ module fir_filter(
 			.clk		(clk_slow),
 			.valid_in	(valid_in),
 			.resetn		(resetn),
+			.CLOAD		(CLOAD),
 			.enable_FIFO	(enable_FIFO),
 			.resetn_FIFO	(resetn_FIFO),
 			.reset_DA	(reset_DA),
@@ -68,7 +69,7 @@ module fir_filter(
 			.global_valid_out (valid_out)
 	);
 
-	assign	dout = ACC_OUT[38:23];
+	assign	dout = ACC_OUT;
 
 endmodule /* fir_filter */
 

@@ -3,27 +3,35 @@
 module Control(
 	input wire	clk,
 	input wire	valid_in,
-	input wire	resetn,
+	input wire	resetn, CLOAD,
 	output reg	enable_FIFO, resetn_FIFO, reset_DA, resetn_DA, start_DA, global_valid_out
 ); 
 
-	reg 		CS,NS;
+	reg 		[1:0]	CS,NS;
 	
-	parameter S0 = 1'b0, S1 = 1'b1;
+	parameter S0 = 1'b00, S1 = 1'b01, S2 = 2'b10;
 
 	always @(valid_in, resetn, CS) begin
+		if(~resetn) begin		
+			NS = S0;
+		end		
 		case(CS)
 			S0: begin
-				if(valid_in)
+				if(CLOAD)
 					NS	= S1; 
 				else
 					NS	= S0;
 			end
 			S1: begin
-				if(!resetn)
-					NS 	= S0;
-				else
-					NS	= S1;			
+				if(valid_in) begin
+					NS 	= S2;
+				end
+				else begin
+					NS	= S1;
+				end			
+			end
+			S2: begin
+			
 			end
 			default: begin				
 				NS	= S0;
@@ -33,7 +41,7 @@ module Control(
 	
 	always @(posedge clk) begin
 		if (!resetn) begin
-			CS	<= S0;
+			CS	<= 0;
 			global_valid_out <= 0;
 		end
 		else
@@ -51,6 +59,13 @@ module Control(
 				start_DA 	= 0;
 			end
 			S1: begin
+				enable_FIFO 	= 0;
+				resetn_FIFO	= 0;
+				reset_DA 	= 1;
+				resetn_DA	= 1;
+				start_DA 	= 0;
+			end
+			S2: begin
 				enable_FIFO	= 1;
 				resetn_FIFO	= 1;
 				reset_DA	= 0;
