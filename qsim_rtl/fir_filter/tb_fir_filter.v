@@ -9,7 +9,7 @@
 `define FAST_SLOW_CLK_RATIO	192
 `define QRTR_FAST_CLK_CYCLE	#1.00
 `define QRTR_SLOW_CLK_CYCLE	#192.00
-`define ITER 			10
+`define ITER 			50
 `define PRECOMP			2048
 
 module testbench();
@@ -78,7 +78,7 @@ module testbench();
 					X = 0;
 				end
 				else begin
-					X		= 1;
+					X		= $urandom%1024;
 					X_INT		= X;
 					$fwrite(qsim_out_2, "%0d\n", X_INT);
 				end
@@ -99,7 +99,7 @@ module testbench();
 			COMP_ARRAY[k] = 0;		
 		end
 		for (k = 0; k < 64; k = k+1) begin
-			COEF_ARRAY[k] = 1;
+			COEF_ARRAY[k] = $urandom%1025-512;
 			$fwrite(qsim_out_1, "%0d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
