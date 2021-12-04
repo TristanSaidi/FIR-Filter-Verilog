@@ -15,7 +15,7 @@ module rshiftregne#(
 
 
 	reg	[(n-1):0]	Y;
-	assign	Q	= Y[0];
+	assign	Q	= Y[(n-1)];
 
 	always	@(negedge clk) begin
 		if (~resetn) begin
@@ -25,8 +25,8 @@ module rshiftregne#(
 			Y	<= X;
 		end
 		else if (enable) begin
-			Y 		<= Y >> 1;
-			Y[(n-1)]	<= shift_in;
+			Y 		<= Y << 1;
+			Y[0]	<= shift_in;
 		end
 		else begin
 		end
@@ -705,9 +705,9 @@ module fifo_interface(
 endmodule /* fifo_interface */
 
 module FIFO_system(
-	input			resetn,enable,clk,clk2,
+	output	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0,
 	input		[15:0]	w,
-	output	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0
+	input			enable,enable_single,clk,clk2,resetn
 );	
 	wire		[7:0]	I7,I6,I5,I4,I3,I2,I1,I0;
 	reg		[15:0]	array	[0:63];
@@ -789,7 +789,7 @@ module FIFO_system(
 				.X0		(array[0]),
 				.clk		(clk2),
 				.resetn		(resetn),
-				.enable		(enable),
+				.enable		(enable_single),
 				.load		(load)
 				);
 	assign A0 = resetn ? I0: 8'b0;			
@@ -815,7 +815,6 @@ module FIFO_system(
 			
 			array[0] <= w;
 
-			
 		end
 		
 	end
@@ -826,7 +825,7 @@ module FIFO_system(
 			i <= 0;
 			load <= 0;
 		end
-		else if (i == 15) begin
+		else if (i == 199) begin
 			i <= 0;
 			load <= 1;
 		end

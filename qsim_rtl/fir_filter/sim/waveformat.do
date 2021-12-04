@@ -19,8 +19,10 @@ add wave -noupdate /testbench/DUT.resetn_FIFO
 add wave -noupdate /testbench/DUT.resetn_DA
 add wave -noupdate /testbench/DUT.done
 add wave -noupdate -radix unsigned /testbench/CADDR
+add wave -noupdate -radix unsigned /testbench/CIN
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
+add wave -noupdate -radix decimal /testbench/Y_INT
 add wave -noupdate -radix unsigned /testbench/DUT.A7
 add wave -noupdate -radix unsigned /testbench/DUT.A6
 add wave -noupdate -radix unsigned /testbench/DUT.A5
@@ -29,9 +31,7 @@ add wave -noupdate -radix unsigned /testbench/DUT.A3
 add wave -noupdate -radix unsigned /testbench/DUT.A2
 add wave -noupdate -radix unsigned /testbench/DUT.A1
 add wave -noupdate -radix unsigned /testbench/DUT.A0
-add wave -noupdate -radix decimal /testbench/DUT.start_DA
-add wave -noupdate -radix decimal /testbench/DUT.reset_DA
-add wave -noupdate -radix decimal /testbench/DUT.resetn_DA
+
 add wave -noupdate -radix decimal /testbench/DUT.enable_FIFO
 add wave -noupdate -radix decimal /testbench/DUT.resetn_FIFO
 add wave -noupdate -radix decimal /testbench/DUT.done
@@ -43,10 +43,8 @@ add wave -noupdate -radix decimal /testbench/DUT/da.Q4
 add wave -noupdate -radix decimal /testbench/DUT/da.Q5
 add wave -noupdate -radix decimal /testbench/DUT/da.Q6
 add wave -noupdate -radix decimal /testbench/DUT/da.Q7
-add wave -noupdate -radix decimal /testbench/DUT/da.ACC_OUT
 add wave -noupdate -radix decimal /testbench/DUT/da.CEN
 add wave -noupdate -radix decimal /testbench/DUT/da.WEN
-
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1

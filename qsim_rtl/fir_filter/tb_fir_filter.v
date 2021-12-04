@@ -1,25 +1,27 @@
 
 `timescale 1ns/1ps
 `define QSIM_IN_FN_1 		"./reports/golden_block.rpt"
-`define QSIM_OUT_FN_1		"./reports/outputs.rpt"
+`define QSIM_OUT_FN_1		"./reports/coefficients.rpt"
+`define QSIM_OUT_FN_2		"./reports/inputs.rpt"
+`define QSIM_OUT_FN_3		"./reports/outputs.rpt"
 `define HALF_FAST_CLK_CYCLE	#2.00
-`define HALF_SLOW_CLK_CYCLE	#20.00
-`define FAST_SLOW_CLK_RATIO	10
+`define HALF_SLOW_CLK_CYCLE	#400.00
+`define FAST_SLOW_CLK_RATIO	200
 `define QRTR_FAST_CLK_CYCLE	#1.00
-`define QRTR_SLOW_CLK_CYCLE	#10.00
-`define ITER 			10
+`define QRTR_SLOW_CLK_CYCLE	#200.00
+`define ITER 			5000
 `define PRECOMP			2048
 
 module testbench();
 
-	integer	qsim_in_1, qsim_out_1;
+	integer	qsim_out_1, qsim_out_2,qsim_out_3;
 	integer	i;
 	integer	writing;
 
 
-	wire	[15:0]		Y;
+	wire	signed		[38:0]		Y;
 	wire			valid_out;
-	reg	[15:0]		X;
+	reg	signed		[15:0]		X;
 	reg	[19:0]		CIN;
 	reg	[10:0]		CADDR;
 	reg			CLOAD;
@@ -27,13 +29,13 @@ module testbench();
 	reg			clk_slow, clk_fast;
 	reg			resetn;
 	integer 		COEF_ARRAY		[63:0];
-	integer 		COMP_ARRAY		[63:0];
+	integer 		COMP_ARRAY		[2047:0];
 	integer 		COUNT_REG;
 	integer	CIN_INT;
 	integer	X_INT;
 	integer	Y_INT;
 	integer k;
-
+	integer CURRENT;
 	fir_filter	DUT(
 		.dout		(Y),
 		.valid_out	(valid_out),
@@ -67,13 +69,14 @@ module testbench();
 				CIN_INT		= COMP_ARRAY[i];
 				CIN		= CIN_INT;
 				CADDR		= i;
-				$fwrite(qsim_out_1, "%0d\n", CIN_INT);
 
 			end
 			else if (writing == 0) begin
-				$fwrite(qsim_out_1, "%0d,%0d\n", X_INT, Y_INT);
-				X		= i;
+				Y_INT 		= Y;
+				$fwrite(qsim_out_3, "%0d\n",Y_INT);
+				X		= 1;
 				X_INT		= X;
+				$fwrite(qsim_out_2, "%0d\n", X_INT);
 			end
 		end
 	end
@@ -81,41 +84,45 @@ module testbench();
 	initial begin
 		writing		= 3;
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
+		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
+		qsim_out_3	= $fopen(`QSIM_OUT_FN_3, "w");
 		clk_slow	= 0;
 		clk_fast	= 0;
 		resetn 		= 0;
 		valid_in	= 0;
+		for (k = 0; k < 2048; k = k+1) begin
+			COMP_ARRAY[k] = 0;		
+		end
 		for (k = 0; k < 64; k = k+1) begin
-			@(posedge clk_fast);
-			COMP_ARRAY[k] = 0;
-			COEF_ARRAY[k] = $urandom%65535;		
+			COEF_ARRAY[k] = 1;
+			$fwrite(qsim_out_1, "%0d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
 			for (COUNT_REG = 0; COUNT_REG < 256; COUNT_REG = COUNT_REG+1) begin
-				@(posedge clk_slow);
-				if(COUNT_REG == 1)begin
-					COMP_ARRAY[j*8] = COMP_ARRAY[j*8] + COEF_ARRAY[j*8];
+				CURRENT = COUNT_REG>>1 & 8'b00000001;
+				if((COUNT_REG & 8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8];
 				end
-				if(COUNT_REG>>1 == 1)begin
-					COMP_ARRAY[j*8+1] = COMP_ARRAY[j*8+1] + COEF_ARRAY[j*8+1];
+				if((COUNT_REG>>1)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+1];
 				end
-				if(COUNT_REG>>2 == 1)begin
-					COMP_ARRAY[j*8+2] = COMP_ARRAY[j*8+2] + COEF_ARRAY[j*8+2];
+				if((COUNT_REG>>2)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+2];
 				end
-				if(COUNT_REG>>3 == 1)begin
-					COMP_ARRAY[j*8+3] = COMP_ARRAY[j*8+3] + COEF_ARRAY[j*8+3];
+				if((COUNT_REG>>3)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+3];
 				end
-				if(COUNT_REG>>4 == 1)begin
-					COMP_ARRAY[j*8+4] = COMP_ARRAY[j*8+4] + COEF_ARRAY[j*8+4];
+				if((COUNT_REG>>4)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+4];
 				end
-				if(COUNT_REG>>5 == 1)begin
-					COMP_ARRAY[j*8+5] = COMP_ARRAY[j*8+5] + COEF_ARRAY[j*8+5];
+				if((COUNT_REG>>5)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+5];
 				end
-				if(COUNT_REG>>6 == 1)begin
-					COMP_ARRAY[j*8+6] = COMP_ARRAY[j*8+6] + COEF_ARRAY[j*8+6];
+				if((COUNT_REG>>6)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+6];
 				end
-				if(COUNT_REG>>7 == 1)begin
-					COMP_ARRAY[j*8+7] = COMP_ARRAY[j*8+7] + COEF_ARRAY[j*8+7];
+				if((COUNT_REG>>7)&(8'b00000001) == 1)begin
+					COMP_ARRAY[k*256+COUNT_REG] = COMP_ARRAY[k*256+COUNT_REG] + COEF_ARRAY[k*8+7];
 				end
 
 			end
@@ -138,8 +145,9 @@ module testbench();
 		for (i = 0; i < `ITER; i = i + 1) begin
 			@(posedge clk_slow);
 		end
-		$fclose(qsim_in_1);
 		$fclose(qsim_out_1);
+		$fclose(qsim_out_2);
+		$fclose(qsim_out_3);
 		$finish;
 	end
 

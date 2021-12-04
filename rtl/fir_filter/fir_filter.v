@@ -51,6 +51,7 @@ module fir_filter(
 			.A0		(A0),
 			.w		(din),
 			.enable		(enable_FIFO),
+			.enable_single	(done),
 			.clk		(clk_slow),
 			.clk2		(clk_fast),
 			.resetn		(resetn_FIFO)
