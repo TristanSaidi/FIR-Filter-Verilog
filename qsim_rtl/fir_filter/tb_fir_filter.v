@@ -5,11 +5,11 @@
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
 `define HALF_FAST_CLK_CYCLE	#2.00
-`define HALF_SLOW_CLK_CYCLE	#330.00
-`define FAST_SLOW_CLK_RATIO	165
+`define HALF_SLOW_CLK_CYCLE	#384.00
+`define FAST_SLOW_CLK_RATIO	192
 `define QRTR_FAST_CLK_CYCLE	#1.00
-`define QRTR_SLOW_CLK_CYCLE	#165.00
-`define ITER 			5000
+`define QRTR_SLOW_CLK_CYCLE	#192.00
+`define ITER 			10
 `define PRECOMP			2048
 
 module testbench();
@@ -19,7 +19,7 @@ module testbench();
 	integer	writing;
 
 
-	wire	signed		[38:0]		Y;
+	wire			[38:0]		Y;
 	wire			valid_out;
 	reg	signed		[15:0]		X;
 	reg	[19:0]		CIN;
@@ -74,9 +74,14 @@ module testbench();
 			else if (writing == 0) begin
 				Y_INT 		= Y;
 				$fwrite(qsim_out_3, "%0d\n",Y_INT);
-				X		= $urandom%1024;
-				X_INT		= X;
-				$fwrite(qsim_out_2, "%0d\n", X_INT);
+				if (i == 0) begin
+					X = 0;
+				end
+				else begin
+					X		= 1;
+					X_INT		= X;
+					$fwrite(qsim_out_2, "%0d\n", X_INT);
+				end
 			end
 		end
 	end
@@ -141,7 +146,6 @@ module testbench();
 		valid_in 	= 1;
 		resetn		= 1;
 		writing		= 0;
-		j		= 0;
 		for (i = 0; i < `ITER; i = i + 1) begin
 			@(posedge clk_slow);
 		end

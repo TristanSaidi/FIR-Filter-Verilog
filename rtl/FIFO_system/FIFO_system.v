@@ -827,7 +827,7 @@ module FIFO_system(
 			i <= 0;
 			load <= 0;
 		end
-		else if (i == 164) begin
+		else if (i == 191) begin
 			i <= 0;
 			load <= 1;
 		end
