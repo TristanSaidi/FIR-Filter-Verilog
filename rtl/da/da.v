@@ -146,11 +146,11 @@ module	da(
 		end
 		else if (do_f0) begin
 			X_ADDER_REG	<= {{17{Y0[21]}}, Y0};
-			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_y1 => y1 is on this line.
+			Y_ADDER_REG	<= {{17{ADDER_RESULT[21]}}, ADDER_RESULT};//[38:0]; // Clock Cycle After do_y1 => y1 is on this line.
 		end
 		else if (do_acc) begin
 			X_ADDER_REG	<= (ACC << 1); // CHECK THIS LATER
-			Y_ADDER_REG	<= ADDER_RESULT;//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
+			Y_ADDER_REG	<= {{16{ADDER_RESULT[22]}}, ADDER_RESULT};//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
 			prev_doacc	<= 1'b1;
 		end
 		else if (prev_doacc & ~reset) begin
