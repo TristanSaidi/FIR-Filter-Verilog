@@ -5,10 +5,10 @@
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
 `define HALF_FAST_CLK_CYCLE	#2.00
-`define HALF_SLOW_CLK_CYCLE	#400.00
-`define FAST_SLOW_CLK_RATIO	200
+`define HALF_SLOW_CLK_CYCLE	#330.00
+`define FAST_SLOW_CLK_RATIO	165
 `define QRTR_FAST_CLK_CYCLE	#1.00
-`define QRTR_SLOW_CLK_CYCLE	#200.00
+`define QRTR_SLOW_CLK_CYCLE	#165.00
 `define ITER 			5000
 `define PRECOMP			2048
 
@@ -74,7 +74,7 @@ module testbench();
 			else if (writing == 0) begin
 				Y_INT 		= Y;
 				$fwrite(qsim_out_3, "%0d\n",Y_INT);
-				X		= 1;
+				X		= $urandom%1024;
 				X_INT		= X;
 				$fwrite(qsim_out_2, "%0d\n", X_INT);
 			end

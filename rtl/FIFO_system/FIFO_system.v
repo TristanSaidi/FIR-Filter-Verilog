@@ -706,12 +706,13 @@ endmodule /* fifo_interface */
 
 module FIFO_system(
 	output	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0,
+	output	wire		load_ext,
 	input		[15:0]	w,
 	input			enable,enable_single,clk,clk2,resetn
 );	
 	wire		[7:0]	I7,I6,I5,I4,I3,I2,I1,I0;
 	reg		[15:0]	array	[0:63];
-	reg			load;
+	reg 		load;
 	integer 	k;
 	integer 	i;
 	fifo_interface		fifo_interface(
@@ -799,7 +800,8 @@ module FIFO_system(
 	assign A4 = resetn ? I4: 8'b0;			
 	assign A5 = resetn ? I5: 8'b0;	
 	assign A6 = resetn ? I6: 8'b0;			
-	assign A7 = resetn ? I7: 8'b0;		
+	assign A7 = resetn ? I7: 8'b0;	
+	assign load_ext = load;	
 	always @(posedge clk) begin
 
 		if (!resetn) begin
@@ -825,7 +827,7 @@ module FIFO_system(
 			i <= 0;
 			load <= 0;
 		end
-		else if (i == 199) begin
+		else if (i == 164) begin
 			i <= 0;
 			load <= 1;
 		end

@@ -1,17 +1,21 @@
 coefficients = fopen('../qsim_rtl/fir_filter/reports/coefficients.rpt','r');
 inputs = fopen('../qsim_rtl/fir_filter/reports/inputs.rpt','r');
+outputs = fopen('../qsim_rtl/fir_filter/reports/outputs.rpt','r');
 
-%random values between zero and 8
-b_intermediate = fscanf(coefficients,'%d');
-x_intermediate = fscanf(coefficients,'%d');
+
+b = fscanf(coefficients,'%d');
+x = fscanf(inputs,'%d');
+tb_out = fscanf(outputs,'%d');
 
 %convolved signal
 y = filter_function(x,b);
-
-fprintf(output, '%d ',y);
 
 figure
 hold on
 plot(y)
 plot(x)
 plot(b)
+
+error_count = 0;
+for i=0:length(tb_out)
+    if(y(i+1) ~= y(

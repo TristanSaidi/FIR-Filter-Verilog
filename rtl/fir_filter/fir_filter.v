@@ -19,6 +19,7 @@ module fir_filter(
 	wire		resetn_FIFO, resetn_DA, enable_FIFO; 
 	wire	[7:0]	A7, A6, A5, A4;
 	wire	[7:0]	A3, A2, A1, A0;
+	wire		load;
 
 	da	da(
 			.ACC_OUT	(ACC_OUT),
@@ -36,7 +37,7 @@ module fir_filter(
 			.CLOAD		(CLOAD),
 			.start		(start_DA),
 			.clk		(clk_fast),
-			.reset		(reset_DA),
+			.reset		(reset_DA | load),
 			.resetn		(resetn_DA)
 	);
 
@@ -49,6 +50,7 @@ module fir_filter(
 			.A2		(A2),
 			.A1		(A1),
 			.A0		(A0),
+			.load_ext	(load),
 			.w		(din),
 			.enable		(enable_FIFO),
 			.enable_single	(done),

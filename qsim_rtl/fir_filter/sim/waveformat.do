@@ -18,6 +18,7 @@ add wave -noupdate /testbench/DUT.resetn_DA
 add wave -noupdate /testbench/DUT.resetn_FIFO
 add wave -noupdate /testbench/DUT.resetn_DA
 add wave -noupdate /testbench/DUT.done
+add wave -noupdate -radix decimal /testbench/DUT.load
 add wave -noupdate -radix unsigned /testbench/CADDR
 add wave -noupdate -radix unsigned /testbench/CIN
 add wave -noupdate -radix decimal /testbench/X
@@ -32,9 +33,6 @@ add wave -noupdate -radix unsigned /testbench/DUT.A2
 add wave -noupdate -radix unsigned /testbench/DUT.A1
 add wave -noupdate -radix unsigned /testbench/DUT.A0
 
-add wave -noupdate -radix decimal /testbench/DUT.enable_FIFO
-add wave -noupdate -radix decimal /testbench/DUT.resetn_FIFO
-add wave -noupdate -radix decimal /testbench/DUT.done
 add wave -noupdate -radix decimal /testbench/DUT/da.Q0
 add wave -noupdate -radix decimal /testbench/DUT/da.Q1
 add wave -noupdate -radix decimal /testbench/DUT/da.Q2
