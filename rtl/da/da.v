@@ -19,7 +19,9 @@ module	da(
 	input	wire		CLOAD,
 	input	wire		start, clk, reset, resetn
 );
+	reg	[3:0]	i;
 	reg	[38:0]	ACC;
+	reg		C_ADDER_REG;
 	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
 	wire	[38:0]	ADDER_RESULT;
 
@@ -31,7 +33,7 @@ module	da(
 	wire	do_acc;
 	wire	CEN, WEN;
 
-	assign	ADDER_RESULT	= X_ADDER_REG + Y_ADDER_REG;
+	assign	ADDER_RESULT	= X_ADDER_REG + Y_ADDER_REG + C_ADDER_REG;
 
 	da_control	CONTROL(
 			.done	(done),
@@ -104,6 +106,8 @@ module	da(
 			ACC		<= 0;
 			X_ADDER_REG	<= 0;
 			Y_ADDER_REG	<= 0;
+			C_ADDER_REG	<= 0;
+			i		<= 0;
 		end
 		else if (load_zreg) begin
 			Z7		<= Q7;
@@ -118,49 +122,66 @@ module	da(
 		else if (do_w0) begin
 			X_ADDER_REG	<= {{19{Z0[19]}}, Z0};
 			Y_ADDER_REG	<= {{19{Z1[19]}}, Z1};
+			C_ADDER_REG	<= 1'b0;
 		end
 		else if (do_w1) begin
 			X_ADDER_REG	<= {{19{Z2[19]}}, Z2};
 			Y_ADDER_REG	<= {{19{Z3[19]}}, Z3};
+			C_ADDER_REG	<= 1'b0;
 			W0		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w2) begin
 			X_ADDER_REG	<= {{19{Z4[19]}}, Z4};
 			Y_ADDER_REG	<= {{19{Z5[19]}}, Z5};
+			C_ADDER_REG	<= 1'b0;
 			W1		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w3) begin
 			X_ADDER_REG	<= {{19{Z6[19]}}, Z6};
 			Y_ADDER_REG	<= {{19{Z7[19]}}, Z7};
+			C_ADDER_REG	<= 1'b0;
 			W2		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y0) begin
 			X_ADDER_REG	<= {{18{W0[20]}}, W0};
 			Y_ADDER_REG	<= {{18{W1[20]}}, W1};
+			C_ADDER_REG	<= 1'b0;
 			W3		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y1) begin
 			X_ADDER_REG	<= {{18{W2[20]}}, W2};
 			Y_ADDER_REG	<= {{18{W3[20]}}, W3};
+			C_ADDER_REG	<= 1'b0;
 			Y0		<= ADDER_RESULT[21:0];
 		end
 		else if (do_f0) begin
 			X_ADDER_REG	<= {{17{Y0[21]}}, Y0};
-			Y_ADDER_REG	<= {{17{ADDER_RESULT[21]}}, ADDER_RESULT};//[38:0]; // Clock Cycle After do_y1 => y1 is on this line.
+			C_ADDER_REG	<= 1'b0;
+			Y_ADDER_REG	<= {{17{ADDER_RESULT[21]}}, ADDER_RESULT};
 		end
 		else if (do_acc) begin
-			X_ADDER_REG	<= (ACC << 1); // CHECK THIS LATER
-			Y_ADDER_REG	<= {{16{ADDER_RESULT[22]}}, ADDER_RESULT};//[38:0]; // Clock Cycle After do_f0 => f0 is on this line.
+			if (i == 0) begin
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= ~{{16{ADDER_RESULT[22]}}, ADDER_RESULT};
+				C_ADDER_REG	<= 1'b1;
+			end
+			else begin
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= {{16{ADDER_RESULT[22]}}, ADDER_RESULT};
+				C_ADDER_REG	<= 1'b0;
+			end
 			prev_doacc	<= 1'b1;
 		end
 		else if (prev_doacc & ~reset) begin
 			ACC		<= ADDER_RESULT;
 			prev_doacc	<= 1'b0;
+			i		<= i + 1;
 		end
 		else begin
 		end
 
 		if (reset) begin
+			i		<= 0;
 			ACC		<= 0;
 		end
 	end
