@@ -22,7 +22,7 @@ module	da(
 	reg	[3:0]	i;
 	reg	[38:0]	ACC;
 	reg		C_ADDER_REG;
-	reg	[38:0]	X_ADDER_REG, Y_ADDER_REG;
+	reg	[37:0]	X_ADDER_REG, Y_ADDER_REG;
 	wire	[38:0]	ADDER_RESULT;
 
 	assign	ACC_OUT	= ACC;
@@ -86,9 +86,7 @@ module	da(
 
 	reg	[20:0]	W3, W2, W1, W0;
 	reg	[21:0]	Y0;
-	reg	[37:0]	SHIFTED;
 	reg		prev_doacc;
-	assign	SHIFTED	= (ACC << 1);
 
 	always	@(posedge clk) begin
 		if (~resetn) begin
@@ -122,54 +120,54 @@ module	da(
 			Z0		<= Q0;
 		end
 		else if (do_w0) begin
-			X_ADDER_REG	<= {{19{Z0[19]}}, Z0};
-			Y_ADDER_REG	<= {{19{Z1[19]}}, Z1};
+			X_ADDER_REG	<= {{18{Z0[19]}}, Z0};
+			Y_ADDER_REG	<= {{18{Z1[19]}}, Z1};
 			C_ADDER_REG	<= 1'b0;
 		end
 		else if (do_w1) begin
-			X_ADDER_REG	<= {{19{Z2[19]}}, Z2};
-			Y_ADDER_REG	<= {{19{Z3[19]}}, Z3};
+			X_ADDER_REG	<= {{18{Z2[19]}}, Z2};
+			Y_ADDER_REG	<= {{18{Z3[19]}}, Z3};
 			C_ADDER_REG	<= 1'b0;
 			W0		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w2) begin
-			X_ADDER_REG	<= {{19{Z4[19]}}, Z4};
-			Y_ADDER_REG	<= {{19{Z5[19]}}, Z5};
+			X_ADDER_REG	<= {{18{Z4[19]}}, Z4};
+			Y_ADDER_REG	<= {{18{Z5[19]}}, Z5};
 			C_ADDER_REG	<= 1'b0;
 			W1		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w3) begin
-			X_ADDER_REG	<= {{19{Z6[19]}}, Z6};
-			Y_ADDER_REG	<= {{19{Z7[19]}}, Z7};
+			X_ADDER_REG	<= {{18{Z6[19]}}, Z6};
+			Y_ADDER_REG	<= {{18{Z7[19]}}, Z7};
 			C_ADDER_REG	<= 1'b0;
 			W2		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y0) begin
-			X_ADDER_REG	<= {{18{W0[20]}}, W0};
-			Y_ADDER_REG	<= {{18{W1[20]}}, W1};
+			X_ADDER_REG	<= {{17{W0[20]}}, W0};
+			Y_ADDER_REG	<= {{17{W1[20]}}, W1};
 			C_ADDER_REG	<= 1'b0;
 			W3		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y1) begin
-			X_ADDER_REG	<= {{18{W2[20]}}, W2};
-			Y_ADDER_REG	<= {{18{W3[20]}}, W3};
+			X_ADDER_REG	<= {{17{W2[20]}}, W2};
+			Y_ADDER_REG	<= {{17{W3[20]}}, W3};
 			C_ADDER_REG	<= 1'b0;
 			Y0		<= ADDER_RESULT[21:0];
 		end
 		else if (do_f0) begin
-			X_ADDER_REG	<= {{17{Y0[21]}}, Y0};
+			X_ADDER_REG	<= {{16{Y0[21]}}, Y0};
 			C_ADDER_REG	<= 1'b0;
-			Y_ADDER_REG	<= {{17{ADDER_RESULT[21]}}, ADDER_RESULT};
+			Y_ADDER_REG	<= {{16{ADDER_RESULT[21]}}, ADDER_RESULT};
 		end
 		else if (do_acc) begin
 			if (i == 0) begin
-				X_ADDER_REG	<= {{1{SHIFTED[37]}}, SHIFTED};
-				Y_ADDER_REG	<= ~{{16{ADDER_RESULT[22]}}, ADDER_RESULT};
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= ~{{15{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b1;
 			end
 			else begin
-				X_ADDER_REG	<= {{1{SHIFTED[37]}}, SHIFTED};
-				Y_ADDER_REG	<= {{16{ADDER_RESULT[22]}}, ADDER_RESULT};
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= {{15{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b0;
 			end
 			prev_doacc	<= 1'b1;
