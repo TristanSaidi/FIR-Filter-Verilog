@@ -120,54 +120,54 @@ module	da(
 			Z0		<= Q0;
 		end
 		else if (do_w0) begin
-			X_ADDER_REG	<= {{18{Z0[19]}}, Z0};
-			Y_ADDER_REG	<= {{18{Z1[19]}}, Z1};
+			X_ADDER_REG	<= {{19{Z0[18]}}, Z0};
+			Y_ADDER_REG	<= {{19{Z1[18]}}, Z1};
 			C_ADDER_REG	<= 1'b0;
 		end
 		else if (do_w1) begin
-			X_ADDER_REG	<= {{18{Z2[19]}}, Z2};
-			Y_ADDER_REG	<= {{18{Z3[19]}}, Z3};
+			X_ADDER_REG	<= {{19{Z2[18]}}, Z2};
+			Y_ADDER_REG	<= {{19{Z3[18]}}, Z3};
 			C_ADDER_REG	<= 1'b0;
 			W0		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w2) begin
-			X_ADDER_REG	<= {{18{Z4[19]}}, Z4};
-			Y_ADDER_REG	<= {{18{Z5[19]}}, Z5};
+			X_ADDER_REG	<= {{19{Z4[18]}}, Z4};
+			Y_ADDER_REG	<= {{19{Z5[18]}}, Z5};
 			C_ADDER_REG	<= 1'b0;
 			W1		<= ADDER_RESULT[20:0];
 		end
 		else if (do_w3) begin
-			X_ADDER_REG	<= {{18{Z6[19]}}, Z6};
-			Y_ADDER_REG	<= {{18{Z7[19]}}, Z7};
+			X_ADDER_REG	<= {{19{Z6[18]}}, Z6};
+			Y_ADDER_REG	<= {{19{Z7[18]}}, Z7};
 			C_ADDER_REG	<= 1'b0;
 			W2		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y0) begin
-			X_ADDER_REG	<= {{17{W0[20]}}, W0};
-			Y_ADDER_REG	<= {{17{W1[20]}}, W1};
+			X_ADDER_REG	<= {{18{W0[19]}}, W0};
+			Y_ADDER_REG	<= {{18{W1[19]}}, W1};
 			C_ADDER_REG	<= 1'b0;
 			W3		<= ADDER_RESULT[20:0];
 		end
 		else if (do_y1) begin
-			X_ADDER_REG	<= {{17{W2[20]}}, W2};
-			Y_ADDER_REG	<= {{17{W3[20]}}, W3};
+			X_ADDER_REG	<= {{18{W2[19]}}, W2};
+			Y_ADDER_REG	<= {{18{W3[19]}}, W3};
 			C_ADDER_REG	<= 1'b0;
 			Y0		<= ADDER_RESULT[21:0];
 		end
 		else if (do_f0) begin
-			X_ADDER_REG	<= {{16{Y0[21]}}, Y0};
+			X_ADDER_REG	<= {{17{Y0[20]}}, Y0};
 			C_ADDER_REG	<= 1'b0;
-			Y_ADDER_REG	<= {{16{ADDER_RESULT[21]}}, ADDER_RESULT};
+			Y_ADDER_REG	<= {{17{ADDER_RESULT[20]}}, ADDER_RESULT};
 		end
 		else if (do_acc) begin
 			if (i == 0) begin
-				X_ADDER_REG	<= (ACC[36:0] << 1);
-				Y_ADDER_REG	<= ~{{15{ADDER_RESULT[22]}}, ADDER_RESULT};
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= ~{{16{ADDER_RESULT[21]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b1;
 			end
 			else begin
-				X_ADDER_REG	<= (ACC[36:0] << 1);
-				Y_ADDER_REG	<= {{15{ADDER_RESULT[22]}}, ADDER_RESULT};
+				X_ADDER_REG	<= (ACC << 1);
+				Y_ADDER_REG	<= {{16{ADDER_RESULT[21]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b0;
 			end
 			prev_doacc	<= 1'b1;

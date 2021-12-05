@@ -9,7 +9,7 @@
 `define FAST_SLOW_CLK_RATIO	192
 `define QRTR_FAST_CLK_CYCLE	#1.00
 `define QRTR_SLOW_CLK_CYCLE	#192.00
-`define ITER 			50
+`define ITER 			1000
 `define PRECOMP			2048
 
 module testbench();
@@ -19,7 +19,7 @@ module testbench();
 	integer	writing;
 
 
-	wire			[38:0]		Y;
+	wire	signed		[38:0]		Y;
 	wire			valid_out;
 	reg	signed		[15:0]		X;
 	reg	[19:0]		CIN;
@@ -73,7 +73,7 @@ module testbench();
 			end
 			else if (writing == 0) begin
 				Y_INT 		= Y;
-				$fwrite(qsim_out_3, "%0d\n",Y_INT);
+				$fwrite(qsim_out_3, "%b\n",Y);
 				if (i == 0) begin
 					X = 0;
 				end
