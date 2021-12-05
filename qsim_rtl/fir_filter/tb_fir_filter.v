@@ -78,7 +78,7 @@ module testbench();
 					X = 0;
 				end
 				else begin
-					X		= $urandom%32768-16384;
+					X		= ($urandom%65536)-32768;
 					X_INT		= X;
 					$fwrite(qsim_out_2, "%0d\n", X_INT);
 				end
@@ -99,7 +99,7 @@ module testbench();
 			COMP_ARRAY[k] = 0;		
 		end
 		for (k = 0; k < 64; k = k+1) begin
-			COEF_ARRAY[k] = $urandom%32768-16384;
+			COEF_ARRAY[k] = ($urandom%65536)-32768;
 			$fwrite(qsim_out_1, "%0d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
