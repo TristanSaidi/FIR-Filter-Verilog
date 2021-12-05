@@ -3,10 +3,11 @@
 .SILENT: clean
 
 run: clean
-	python ex.py
 	vsim -c -do "./sim/runsim.do"
+	python outputs.rpt outputs.rpt
 wave: clean
 	vsim -do "./sim/wavesim.do"
+	python outputs.rpt outputs.rpt
 clean:
 	rm -rf work modelsim.ini
 	rm -f vish*
