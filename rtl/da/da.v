@@ -86,7 +86,9 @@ module	da(
 
 	reg	[20:0]	W3, W2, W1, W0;
 	reg	[21:0]	Y0;
+	reg	[37:0]	SHIFTED;
 	reg		prev_doacc;
+	assign	SHIFTED	= (ACC << 1);
 
 	always	@(posedge clk) begin
 		if (~resetn) begin
@@ -161,12 +163,12 @@ module	da(
 		end
 		else if (do_acc) begin
 			if (i == 0) begin
-				X_ADDER_REG	<= (ACC << 1);
+				X_ADDER_REG	<= {{1{SHIFTED[37]}}, SHIFTED};
 				Y_ADDER_REG	<= ~{{16{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b1;
 			end
 			else begin
-				X_ADDER_REG	<= (ACC << 1);
+				X_ADDER_REG	<= {{1{SHIFTED[37]}}, SHIFTED};
 				Y_ADDER_REG	<= {{16{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b0;
 			end
