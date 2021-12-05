@@ -161,12 +161,12 @@ module	da(
 		end
 		else if (do_acc) begin
 			if (i == 0) begin
-				X_ADDER_REG	<= (ACC << 1);
+				X_ADDER_REG	<= (ACC[36:0] << 1);
 				Y_ADDER_REG	<= ~{{15{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b1;
 			end
 			else begin
-				X_ADDER_REG	<= (ACC << 1);
+				X_ADDER_REG	<= (ACC[36:0] << 1);
 				Y_ADDER_REG	<= {{15{ADDER_RESULT[22]}}, ADDER_RESULT};
 				C_ADDER_REG	<= 1'b0;
 			end
