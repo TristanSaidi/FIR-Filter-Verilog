@@ -73,7 +73,7 @@ module testbench();
 			end
 			else if (writing == 0) begin
 				Y_INT 		= Y;
-				$fwrite(qsim_out_3, "%0d\n",Y_INT);
+				$fwrite(qsim_out_3, "%39b\n",Y);
 				if (i == 0) begin
 					X = 0;
 				end
