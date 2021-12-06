@@ -17,6 +17,7 @@ add wave -noupdate -radix unsigned /testbench/CIN
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
 add wave -noupdate -radix decimal /testbench/Y_INT
+add wave -noupdate -radix decimal /testbench/DUT.ACC_OUT
 add wave -noupdate -radix unsigned /testbench/DUT.A7
 add wave -noupdate -radix unsigned /testbench/DUT.A6
 add wave -noupdate -radix unsigned /testbench/DUT.A5
