@@ -19,7 +19,7 @@ module testbench();
 	integer	writing;
 
 
-	wire	unsigned	[15:0]		Y;
+	wire	signed		[15:0]		Y;
 	wire			valid_out;
 	reg	signed		[15:0]		X;
 	reg	[19:0]		CIN;
@@ -73,7 +73,7 @@ module testbench();
 			end
 			else if (writing == 0) begin
 				Y_INT 		= Y;
-				$fwrite(qsim_out_3, "%d\n",Y);
+				$fwrite(qsim_out_3, "%d\n",Y_INT);
 				if (i == 0) begin
 					X = 0;
 				end

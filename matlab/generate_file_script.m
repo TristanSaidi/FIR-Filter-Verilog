@@ -9,9 +9,10 @@ tb_out = fscanf(outputs,'%d');
 
 %convolved signal
 y = filter_function(x,b);
-y = dec2bin(y,39);
-out = y(:,26:41);
-out = bin2dec(out);
+out = dec2bin(y);
+out = out(:,26:41);
+tb_out = dec2bin(tb_out);
+
 
 error_count = 0;
 for i=1:length(tb_out)-2
