@@ -44,12 +44,13 @@ module Control(
 			CS	<= 0;
 			global_valid_out <= 0;
 		end
-		else
+		else begin
 			CS <= NS;
 			global_valid_out <= valid_in;			
+		end
 	end
 	
-	always @(CS, posedge clk) begin
+	always @(posedge clk) begin
 		case(CS)
 			S0: begin
 				enable_FIFO 	= 0;

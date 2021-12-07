@@ -1,6 +1,6 @@
 
 `include "../sram/sram.v"
-`include "./da_control.v"
+`include "../da/da_control.v"
 
 /*
  *  CEN and WEN are evaluated on the posedge, but are not latched internally
