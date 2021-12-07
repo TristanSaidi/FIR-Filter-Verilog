@@ -100,7 +100,7 @@ module testbench();
 		end
 		for (k = 0; k < 64; k = k+1) begin
 			COEF_ARRAY[k] = ($urandom%65536)-32768;
-			$fwrite(qsim_out_1, "%16b\n", COEF_ARRAY[k]);		
+			$fwrite(qsim_out_1, "%d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
 			for (COUNT_REG = 0; COUNT_REG < 256; COUNT_REG = COUNT_REG+1) begin
