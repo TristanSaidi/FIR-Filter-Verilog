@@ -14,7 +14,7 @@ module fir_filter(
 	input	wire		resetn
 );
 
-	wire	[38:0]	ACC_OUT;
+	wire	[37:0]	ACC_OUT;
 	wire		done, start_DA, start_ext, reset_DA, reset_FIFO;
 	wire		resetn_FIFO, resetn_DA, enable_FIFO; 
 	wire	[7:0]	A7, A6, A5, A4;
@@ -74,7 +74,7 @@ module fir_filter(
 	);
 
 	always	@(posedge clk_slow) begin
-		dout <= ACC_OUT[38:23];
+		dout <= ACC_OUT[37:22];
 	end
 
 endmodule /* fir_filter */

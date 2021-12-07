@@ -3,12 +3,12 @@ inputs = fopen('../qsim_rtl/fir_filter/reports/inputs.rpt','r');
 outputs = fopen('../qsim_rtl/fir_filter/reports/outputs.rpt','r');
 
 
-b = int64(fscanf(coefficients,'%i'));
-x = int64(fscanf(inputs,'%i'));
-tb_out = fscanf(outputs,'%i');
+b = fscanf(coefficients,'%d');
+x = fscanf(inputs,'%d');
+tb_out = fscanf(outputs,'%d');
 
 %convolved signal
-y = int64(filter_function(x,b));
+y = filter_function(x,b);
 
 x_conv = x/(2^16);
 b_conv = b/(2^16);
@@ -16,7 +16,7 @@ y_conv = filter_function(x_conv,b_conv);
 
 tb_bin_out = dec2bin(tb_out); %truncated binary from tb
 out = dec2bin(y);
-y_bin_out = out(:,26:41); %truncated binary from matlab
+y_bin_out = out(:,27:42); %truncated binary from matlab
 
 
 out = binary2decimal(y_bin_out);
