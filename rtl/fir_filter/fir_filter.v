@@ -5,7 +5,7 @@ module fir_filter(
 	output	reg	[15:0]	dout,
 	output	wire		valid_out,
 	input	wire	[15:0]	din,
-	input	wire	[19:0]	CIN,
+	input	wire	[18:0]	CIN,
 	input	wire	[10:0]	CADDR,
 	input	wire		CLOAD,
 	input	wire		valid_in,
@@ -73,7 +73,7 @@ module fir_filter(
 			.global_valid_out (valid_out)
 	);
 
-	always @(posedge clk_slow) begin
+	always	@(posedge clk_slow) begin
 		dout <= ACC_OUT[38:23];
 	end
 
