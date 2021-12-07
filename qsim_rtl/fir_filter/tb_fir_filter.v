@@ -74,11 +74,9 @@ module testbench();
 			end
 			else if (writing == 0) begin
 				Y_INT 		= Y;
-<<<<<<< HEAD
-				$fwrite(qsim_out_3, "%d\n",Y_INT);
-=======
-				$fwrite(qsim_out_3, "%0d\n",Y);
->>>>>>> e4d840c99497bf1c8202f6107d52840150eae40c
+
+				$fwrite(qsim_out_3, "%d\n",Y);
+
 				if (i == 0) begin
 					X = 0;
 				end
@@ -105,7 +103,7 @@ module testbench();
 		end
 		for (k = 0; k < 64; k = k+1) begin
 			COEF_ARRAY[k] = ($urandom%65536)-32768;
-			$fwrite(qsim_out_1, "%16b\n", COEF_ARRAY[k]);		
+			$fwrite(qsim_out_1, "%d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
 			for (COUNT_REG = 0; COUNT_REG < 256; COUNT_REG = COUNT_REG+1) begin
