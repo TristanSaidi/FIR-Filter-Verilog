@@ -71,7 +71,10 @@ def main():
 				rom_number	= 7 - rom_number
 				address_value	= rom[rom_number][address]
 				row_value	+= address_value
-			acc_value = (acc_value * 2) + row_value
+			if (j == 0):
+				acc_value = (acc_value * 2) - row_value
+			else:
+				acc_value = (acc_value * 2) + row_value
 		if (acc_value == int(outputs[i])):
 			matches	+= 1
 			results.write("MATCH|| EXPECTED VALUE: {:>12d}\t ACTUAL VALUE: {:>12d}\n".format(acc_value, int(outputs[i])))

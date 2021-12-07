@@ -22,11 +22,11 @@ module testbench();
 	integer		calculated;
 	integer		cycle, iteration;
 
-	wire	[38:0]	ACC_OUT;
+	wire	[37:0]	ACC_OUT;
 	wire		done;
 	reg	[7:0]	A7, A6, A5, A4;
 	reg	[7:0]	A3, A2, A1, A0;
-	reg	[19:0]	CIN;
+	reg	[18:0]	CIN;
 	reg	[10:0]	CADDR;
 	reg		CLOAD;
 	reg		start, clk, resetn, reset;
@@ -74,7 +74,7 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-			CIN				= ($urandom%2097152) - 1048576;
+			CIN				= ($urandom%1048576) - 262144;
 			CIN_INT				= $signed(CIN);
 			case(ROM_INDEX)
                         	0: begin

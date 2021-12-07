@@ -10,7 +10,7 @@
  */
 
 module	da(
-	output	wire	[38:0]	ACC_OUT,
+	output	wire	[37:0]	ACC_OUT,
 	output	wire		done,
 	input	wire	[7:0]	A7, A6, A5, A4,
 	input	wire	[7:0]	A3, A2, A1, A0,
@@ -25,7 +25,7 @@ module	da(
 	reg	[37:0]	X_ADDER_REG, Y_ADDER_REG;
 	wire	[38:0]	ADDER_RESULT;
 
-	assign	ACC_OUT	= ACC;
+	assign	ACC_OUT	= ACC[37:0];
 	wire	load_zreg;
 	wire	do_w0, do_w1, do_w2, do_w3;
 	wire	do_y0, do_y1;
