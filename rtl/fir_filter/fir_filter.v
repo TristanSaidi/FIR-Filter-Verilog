@@ -74,7 +74,7 @@ module fir_filter(
 	);
 
 	always	@(posedge clk_slow) begin
-		dout <= ACC_OUT[38:23];
+		dout <= ACC_OUT[37:22];
 	end
 
 endmodule /* fir_filter */
