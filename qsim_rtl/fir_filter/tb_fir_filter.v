@@ -19,11 +19,11 @@ module testbench();
 	integer	writing;
 
 
-	wire	unsigned	[15:0]		Y;
+	wire	[15:0]		Y;
 	wire			valid_out;
 	reg	signed		[15:0]		X;
-	reg	[19:0]		CIN;
-	reg	[10:0]		CADDR;
+	reg	[18:0]		CIN;
+	reg	unsigned	[10:0]		CADDR;
 	reg			CLOAD;
 	reg			valid_in;
 	reg			clk_slow, clk_fast;
@@ -73,11 +73,7 @@ module testbench();
 			end
 			else if (writing == 0) begin
 				Y_INT 		= Y;
-<<<<<<< HEAD
-				$fwrite(qsim_out_3, "%39b\n",Y);
-=======
-				$fwrite(qsim_out_3, "%d\n",Y);
->>>>>>> d93ac2ea7439a9a52f8ca4d7e5650d74e12667a8
+				$fwrite(qsim_out_3, "%0d\n",Y);
 				if (i == 0) begin
 					X = 0;
 				end
@@ -104,7 +100,7 @@ module testbench();
 		end
 		for (k = 0; k < 64; k = k+1) begin
 			COEF_ARRAY[k] = ($urandom%65536)-32768;
-			$fwrite(qsim_out_1, "%0d\n", COEF_ARRAY[k]);		
+			$fwrite(qsim_out_1, "%16b\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
 			for (COUNT_REG = 0; COUNT_REG < 256; COUNT_REG = COUNT_REG+1) begin

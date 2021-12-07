@@ -9,7 +9,7 @@ module Control(
 
 	reg 		[1:0]	CS,NS;
 	
-	parameter S0 = 1'b00, S1 = 1'b01, S2 = 2'b10;
+	parameter S0 = 2'b00, S1 = 2'b01, S2 = 2'b10;
 
 	always @(valid_in, resetn, CS) begin
 		if(~resetn) begin		
