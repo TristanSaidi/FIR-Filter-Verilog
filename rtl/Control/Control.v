@@ -50,7 +50,7 @@ module Control(
 		end
 	end
 	
-	always @(posedge clk) begin
+	always @(CS) begin
 		case(CS)
 			S0: begin
 				enable_FIFO 	= 0;

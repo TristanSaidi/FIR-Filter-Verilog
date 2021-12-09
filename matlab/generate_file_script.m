@@ -35,6 +35,8 @@ for i=1:length(tb_out_value)-2
     end
 end
 
-% RMSE = sqrt(sum/(length(tb_out_value)-2));
-% NRMSE = RMSE/(max(tb_out_value)-min(tb_out_value));
-disp("Error count: "+error_count);
+RMSE = sqrt(sum/(length(tb_out_value)-2));
+NRMSE = RMSE/(max(tb_out_value)-min(tb_out_value));
+disp("Iterations: " + (length(tb_out_value)));
+disp("RMSE: "+RMSE);
+disp("NRMSE: "+NRMSE);

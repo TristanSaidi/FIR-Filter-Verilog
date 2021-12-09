@@ -4,11 +4,11 @@
 `define QSIM_OUT_FN_1		"./reports/coefficients.rpt"
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
-`define HALF_FAST_CLK_CYCLE	#2.00
-`define HALF_SLOW_CLK_CYCLE	#384.00
+`define HALF_FAST_CLK_CYCLE	#261.00
+`define HALF_SLOW_CLK_CYCLE	#50112.00
 `define FAST_SLOW_CLK_RATIO	192
-`define QRTR_FAST_CLK_CYCLE	#1.00
-`define QRTR_SLOW_CLK_CYCLE	#192.00
+`define QRTR_FAST_CLK_CYCLE	#130.5
+`define QRTR_SLOW_CLK_CYCLE	#25056.00
 `define ITER 			10000
 `define PRECOMP			2048
 
@@ -81,7 +81,7 @@ module testbench();
 					X = 0;
 				end
 				else begin
-					X		= -1;
+					X		= $urandom%65535-32768;
 					X_INT		= X;
 					$fwrite(qsim_out_2, "%0d\n", X_INT);
 				end
@@ -102,7 +102,7 @@ module testbench();
 			COMP_ARRAY[k] = 0;		
 		end
 		for (k = 0; k < 64; k = k+1) begin
-			COEF_ARRAY[k] = -1;
+			COEF_ARRAY[k] = $urandom%65535-32768;
 			$fwrite(qsim_out_1, "%d\n", COEF_ARRAY[k]);		
 		end
 		for (k = 0; k < 8; k = k+1) begin
