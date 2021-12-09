@@ -4,7 +4,7 @@
 # Time unit: 1ns (in the IBM power-delivery library)
 # Capacitance unit: 1pF (in the IBM power-delivery library)
 
-set clk_period 20
+set clk_period 500
 set clk_uncertainty 0.01
 set clk_transition 0.01
 set clk_name "clk"

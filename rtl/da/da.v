@@ -19,7 +19,7 @@ module	da(
 	input	wire		CLOAD,
 	input	wire		start, clk, reset, resetn
 );
-	reg	[3:0]	i;
+	reg		NEGATE;
 	reg	[38:0]	ACC;
 	reg		C_ADDER_REG;
 	reg	[37:0]	X_ADDER_REG, Y_ADDER_REG;
@@ -107,7 +107,7 @@ module	da(
 			X_ADDER_REG	<= 0;
 			Y_ADDER_REG	<= 0;
 			C_ADDER_REG	<= 0;
-			i		<= 0;
+			NEGATE		<= 1;
 		end
 		else if (load_zreg) begin
 			Z7		<= Q7[18:0];
@@ -161,7 +161,7 @@ module	da(
 		end
 		else if (do_acc) begin
 			X_ADDER_REG	<= {ACC[37:0], 1'b0};
-			if (i == 0) begin
+			if (NEGATE == 1) begin
 				Y_ADDER_REG	<= ~{{16{ADDER_RESULT[21]}}, ADDER_RESULT[21:0]};
 				C_ADDER_REG	<= 1'b1;
 			end
@@ -174,13 +174,13 @@ module	da(
 		else if (prev_doacc & ~reset) begin
 			ACC		<= ADDER_RESULT;
 			prev_doacc	<= 1'b0;
-			i		<= i + 1;
+			NEGATE		<= 1'b0;
 		end
 		else begin
 		end
 
 		if (reset) begin
-			i		<= 0;
+			NEGATE		<= 1'b1;
 			ACC		<= 0;
 		end
 	end

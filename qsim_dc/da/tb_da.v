@@ -1,9 +1,9 @@
 
-`timescale 1ns/10ps
+`timescale 1ns/1ps
 `define QSIM_OUT_FN_1		"./reports/output.rpt"
 `define QSIM_OUT_FN_2		"./reports/input.rpt"
-`define HALF_CLK_PERIOD 	#10.000
-`define QRTR_CLK_PERIOD		#5.000
+`define HALF_CLK_PERIOD 	#250.000
+`define QRTR_CLK_PERIOD		#125.000
 `define TOTAL_ROM_SIZE		(256 * 8)
 `define ITER			100
 `define ON			1'b0
@@ -22,11 +22,11 @@ module testbench();
 	integer		calculated;
 	integer		cycle, iteration;
 
-	wire	[38:0]	ACC_OUT;
-	wire		valid_out;
+	wire	[37:0]	ACC_OUT;
+	wire		done;
 	reg	[7:0]	A7, A6, A5, A4;
 	reg	[7:0]	A3, A2, A1, A0;
-	reg	[19:0]	CIN;
+	reg	[18:0]	CIN;
 	reg	[10:0]	CADDR;
 	reg		CLOAD;
 	reg		start, clk, resetn, reset;
@@ -47,7 +47,7 @@ module testbench();
 
 	da	DUT(
 			.ACC_OUT	(ACC_OUT),
-			.valid_out	(valid_out),
+			.done	(done),
 			.A7		(A7),
 			.A6		(A6),
 			.A5		(A5),
@@ -74,10 +74,8 @@ module testbench();
 			CADDR_INT			= CADDR;
 			ROM_INDEX			= CADDR[10:8];
 			ADDRESS_INDEX			= CADDR[7:0];
-
-			CIN				= ($urandom%2097152) - 1048576;
+			CIN				= ($urandom%1048576) - 262144;
 			CIN_INT				= $signed(CIN);
-
 			case(ROM_INDEX)
                         	0: begin
 					ROM0[ADDRESS_INDEX] 	= CIN_INT;
@@ -132,9 +130,6 @@ module testbench();
 					iteration	= 0;
 					$fwrite(qsim_out_1, "%d\n", $signed(ACC_OUT));
 					calculated	= calculated + 1;
-					if ((calculated % 250) == 0) begin
-						$display(calculated);
-					end
 				end
 				else begin
 					iteration	= iteration + 1;
@@ -171,7 +166,7 @@ module testbench();
 
 	initial	begin
 		$sdf_annotate("../../dc/da/reports/tt/da.syn.sdf", DUT, , , "maximum");
-		$dumpfile("./da.vcd");
+		$dumpfile("da.vcd");
 		$dumpvars(0, DUT);
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
 		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
