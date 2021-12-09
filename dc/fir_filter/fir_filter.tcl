@@ -1,6 +1,5 @@
 
 source "./design.tcl"
-source "./../common_script/namingrules.tcl"
 source "./constraints.tcl"
 
 ##################################################
@@ -16,9 +15,7 @@ link
 
 
 compile_ultra
-
 source -verbose "./mmcm.tcl"
-#change_names -rules verilog -hierarchy
 write -hierarchy -format verilog -output "./reports/${top_level}.nl.v"
 write -hierarchy -format ddc -output "./reports/${top_level}.ddc"
 quit

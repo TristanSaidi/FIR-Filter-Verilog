@@ -8,7 +8,6 @@ set_max_fanout 4 [all_inputs]
 
 
 set_max_capacitance 0.005 [all_inputs]
-set_max_area	0
 
 check_design
 

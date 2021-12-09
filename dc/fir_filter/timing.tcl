@@ -7,8 +7,8 @@
 set clk_period 500
 set clk_uncertainty 0.01
 set clk_transition 0.01
-set clk_name "clk"
-set clk_port "clk"
+set clk_name "clk_fast"
+set clk_port "clk_fast"
 set typical_input_delay 0.1
 set typical_output_delay 0.1
 set typical_wire_load 0.005
