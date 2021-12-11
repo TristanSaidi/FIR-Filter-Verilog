@@ -90,7 +90,7 @@ module testbench();
 	end
 
 	initial begin
-		$sdf_annotate("../../dc/fir_filter/reports/tt/fir_filter.syn.sdf", DUT, , , "maximum");
+		$sdf_annotate("../../syn/fir_filter/fir_filter.syn.sdf", DUT, , , "maximum");
 		$dumpfile("fir_filter.vcd");
 		$dumpvars(0, DUT);
 		writing		= 3;

@@ -165,7 +165,7 @@ module testbench();
 	end
 
 	initial	begin
-		$sdf_annotate("../../dc/da/reports/tt/da.syn.sdf", DUT, , , "maximum");
+		$sdf_annotate("../../syn/da/da.syn.sdf", DUT, , , "maximum");
 		$dumpfile("da.vcd");
 		$dumpvars(0, DUT);
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");

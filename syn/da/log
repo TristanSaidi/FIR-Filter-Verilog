@@ -1,0 +1,1294 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version O-2018.06-SP5-1 for linux64 - Mar 08, 2019 
+
+                    Copyright (c) 1988 - 2019 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+source "./design.tcl"
+. /courses/ee6321/share/ibm13rflpvt/synopsys/ ../../memory/sram256w20b/
+dw_foundation.sldb
+* scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db dw_foundation.sldb
+scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+Loading db file '/homes/user/stud/fall19/bws2121/4823/project/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'scx3_cmos8rf_lpvt_tt_1p2v_25c'
+  Loading link library 'USERLIB'
+  Loading link library 'gtech'
+Loading verilog file '/homes/user/stud/fall19/bws2121/4823/project/rtl/da/da.v'
+Detecting input file type automatically (-rtl or -netlist).
+Opening include file /homes/user/stud/fall19/bws2121/4823/project/rtl/da/../sram/sram.v
+Opening include file /homes/user/stud/fall19/bws2121/4823/project/rtl/da/../da/da_control.v
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /homes/user/stud/fall19/bws2121/4823/project/rtl/da/da.v
+Opening include file /homes/user/stud/fall19/bws2121/4823/project/rtl/da/../sram/sram.v
+Opening include file /homes/user/stud/fall19/bws2121/4823/project/rtl/da/../da/da_control.v
+Warning:  /homes/user/stud/fall19/bws2121/4823/project/rtl/da/../sram/sram.v:54: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+
+Inferred memory devices in process
+	in routine sram line 31 in file
+		'/homes/user/stud/fall19/bws2121/4823/project/rtl/da/../sram/sram.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       DI_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|     CADDRI_reg      | Flip-flop |  11   |  Y  | N  | N  | N  | N  | N  | N  |
+|       AI_reg        | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 39 in file
+	'/homes/user/stud/fall19/bws2121/4823/project/rtl/da/../da/da_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            56            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine da_control line 39 in file
+		'/homes/user/stud/fall19/bws2121/4823/project/rtl/da/../da/da_control.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      do_y1_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      done_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       CEN_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_f0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       WEN_reg       | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       NS_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|    load_zreg_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     do_acc_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w1_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w2_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_w3_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      do_y0_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine da line 91 in file
+		'/homes/user/stud/fall19/bws2121/4823/project/rtl/da/da.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     NEGATE_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   C_ADDER_REG_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   Y_ADDER_REG_reg   | Flip-flop |  38   |  Y  | N  | N  | N  | N  | N  | N  |
+|   X_ADDER_REG_reg   | Flip-flop |  38   |  Y  | N  | N  | N  | N  | N  | N  |
+|   prev_doacc_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|       Z0_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       ACC_reg       | Flip-flop |  38   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Y0_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W0_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W1_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W2_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       W3_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z1_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z2_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z4_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z3_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z6_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z5_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Z7_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Current design is now '/homes/user/stud/fall19/bws2121/4823/project/rtl/da/sram.db:sram'
+Loaded 3 designs.
+Current design is 'sram'.
+da              da_control      sram (*)
+Current design is 'da'.
+
+  Linking design 'da'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (3 designs)               /homes/user/stud/fall19/bws2121/4823/project/rtl/da/da.db, etc
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library) /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  USERLIB (library)           /homes/user/stud/fall19/bws2121/4823/project/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db
+  dw_foundation.sldb (library) /tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+source "./../common_script/namingrules.tcl"
+
+Design          Type    Object                  New Name
+--------------------------------------------------------------------------------
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+da              cell    Y_ADDER_REG_reg[37]     Y_ADDER_REG_reg_37_
+da              cell    Y_ADDER_REG_reg[36]     Y_ADDER_REG_reg_36_
+da              cell    Y_ADDER_REG_reg[35]     Y_ADDER_REG_reg_35_
+da              cell    Y_ADDER_REG_reg[34]     Y_ADDER_REG_reg_34_
+da              cell    Y_ADDER_REG_reg[33]     Y_ADDER_REG_reg_33_
+da              cell    Y_ADDER_REG_reg[32]     Y_ADDER_REG_reg_32_
+da              cell    Y_ADDER_REG_reg[31]     Y_ADDER_REG_reg_31_
+da              cell    Y_ADDER_REG_reg[30]     Y_ADDER_REG_reg_30_
+da              cell    Y_ADDER_REG_reg[29]     Y_ADDER_REG_reg_29_
+da              cell    Y_ADDER_REG_reg[28]     Y_ADDER_REG_reg_28_
+da              cell    Y_ADDER_REG_reg[27]     Y_ADDER_REG_reg_27_
+da              cell    Y_ADDER_REG_reg[26]     Y_ADDER_REG_reg_26_
+da              cell    Y_ADDER_REG_reg[25]     Y_ADDER_REG_reg_25_
+da              cell    Y_ADDER_REG_reg[24]     Y_ADDER_REG_reg_24_
+da              cell    Y_ADDER_REG_reg[23]     Y_ADDER_REG_reg_23_
+da              cell    Y_ADDER_REG_reg[22]     Y_ADDER_REG_reg_22_
+da              cell    Y_ADDER_REG_reg[21]     Y_ADDER_REG_reg_21_
+da              cell    Y_ADDER_REG_reg[20]     Y_ADDER_REG_reg_20_
+da              cell    Y_ADDER_REG_reg[19]     Y_ADDER_REG_reg_19_
+da              cell    Y_ADDER_REG_reg[18]     Y_ADDER_REG_reg_18_
+da              cell    Y_ADDER_REG_reg[17]     Y_ADDER_REG_reg_17_
+da              cell    Y_ADDER_REG_reg[16]     Y_ADDER_REG_reg_16_
+da              cell    Y_ADDER_REG_reg[15]     Y_ADDER_REG_reg_15_
+da              cell    Y_ADDER_REG_reg[14]     Y_ADDER_REG_reg_14_
+da              cell    Y_ADDER_REG_reg[13]     Y_ADDER_REG_reg_13_
+da              cell    Y_ADDER_REG_reg[12]     Y_ADDER_REG_reg_12_
+da              cell    Y_ADDER_REG_reg[11]     Y_ADDER_REG_reg_11_
+da              cell    Y_ADDER_REG_reg[10]     Y_ADDER_REG_reg_10_
+da              cell    Y_ADDER_REG_reg[9]      Y_ADDER_REG_reg_9_
+da              cell    Y_ADDER_REG_reg[8]      Y_ADDER_REG_reg_8_
+da              cell    Y_ADDER_REG_reg[7]      Y_ADDER_REG_reg_7_
+da              cell    Y_ADDER_REG_reg[6]      Y_ADDER_REG_reg_6_
+da              cell    Y_ADDER_REG_reg[5]      Y_ADDER_REG_reg_5_
+da              cell    Y_ADDER_REG_reg[4]      Y_ADDER_REG_reg_4_
+da              cell    Y_ADDER_REG_reg[3]      Y_ADDER_REG_reg_3_
+da              cell    Y_ADDER_REG_reg[2]      Y_ADDER_REG_reg_2_
+da              cell    Y_ADDER_REG_reg[1]      Y_ADDER_REG_reg_1_
+da              cell    Y_ADDER_REG_reg[0]      Y_ADDER_REG_reg_0_
+da              cell    X_ADDER_REG_reg[37]     X_ADDER_REG_reg_37_
+da              cell    X_ADDER_REG_reg[36]     X_ADDER_REG_reg_36_
+da              cell    X_ADDER_REG_reg[35]     X_ADDER_REG_reg_35_
+da              cell    X_ADDER_REG_reg[34]     X_ADDER_REG_reg_34_
+da              cell    X_ADDER_REG_reg[33]     X_ADDER_REG_reg_33_
+da              cell    X_ADDER_REG_reg[32]     X_ADDER_REG_reg_32_
+da              cell    X_ADDER_REG_reg[31]     X_ADDER_REG_reg_31_
+da              cell    X_ADDER_REG_reg[30]     X_ADDER_REG_reg_30_
+da              cell    X_ADDER_REG_reg[29]     X_ADDER_REG_reg_29_
+da              cell    X_ADDER_REG_reg[28]     X_ADDER_REG_reg_28_
+da              cell    X_ADDER_REG_reg[27]     X_ADDER_REG_reg_27_
+da              cell    X_ADDER_REG_reg[26]     X_ADDER_REG_reg_26_
+da              cell    X_ADDER_REG_reg[25]     X_ADDER_REG_reg_25_
+da              cell    X_ADDER_REG_reg[24]     X_ADDER_REG_reg_24_
+da              cell    X_ADDER_REG_reg[23]     X_ADDER_REG_reg_23_
+da              cell    X_ADDER_REG_reg[22]     X_ADDER_REG_reg_22_
+da              cell    X_ADDER_REG_reg[21]     X_ADDER_REG_reg_21_
+da              cell    X_ADDER_REG_reg[20]     X_ADDER_REG_reg_20_
+da              cell    X_ADDER_REG_reg[19]     X_ADDER_REG_reg_19_
+da              cell    X_ADDER_REG_reg[18]     X_ADDER_REG_reg_18_
+da              cell    X_ADDER_REG_reg[17]     X_ADDER_REG_reg_17_
+da              cell    X_ADDER_REG_reg[16]     X_ADDER_REG_reg_16_
+da              cell    X_ADDER_REG_reg[15]     X_ADDER_REG_reg_15_
+da              cell    X_ADDER_REG_reg[14]     X_ADDER_REG_reg_14_
+da              cell    X_ADDER_REG_reg[13]     X_ADDER_REG_reg_13_
+da              cell    X_ADDER_REG_reg[12]     X_ADDER_REG_reg_12_
+da              cell    X_ADDER_REG_reg[11]     X_ADDER_REG_reg_11_
+da              cell    X_ADDER_REG_reg[10]     X_ADDER_REG_reg_10_
+da              cell    X_ADDER_REG_reg[9]      X_ADDER_REG_reg_9_
+da              cell    X_ADDER_REG_reg[8]      X_ADDER_REG_reg_8_
+da              cell    X_ADDER_REG_reg[7]      X_ADDER_REG_reg_7_
+da              cell    X_ADDER_REG_reg[6]      X_ADDER_REG_reg_6_
+da              cell    X_ADDER_REG_reg[5]      X_ADDER_REG_reg_5_
+da              cell    X_ADDER_REG_reg[4]      X_ADDER_REG_reg_4_
+da              cell    X_ADDER_REG_reg[3]      X_ADDER_REG_reg_3_
+da              cell    X_ADDER_REG_reg[2]      X_ADDER_REG_reg_2_
+da              cell    X_ADDER_REG_reg[1]      X_ADDER_REG_reg_1_
+da              cell    X_ADDER_REG_reg[0]      X_ADDER_REG_reg_0_
+da              cell    Z0_reg[18]              Z0_reg_18_
+da              cell    Z0_reg[17]              Z0_reg_17_
+da              cell    Z0_reg[16]              Z0_reg_16_
+da              cell    Z0_reg[15]              Z0_reg_15_
+da              cell    Z0_reg[14]              Z0_reg_14_
+da              cell    Z0_reg[13]              Z0_reg_13_
+da              cell    Z0_reg[12]              Z0_reg_12_
+da              cell    Z0_reg[11]              Z0_reg_11_
+da              cell    Z0_reg[10]              Z0_reg_10_
+da              cell    Z0_reg[9]               Z0_reg_9_
+da              cell    Z0_reg[8]               Z0_reg_8_
+da              cell    Z0_reg[7]               Z0_reg_7_
+da              cell    Z0_reg[6]               Z0_reg_6_
+da              cell    Z0_reg[5]               Z0_reg_5_
+da              cell    Z0_reg[4]               Z0_reg_4_
+da              cell    Z0_reg[3]               Z0_reg_3_
+da              cell    Z0_reg[2]               Z0_reg_2_
+da              cell    Z0_reg[1]               Z0_reg_1_
+da              cell    Z0_reg[0]               Z0_reg_0_
+da              cell    ACC_reg[37]             ACC_reg_37_
+da              cell    ACC_reg[36]             ACC_reg_36_
+da              cell    ACC_reg[35]             ACC_reg_35_
+da              cell    ACC_reg[34]             ACC_reg_34_
+da              cell    ACC_reg[33]             ACC_reg_33_
+da              cell    ACC_reg[32]             ACC_reg_32_
+da              cell    ACC_reg[31]             ACC_reg_31_
+da              cell    ACC_reg[30]             ACC_reg_30_
+da              cell    ACC_reg[29]             ACC_reg_29_
+da              cell    ACC_reg[28]             ACC_reg_28_
+da              cell    ACC_reg[27]             ACC_reg_27_
+da              cell    ACC_reg[26]             ACC_reg_26_
+da              cell    ACC_reg[25]             ACC_reg_25_
+da              cell    ACC_reg[24]             ACC_reg_24_
+da              cell    ACC_reg[23]             ACC_reg_23_
+da              cell    ACC_reg[22]             ACC_reg_22_
+da              cell    ACC_reg[21]             ACC_reg_21_
+da              cell    ACC_reg[20]             ACC_reg_20_
+da              cell    ACC_reg[19]             ACC_reg_19_
+da              cell    ACC_reg[18]             ACC_reg_18_
+da              cell    ACC_reg[17]             ACC_reg_17_
+da              cell    ACC_reg[16]             ACC_reg_16_
+da              cell    ACC_reg[15]             ACC_reg_15_
+da              cell    ACC_reg[14]             ACC_reg_14_
+da              cell    ACC_reg[13]             ACC_reg_13_
+da              cell    ACC_reg[12]             ACC_reg_12_
+da              cell    ACC_reg[11]             ACC_reg_11_
+da              cell    ACC_reg[10]             ACC_reg_10_
+da              cell    ACC_reg[9]              ACC_reg_9_
+da              cell    ACC_reg[8]              ACC_reg_8_
+da              cell    ACC_reg[7]              ACC_reg_7_
+da              cell    ACC_reg[6]              ACC_reg_6_
+da              cell    ACC_reg[5]              ACC_reg_5_
+da              cell    ACC_reg[4]              ACC_reg_4_
+da              cell    ACC_reg[3]              ACC_reg_3_
+da              cell    ACC_reg[2]              ACC_reg_2_
+da              cell    ACC_reg[1]              ACC_reg_1_
+da              cell    ACC_reg[0]              ACC_reg_0_
+da              cell    Y0_reg[20]              Y0_reg_20_
+da              cell    Y0_reg[19]              Y0_reg_19_
+da              cell    Y0_reg[18]              Y0_reg_18_
+da              cell    Y0_reg[17]              Y0_reg_17_
+da              cell    Y0_reg[16]              Y0_reg_16_
+da              cell    Y0_reg[15]              Y0_reg_15_
+da              cell    Y0_reg[14]              Y0_reg_14_
+da              cell    Y0_reg[13]              Y0_reg_13_
+da              cell    Y0_reg[12]              Y0_reg_12_
+da              cell    Y0_reg[11]              Y0_reg_11_
+da              cell    Y0_reg[10]              Y0_reg_10_
+da              cell    Y0_reg[9]               Y0_reg_9_
+da              cell    Y0_reg[8]               Y0_reg_8_
+da              cell    Y0_reg[7]               Y0_reg_7_
+da              cell    Y0_reg[6]               Y0_reg_6_
+da              cell    Y0_reg[5]               Y0_reg_5_
+da              cell    Y0_reg[4]               Y0_reg_4_
+da              cell    Y0_reg[3]               Y0_reg_3_
+da              cell    Y0_reg[2]               Y0_reg_2_
+da              cell    Y0_reg[1]               Y0_reg_1_
+da              cell    Y0_reg[0]               Y0_reg_0_
+da              cell    W0_reg[19]              W0_reg_19_
+da              cell    W0_reg[18]              W0_reg_18_
+da              cell    W0_reg[17]              W0_reg_17_
+da              cell    W0_reg[16]              W0_reg_16_
+da              cell    W0_reg[15]              W0_reg_15_
+da              cell    W0_reg[14]              W0_reg_14_
+da              cell    W0_reg[13]              W0_reg_13_
+da              cell    W0_reg[12]              W0_reg_12_
+da              cell    W0_reg[11]              W0_reg_11_
+da              cell    W0_reg[10]              W0_reg_10_
+da              cell    W0_reg[9]               W0_reg_9_
+da              cell    W0_reg[8]               W0_reg_8_
+da              cell    W0_reg[7]               W0_reg_7_
+da              cell    W0_reg[6]               W0_reg_6_
+da              cell    W0_reg[5]               W0_reg_5_
+da              cell    W0_reg[4]               W0_reg_4_
+da              cell    W0_reg[3]               W0_reg_3_
+da              cell    W0_reg[2]               W0_reg_2_
+da              cell    W0_reg[1]               W0_reg_1_
+da              cell    W0_reg[0]               W0_reg_0_
+da              cell    W1_reg[19]              W1_reg_19_
+da              cell    W1_reg[18]              W1_reg_18_
+da              cell    W1_reg[17]              W1_reg_17_
+da              cell    W1_reg[16]              W1_reg_16_
+da              cell    W1_reg[15]              W1_reg_15_
+da              cell    W1_reg[14]              W1_reg_14_
+da              cell    W1_reg[13]              W1_reg_13_
+da              cell    W1_reg[12]              W1_reg_12_
+da              cell    W1_reg[11]              W1_reg_11_
+da              cell    W1_reg[10]              W1_reg_10_
+da              cell    W1_reg[9]               W1_reg_9_
+da              cell    W1_reg[8]               W1_reg_8_
+da              cell    W1_reg[7]               W1_reg_7_
+da              cell    W1_reg[6]               W1_reg_6_
+da              cell    W1_reg[5]               W1_reg_5_
+da              cell    W1_reg[4]               W1_reg_4_
+da              cell    W1_reg[3]               W1_reg_3_
+da              cell    W1_reg[2]               W1_reg_2_
+da              cell    W1_reg[1]               W1_reg_1_
+da              cell    W1_reg[0]               W1_reg_0_
+da              cell    W2_reg[19]              W2_reg_19_
+da              cell    W2_reg[18]              W2_reg_18_
+da              cell    W2_reg[17]              W2_reg_17_
+da              cell    W2_reg[16]              W2_reg_16_
+da              cell    W2_reg[15]              W2_reg_15_
+da              cell    W2_reg[14]              W2_reg_14_
+da              cell    W2_reg[13]              W2_reg_13_
+da              cell    W2_reg[12]              W2_reg_12_
+da              cell    W2_reg[11]              W2_reg_11_
+da              cell    W2_reg[10]              W2_reg_10_
+da              cell    W2_reg[9]               W2_reg_9_
+da              cell    W2_reg[8]               W2_reg_8_
+da              cell    W2_reg[7]               W2_reg_7_
+da              cell    W2_reg[6]               W2_reg_6_
+da              cell    W2_reg[5]               W2_reg_5_
+da              cell    W2_reg[4]               W2_reg_4_
+da              cell    W2_reg[3]               W2_reg_3_
+da              cell    W2_reg[2]               W2_reg_2_
+da              cell    W2_reg[1]               W2_reg_1_
+da              cell    W2_reg[0]               W2_reg_0_
+da              cell    W3_reg[19]              W3_reg_19_
+da              cell    W3_reg[18]              W3_reg_18_
+da              cell    W3_reg[17]              W3_reg_17_
+da              cell    W3_reg[16]              W3_reg_16_
+da              cell    W3_reg[15]              W3_reg_15_
+da              cell    W3_reg[14]              W3_reg_14_
+da              cell    W3_reg[13]              W3_reg_13_
+da              cell    W3_reg[12]              W3_reg_12_
+da              cell    W3_reg[11]              W3_reg_11_
+da              cell    W3_reg[10]              W3_reg_10_
+da              cell    W3_reg[9]               W3_reg_9_
+da              cell    W3_reg[8]               W3_reg_8_
+da              cell    W3_reg[7]               W3_reg_7_
+da              cell    W3_reg[6]               W3_reg_6_
+da              cell    W3_reg[5]               W3_reg_5_
+da              cell    W3_reg[4]               W3_reg_4_
+da              cell    W3_reg[3]               W3_reg_3_
+da              cell    W3_reg[2]               W3_reg_2_
+da              cell    W3_reg[1]               W3_reg_1_
+da              cell    W3_reg[0]               W3_reg_0_
+da              cell    Z1_reg[18]              Z1_reg_18_
+da              cell    Z1_reg[17]              Z1_reg_17_
+da              cell    Z1_reg[16]              Z1_reg_16_
+da              cell    Z1_reg[15]              Z1_reg_15_
+da              cell    Z1_reg[14]              Z1_reg_14_
+da              cell    Z1_reg[13]              Z1_reg_13_
+da              cell    Z1_reg[12]              Z1_reg_12_
+da              cell    Z1_reg[11]              Z1_reg_11_
+da              cell    Z1_reg[10]              Z1_reg_10_
+da              cell    Z1_reg[9]               Z1_reg_9_
+da              cell    Z1_reg[8]               Z1_reg_8_
+da              cell    Z1_reg[7]               Z1_reg_7_
+da              cell    Z1_reg[6]               Z1_reg_6_
+da              cell    Z1_reg[5]               Z1_reg_5_
+da              cell    Z1_reg[4]               Z1_reg_4_
+da              cell    Z1_reg[3]               Z1_reg_3_
+da              cell    Z1_reg[2]               Z1_reg_2_
+da              cell    Z1_reg[1]               Z1_reg_1_
+da              cell    Z1_reg[0]               Z1_reg_0_
+da              cell    Z2_reg[18]              Z2_reg_18_
+da              cell    Z2_reg[17]              Z2_reg_17_
+da              cell    Z2_reg[16]              Z2_reg_16_
+da              cell    Z2_reg[15]              Z2_reg_15_
+da              cell    Z2_reg[14]              Z2_reg_14_
+da              cell    Z2_reg[13]              Z2_reg_13_
+da              cell    Z2_reg[12]              Z2_reg_12_
+da              cell    Z2_reg[11]              Z2_reg_11_
+da              cell    Z2_reg[10]              Z2_reg_10_
+da              cell    Z2_reg[9]               Z2_reg_9_
+da              cell    Z2_reg[8]               Z2_reg_8_
+da              cell    Z2_reg[7]               Z2_reg_7_
+da              cell    Z2_reg[6]               Z2_reg_6_
+da              cell    Z2_reg[5]               Z2_reg_5_
+da              cell    Z2_reg[4]               Z2_reg_4_
+da              cell    Z2_reg[3]               Z2_reg_3_
+da              cell    Z2_reg[2]               Z2_reg_2_
+da              cell    Z2_reg[1]               Z2_reg_1_
+da              cell    Z2_reg[0]               Z2_reg_0_
+da              cell    Z4_reg[18]              Z4_reg_18_
+da              cell    Z4_reg[17]              Z4_reg_17_
+da              cell    Z4_reg[16]              Z4_reg_16_
+da              cell    Z4_reg[15]              Z4_reg_15_
+da              cell    Z4_reg[14]              Z4_reg_14_
+da              cell    Z4_reg[13]              Z4_reg_13_
+da              cell    Z4_reg[12]              Z4_reg_12_
+da              cell    Z4_reg[11]              Z4_reg_11_
+da              cell    Z4_reg[10]              Z4_reg_10_
+da              cell    Z4_reg[9]               Z4_reg_9_
+da              cell    Z4_reg[8]               Z4_reg_8_
+da              cell    Z4_reg[7]               Z4_reg_7_
+da              cell    Z4_reg[6]               Z4_reg_6_
+da              cell    Z4_reg[5]               Z4_reg_5_
+da              cell    Z4_reg[4]               Z4_reg_4_
+da              cell    Z4_reg[3]               Z4_reg_3_
+da              cell    Z4_reg[2]               Z4_reg_2_
+da              cell    Z4_reg[1]               Z4_reg_1_
+da              cell    Z4_reg[0]               Z4_reg_0_
+da              cell    Z3_reg[18]              Z3_reg_18_
+da              cell    Z3_reg[17]              Z3_reg_17_
+da              cell    Z3_reg[16]              Z3_reg_16_
+da              cell    Z3_reg[15]              Z3_reg_15_
+da              cell    Z3_reg[14]              Z3_reg_14_
+da              cell    Z3_reg[13]              Z3_reg_13_
+da              cell    Z3_reg[12]              Z3_reg_12_
+da              cell    Z3_reg[11]              Z3_reg_11_
+da              cell    Z3_reg[10]              Z3_reg_10_
+da              cell    Z3_reg[9]               Z3_reg_9_
+da              cell    Z3_reg[8]               Z3_reg_8_
+da              cell    Z3_reg[7]               Z3_reg_7_
+da              cell    Z3_reg[6]               Z3_reg_6_
+da              cell    Z3_reg[5]               Z3_reg_5_
+da              cell    Z3_reg[4]               Z3_reg_4_
+da              cell    Z3_reg[3]               Z3_reg_3_
+da              cell    Z3_reg[2]               Z3_reg_2_
+da              cell    Z3_reg[1]               Z3_reg_1_
+da              cell    Z3_reg[0]               Z3_reg_0_
+da              cell    Z6_reg[18]              Z6_reg_18_
+da              cell    Z6_reg[17]              Z6_reg_17_
+da              cell    Z6_reg[16]              Z6_reg_16_
+da              cell    Z6_reg[15]              Z6_reg_15_
+da              cell    Z6_reg[14]              Z6_reg_14_
+da              cell    Z6_reg[13]              Z6_reg_13_
+da              cell    Z6_reg[12]              Z6_reg_12_
+da              cell    Z6_reg[11]              Z6_reg_11_
+da              cell    Z6_reg[10]              Z6_reg_10_
+da              cell    Z6_reg[9]               Z6_reg_9_
+da              cell    Z6_reg[8]               Z6_reg_8_
+da              cell    Z6_reg[7]               Z6_reg_7_
+da              cell    Z6_reg[6]               Z6_reg_6_
+da              cell    Z6_reg[5]               Z6_reg_5_
+da              cell    Z6_reg[4]               Z6_reg_4_
+da              cell    Z6_reg[3]               Z6_reg_3_
+da              cell    Z6_reg[2]               Z6_reg_2_
+da              cell    Z6_reg[1]               Z6_reg_1_
+da              cell    Z6_reg[0]               Z6_reg_0_
+da              cell    Z5_reg[18]              Z5_reg_18_
+da              cell    Z5_reg[17]              Z5_reg_17_
+da              cell    Z5_reg[16]              Z5_reg_16_
+da              cell    Z5_reg[15]              Z5_reg_15_
+da              cell    Z5_reg[14]              Z5_reg_14_
+da              cell    Z5_reg[13]              Z5_reg_13_
+da              cell    Z5_reg[12]              Z5_reg_12_
+da              cell    Z5_reg[11]              Z5_reg_11_
+da              cell    Z5_reg[10]              Z5_reg_10_
+da              cell    Z5_reg[9]               Z5_reg_9_
+da              cell    Z5_reg[8]               Z5_reg_8_
+da              cell    Z5_reg[7]               Z5_reg_7_
+da              cell    Z5_reg[6]               Z5_reg_6_
+da              cell    Z5_reg[5]               Z5_reg_5_
+da              cell    Z5_reg[4]               Z5_reg_4_
+da              cell    Z5_reg[3]               Z5_reg_3_
+da              cell    Z5_reg[2]               Z5_reg_2_
+da              cell    Z5_reg[1]               Z5_reg_1_
+da              cell    Z5_reg[0]               Z5_reg_0_
+da              cell    Z7_reg[18]              Z7_reg_18_
+da              cell    Z7_reg[17]              Z7_reg_17_
+da              cell    Z7_reg[16]              Z7_reg_16_
+da              cell    Z7_reg[15]              Z7_reg_15_
+da              cell    Z7_reg[14]              Z7_reg_14_
+da              cell    Z7_reg[13]              Z7_reg_13_
+da              cell    Z7_reg[12]              Z7_reg_12_
+da              cell    Z7_reg[11]              Z7_reg_11_
+da              cell    Z7_reg[10]              Z7_reg_10_
+da              cell    Z7_reg[9]               Z7_reg_9_
+da              cell    Z7_reg[8]               Z7_reg_8_
+da              cell    Z7_reg[7]               Z7_reg_7_
+da              cell    Z7_reg[6]               Z7_reg_6_
+da              cell    Z7_reg[5]               Z7_reg_5_
+da              cell    Z7_reg[4]               Z7_reg_4_
+da              cell    Z7_reg[3]               Z7_reg_3_
+da              cell    Z7_reg[2]               Z7_reg_2_
+da              cell    Z7_reg[1]               Z7_reg_1_
+da              cell    Z7_reg[0]               Z7_reg_0_
+da              net     *Logic1*                n_Logic1_
+da              net     *Logic0*                n_Logic0_
+da_control      cell    NS_reg[3]               NS_reg_3_
+da_control      cell    NS_reg[2]               NS_reg_2_
+da_control      cell    NS_reg[1]               NS_reg_1_
+da_control      cell    NS_reg[0]               NS_reg_0_
+da_control      net     *Logic1*                n_Logic1_
+da_control      net     *Logic0*                n_Logic0_
+sram            cell    DI_reg[19]              DI_reg_19_
+sram            cell    DI_reg[18]              DI_reg_18_
+sram            cell    DI_reg[17]              DI_reg_17_
+sram            cell    DI_reg[16]              DI_reg_16_
+sram            cell    DI_reg[15]              DI_reg_15_
+sram            cell    DI_reg[14]              DI_reg_14_
+sram            cell    DI_reg[13]              DI_reg_13_
+sram            cell    DI_reg[12]              DI_reg_12_
+sram            cell    DI_reg[11]              DI_reg_11_
+sram            cell    DI_reg[10]              DI_reg_10_
+sram            cell    DI_reg[9]               DI_reg_9_
+sram            cell    DI_reg[8]               DI_reg_8_
+sram            cell    DI_reg[7]               DI_reg_7_
+sram            cell    DI_reg[6]               DI_reg_6_
+sram            cell    DI_reg[5]               DI_reg_5_
+sram            cell    DI_reg[4]               DI_reg_4_
+sram            cell    DI_reg[3]               DI_reg_3_
+sram            cell    DI_reg[2]               DI_reg_2_
+sram            cell    DI_reg[1]               DI_reg_1_
+sram            cell    DI_reg[0]               DI_reg_0_
+sram            cell    CADDRI_reg[10]          CADDRI_reg_10_
+sram            cell    CADDRI_reg[9]           CADDRI_reg_9_
+sram            cell    CADDRI_reg[8]           CADDRI_reg_8_
+sram            cell    CADDRI_reg[7]           CADDRI_reg_7_
+sram            cell    CADDRI_reg[6]           CADDRI_reg_6_
+sram            cell    CADDRI_reg[5]           CADDRI_reg_5_
+sram            cell    CADDRI_reg[4]           CADDRI_reg_4_
+sram            cell    CADDRI_reg[3]           CADDRI_reg_3_
+sram            cell    CADDRI_reg[2]           CADDRI_reg_2_
+sram            cell    CADDRI_reg[1]           CADDRI_reg_1_
+sram            cell    CADDRI_reg[0]           CADDRI_reg_0_
+sram            cell    AI_reg[7][7]            AI_reg_7__7_
+sram            cell    AI_reg[7][6]            AI_reg_7__6_
+sram            cell    AI_reg[7][5]            AI_reg_7__5_
+sram            cell    AI_reg[7][4]            AI_reg_7__4_
+sram            cell    AI_reg[7][3]            AI_reg_7__3_
+sram            cell    AI_reg[7][2]            AI_reg_7__2_
+sram            cell    AI_reg[7][1]            AI_reg_7__1_
+sram            cell    AI_reg[7][0]            AI_reg_7__0_
+sram            cell    AI_reg[6][7]            AI_reg_6__7_
+sram            cell    AI_reg[6][6]            AI_reg_6__6_
+sram            cell    AI_reg[6][5]            AI_reg_6__5_
+sram            cell    AI_reg[6][4]            AI_reg_6__4_
+sram            cell    AI_reg[6][3]            AI_reg_6__3_
+sram            cell    AI_reg[6][2]            AI_reg_6__2_
+sram            cell    AI_reg[6][1]            AI_reg_6__1_
+sram            cell    AI_reg[6][0]            AI_reg_6__0_
+sram            cell    AI_reg[5][7]            AI_reg_5__7_
+sram            cell    AI_reg[5][6]            AI_reg_5__6_
+sram            cell    AI_reg[5][5]            AI_reg_5__5_
+sram            cell    AI_reg[5][4]            AI_reg_5__4_
+sram            cell    AI_reg[5][3]            AI_reg_5__3_
+sram            cell    AI_reg[5][2]            AI_reg_5__2_
+sram            cell    AI_reg[5][1]            AI_reg_5__1_
+sram            cell    AI_reg[5][0]            AI_reg_5__0_
+sram            cell    AI_reg[4][7]            AI_reg_4__7_
+sram            cell    AI_reg[4][6]            AI_reg_4__6_
+sram            cell    AI_reg[4][5]            AI_reg_4__5_
+sram            cell    AI_reg[4][4]            AI_reg_4__4_
+sram            cell    AI_reg[4][3]            AI_reg_4__3_
+sram            cell    AI_reg[4][2]            AI_reg_4__2_
+sram            cell    AI_reg[4][1]            AI_reg_4__1_
+sram            cell    AI_reg[4][0]            AI_reg_4__0_
+sram            cell    AI_reg[3][7]            AI_reg_3__7_
+sram            cell    AI_reg[3][6]            AI_reg_3__6_
+sram            cell    AI_reg[3][5]            AI_reg_3__5_
+sram            cell    AI_reg[3][4]            AI_reg_3__4_
+sram            cell    AI_reg[3][3]            AI_reg_3__3_
+sram            cell    AI_reg[3][2]            AI_reg_3__2_
+sram            cell    AI_reg[3][1]            AI_reg_3__1_
+sram            cell    AI_reg[3][0]            AI_reg_3__0_
+sram            cell    AI_reg[2][7]            AI_reg_2__7_
+sram            cell    AI_reg[2][6]            AI_reg_2__6_
+sram            cell    AI_reg[2][5]            AI_reg_2__5_
+sram            cell    AI_reg[2][4]            AI_reg_2__4_
+sram            cell    AI_reg[2][3]            AI_reg_2__3_
+sram            cell    AI_reg[2][2]            AI_reg_2__2_
+sram            cell    AI_reg[2][1]            AI_reg_2__1_
+sram            cell    AI_reg[2][0]            AI_reg_2__0_
+sram            cell    AI_reg[1][7]            AI_reg_1__7_
+sram            cell    AI_reg[1][6]            AI_reg_1__6_
+sram            cell    AI_reg[1][5]            AI_reg_1__5_
+sram            cell    AI_reg[1][4]            AI_reg_1__4_
+sram            cell    AI_reg[1][3]            AI_reg_1__3_
+sram            cell    AI_reg[1][2]            AI_reg_1__2_
+sram            cell    AI_reg[1][1]            AI_reg_1__1_
+sram            cell    AI_reg[1][0]            AI_reg_1__0_
+sram            cell    AI_reg[0][7]            AI_reg_0__7_
+sram            cell    AI_reg[0][6]            AI_reg_0__6_
+sram            cell    AI_reg[0][5]            AI_reg_0__5_
+sram            cell    AI_reg[0][4]            AI_reg_0__4_
+sram            cell    AI_reg[0][3]            AI_reg_0__3_
+sram            cell    AI_reg[0][2]            AI_reg_0__2_
+sram            cell    AI_reg[0][1]            AI_reg_0__1_
+sram            cell    AI_reg[0][0]            AI_reg_0__0_
+sram            cell    genblk1[0].SRAM_CORE    genblk1_0__SRAM_CORE
+sram            cell    genblk1[1].SRAM_CORE    genblk1_1__SRAM_CORE
+sram            cell    genblk1[2].SRAM_CORE    genblk1_2__SRAM_CORE
+sram            cell    genblk1[3].SRAM_CORE    genblk1_3__SRAM_CORE
+sram            cell    genblk1[4].SRAM_CORE    genblk1_4__SRAM_CORE
+sram            cell    genblk1[5].SRAM_CORE    genblk1_5__SRAM_CORE
+sram            cell    genblk1[6].SRAM_CORE    genblk1_6__SRAM_CORE
+sram            cell    genblk1[7].SRAM_CORE    genblk1_7__SRAM_CORE
+sram            net     genblk1[7].AIB          genblk1_7__AIB
+sram            net     genblk1[7].AIB[7]       genblk1_7__AIB[7]
+sram            net     genblk1[7].AIB[6]       genblk1_7__AIB[6]
+sram            net     genblk1[7].AIB[5]       genblk1_7__AIB[5]
+sram            net     genblk1[7].AIB[4]       genblk1_7__AIB[4]
+sram            net     genblk1[7].AIB[3]       genblk1_7__AIB[3]
+sram            net     genblk1[7].AIB[2]       genblk1_7__AIB[2]
+sram            net     genblk1[7].AIB[1]       genblk1_7__AIB[1]
+sram            net     genblk1[7].AIB[0]       genblk1_7__AIB[0]
+sram            net     genblk1[6].AIB          genblk1_6__AIB
+sram            net     genblk1[6].AIB[7]       genblk1_6__AIB[7]
+sram            net     genblk1[6].AIB[6]       genblk1_6__AIB[6]
+sram            net     genblk1[6].AIB[5]       genblk1_6__AIB[5]
+sram            net     genblk1[6].AIB[4]       genblk1_6__AIB[4]
+sram            net     genblk1[6].AIB[3]       genblk1_6__AIB[3]
+sram            net     genblk1[6].AIB[2]       genblk1_6__AIB[2]
+sram            net     genblk1[6].AIB[1]       genblk1_6__AIB[1]
+sram            net     genblk1[6].AIB[0]       genblk1_6__AIB[0]
+sram            net     genblk1[5].AIB          genblk1_5__AIB
+sram            net     genblk1[5].AIB[7]       genblk1_5__AIB[7]
+sram            net     genblk1[5].AIB[6]       genblk1_5__AIB[6]
+sram            net     genblk1[5].AIB[5]       genblk1_5__AIB[5]
+sram            net     genblk1[5].AIB[4]       genblk1_5__AIB[4]
+sram            net     genblk1[5].AIB[3]       genblk1_5__AIB[3]
+sram            net     genblk1[5].AIB[2]       genblk1_5__AIB[2]
+sram            net     genblk1[5].AIB[1]       genblk1_5__AIB[1]
+sram            net     genblk1[5].AIB[0]       genblk1_5__AIB[0]
+sram            net     genblk1[4].AIB          genblk1_4__AIB
+sram            net     genblk1[4].AIB[7]       genblk1_4__AIB[7]
+sram            net     genblk1[4].AIB[6]       genblk1_4__AIB[6]
+sram            net     genblk1[4].AIB[5]       genblk1_4__AIB[5]
+sram            net     genblk1[4].AIB[4]       genblk1_4__AIB[4]
+sram            net     genblk1[4].AIB[3]       genblk1_4__AIB[3]
+sram            net     genblk1[4].AIB[2]       genblk1_4__AIB[2]
+sram            net     genblk1[4].AIB[1]       genblk1_4__AIB[1]
+sram            net     genblk1[4].AIB[0]       genblk1_4__AIB[0]
+sram            net     genblk1[3].AIB          genblk1_3__AIB
+sram            net     genblk1[3].AIB[7]       genblk1_3__AIB[7]
+sram            net     genblk1[3].AIB[6]       genblk1_3__AIB[6]
+sram            net     genblk1[3].AIB[5]       genblk1_3__AIB[5]
+sram            net     genblk1[3].AIB[4]       genblk1_3__AIB[4]
+sram            net     genblk1[3].AIB[3]       genblk1_3__AIB[3]
+sram            net     genblk1[3].AIB[2]       genblk1_3__AIB[2]
+sram            net     genblk1[3].AIB[1]       genblk1_3__AIB[1]
+sram            net     genblk1[3].AIB[0]       genblk1_3__AIB[0]
+sram            net     genblk1[2].AIB          genblk1_2__AIB
+sram            net     genblk1[2].AIB[7]       genblk1_2__AIB[7]
+sram            net     genblk1[2].AIB[6]       genblk1_2__AIB[6]
+sram            net     genblk1[2].AIB[5]       genblk1_2__AIB[5]
+sram            net     genblk1[2].AIB[4]       genblk1_2__AIB[4]
+sram            net     genblk1[2].AIB[3]       genblk1_2__AIB[3]
+sram            net     genblk1[2].AIB[2]       genblk1_2__AIB[2]
+sram            net     genblk1[2].AIB[1]       genblk1_2__AIB[1]
+sram            net     genblk1[2].AIB[0]       genblk1_2__AIB[0]
+sram            net     genblk1[1].AIB          genblk1_1__AIB
+sram            net     genblk1[1].AIB[7]       genblk1_1__AIB[7]
+sram            net     genblk1[1].AIB[6]       genblk1_1__AIB[6]
+sram            net     genblk1[1].AIB[5]       genblk1_1__AIB[5]
+sram            net     genblk1[1].AIB[4]       genblk1_1__AIB[4]
+sram            net     genblk1[1].AIB[3]       genblk1_1__AIB[3]
+sram            net     genblk1[1].AIB[2]       genblk1_1__AIB[2]
+sram            net     genblk1[1].AIB[1]       genblk1_1__AIB[1]
+sram            net     genblk1[1].AIB[0]       genblk1_1__AIB[0]
+sram            net     genblk1[0].AIB          genblk1_0__AIB
+sram            net     genblk1[0].AIB[7]       genblk1_0__AIB[7]
+sram            net     genblk1[0].AIB[6]       genblk1_0__AIB[6]
+sram            net     genblk1[0].AIB[5]       genblk1_0__AIB[5]
+sram            net     genblk1[0].AIB[4]       genblk1_0__AIB[4]
+sram            net     genblk1[0].AIB[3]       genblk1_0__AIB[3]
+sram            net     genblk1[0].AIB[2]       genblk1_0__AIB[2]
+sram            net     genblk1[0].AIB[1]       genblk1_0__AIB[1]
+sram            net     genblk1[0].AIB[0]       genblk1_0__AIB[0]
+sram            net     *Logic1*                n_Logic1_
+sram            net     *Logic0*                n_Logic0_
+sram            net     AI[7][7]                AI_7__7_
+sram            net     AI[7][6]                AI_7__6_
+sram            net     AI[7][5]                AI_7__5_
+sram            net     AI[7][4]                AI_7__4_
+sram            net     AI[7][3]                AI_7__3_
+sram            net     AI[7][2]                AI_7__2_
+sram            net     AI[7][1]                AI_7__1_
+sram            net     AI[7][0]                AI_7__0_
+sram            net     AI[6][7]                AI_6__7_
+sram            net     AI[6][6]                AI_6__6_
+sram            net     AI[6][5]                AI_6__5_
+sram            net     AI[6][4]                AI_6__4_
+sram            net     AI[6][3]                AI_6__3_
+sram            net     AI[6][2]                AI_6__2_
+sram            net     AI[6][1]                AI_6__1_
+sram            net     AI[6][0]                AI_6__0_
+sram            net     AI[5][7]                AI_5__7_
+sram            net     AI[5][6]                AI_5__6_
+sram            net     AI[5][5]                AI_5__5_
+sram            net     AI[5][4]                AI_5__4_
+sram            net     AI[5][3]                AI_5__3_
+sram            net     AI[5][2]                AI_5__2_
+sram            net     AI[5][1]                AI_5__1_
+sram            net     AI[5][0]                AI_5__0_
+sram            net     AI[4][7]                AI_4__7_
+sram            net     AI[4][6]                AI_4__6_
+sram            net     AI[4][5]                AI_4__5_
+sram            net     AI[4][4]                AI_4__4_
+sram            net     AI[4][3]                AI_4__3_
+sram            net     AI[4][2]                AI_4__2_
+sram            net     AI[4][1]                AI_4__1_
+sram            net     AI[4][0]                AI_4__0_
+sram            net     AI[3][7]                AI_3__7_
+sram            net     AI[3][6]                AI_3__6_
+sram            net     AI[3][5]                AI_3__5_
+sram            net     AI[3][4]                AI_3__4_
+sram            net     AI[3][3]                AI_3__3_
+sram            net     AI[3][2]                AI_3__2_
+sram            net     AI[3][1]                AI_3__1_
+sram            net     AI[3][0]                AI_3__0_
+sram            net     AI[2][7]                AI_2__7_
+sram            net     AI[2][6]                AI_2__6_
+sram            net     AI[2][5]                AI_2__5_
+sram            net     AI[2][4]                AI_2__4_
+sram            net     AI[2][3]                AI_2__3_
+sram            net     AI[2][2]                AI_2__2_
+sram            net     AI[2][1]                AI_2__1_
+sram            net     AI[2][0]                AI_2__0_
+sram            net     AI[1][7]                AI_1__7_
+sram            net     AI[1][6]                AI_1__6_
+sram            net     AI[1][5]                AI_1__5_
+sram            net     AI[1][4]                AI_1__4_
+sram            net     AI[1][3]                AI_1__3_
+sram            net     AI[1][2]                AI_1__2_
+sram            net     AI[1][1]                AI_1__1_
+sram            net     AI[1][0]                AI_1__0_
+sram            net     AI[0][7]                AI_0__7_
+sram            net     AI[0][6]                AI_0__6_
+sram            net     AI[0][5]                AI_0__5_
+sram            net     AI[0][4]                AI_0__4_
+sram            net     AI[0][3]                AI_0__3_
+sram            net     AI[0][2]                AI_0__2_
+sram            net     AI[0][1]                AI_0__1_
+sram            net     AI[0][0]                AI_0__0_
+sram            net     genblk1[0].WENIB        genblk1_0__WENIB
+sram            net     genblk1[1].WENIB        genblk1_1__WENIB
+sram            net     genblk1[2].WENIB        genblk1_2__WENIB
+sram            net     genblk1[3].WENIB        genblk1_3__WENIB
+sram            net     genblk1[4].WENIB        genblk1_4__WENIB
+sram            net     genblk1[5].WENIB        genblk1_5__WENIB
+sram            net     genblk1[6].WENIB        genblk1_6__WENIB
+sram            net     genblk1[7].WENIB        genblk1_7__WENIB
+1
+source "./constraints.tcl"
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP5-1
+Date:        Sat Dec 11 12:01:22 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               1
+    Connected to power or ground (LINT-32)                          1
+
+Nets                                                                8
+    Unloaded nets (LINT-2)                                          8
+--------------------------------------------------------------------------------
+
+Warning: In design 'da', net 'Q0[19]' driven by pin 'ROM_BANK/Q0[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q1[19]' driven by pin 'ROM_BANK/Q1[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q2[19]' driven by pin 'ROM_BANK/Q2[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q3[19]' driven by pin 'ROM_BANK/Q3[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q4[19]' driven by pin 'ROM_BANK/Q4[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q5[19]' driven by pin 'ROM_BANK/Q5[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q6[19]' driven by pin 'ROM_BANK/Q6[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q7[19]' driven by pin 'ROM_BANK/Q7[19]' has no loads. (LINT-2)
+Warning: In design 'da', a pin on submodule 'ROM_BANK' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'D[19]' is connected to logic 0. 
+1
+##################################################
+# Define design optimization constraints
+##################################################
+# Set timing environment through another .tcl file
+source -verbose "./timing.tcl"
+500
+0.01
+0.01
+clk
+clk
+0.1
+0.1
+0.005
+1
+1
+1
+1
+1
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+1
+1
+1
+1
+1
+set_fix_multiple_port_nets -all -buffer_constants
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP5-1
+Date:        Sat Dec 11 12:01:23 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               1
+    Connected to power or ground (LINT-32)                          1
+
+Nets                                                                8
+    Unloaded nets (LINT-2)                                          8
+--------------------------------------------------------------------------------
+
+Warning: In design 'da', net 'Q0[19]' driven by pin 'ROM_BANK/Q0[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q1[19]' driven by pin 'ROM_BANK/Q1[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q2[19]' driven by pin 'ROM_BANK/Q2[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q3[19]' driven by pin 'ROM_BANK/Q3[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q4[19]' driven by pin 'ROM_BANK/Q4[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q5[19]' driven by pin 'ROM_BANK/Q5[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q6[19]' driven by pin 'ROM_BANK/Q6[19]' has no loads. (LINT-2)
+Warning: In design 'da', net 'Q7[19]' driven by pin 'ROM_BANK/Q7[19]' has no loads. (LINT-2)
+Warning: In design 'da', a pin on submodule 'ROM_BANK' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'D[19]' is connected to logic 0. 
+1
+current_design ${top_level}
+Current design is 'da'.
+{da}
+link
+
+  Linking design 'da'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (3 designs)               /homes/user/stud/fall19/bws2121/4823/project/rtl/da/da.db, etc
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library)
+                              /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  USERLIB (library)           /homes/user/stud/fall19/bws2121/4823/project/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db
+  dw_foundation.sldb (library)
+                              /tools/synopsys/syn/O-2018.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/homes/user/stud/fall19/bws2121/4823/project/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db"
+Analyzing: "/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.5 |     *     |
+| Licensed DW Building Blocks        | O-2018.06-DWBB_201806.5 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 9 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'da'
+
+  Loading target library 'USERLIB'
+Loaded alib file './alib-52/scx3_cmos8rf_lpvt_tt_1p2v_25c.db.alib'
+Loaded alib file './alib-52/sram256w20b_tt_1p2v_25c_syn.db.alib' (placeholder)
+  Building model 'DW01_NAND2'
+Information: Ungrouping hierarchy CONTROL before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy ROM_BANK before Pass 1 (OPT-776)
+Information: Ungrouping 2 of 3 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'da'
+Information: The register 'ROM_BANK/DI_reg_19_' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'da'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'HOLDX1TS' in the library 'scx3_cmos8rf_lpvt_tt_1p2v_25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'da'. (DDB-72)
+Information: There is no timing violation in design da. Delay-based auto_ungroup will not be performed. (OPT-780)
+  Mapping Optimization (Phase 1)
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:06  274561.6      0.00       0.0     480.9                           757129.1250      0.00  
+    0:00:06  274561.6      0.00       0.0     480.9                           757129.1250      0.00  
+    0:00:06  274561.6      0.00       0.0     480.9                           757129.1250      0.00  
+    0:00:06  274561.6      0.00       0.0     480.9                           757129.1250      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:07  274561.6      0.00       0.0     480.8                           757125.1875      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:07  274561.6      0.00       0.0     480.7                           756942.8125      0.00  
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:00:08  275918.1      0.00       0.0       0.0                           757864.8750      0.00  
+    0:00:08  275918.1      0.00       0.0       0.0                           757864.8750      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:08  275918.1      0.00       0.0       0.0                           757864.8750      0.00  
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+    0:00:08  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:08  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:08  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275703.5      0.00       0.0       0.0                           757700.6250      0.00  
+    0:00:09  275699.2      0.00       0.0       0.0                           757697.8125      0.00  
+    0:00:09  275699.2      0.00       0.0       0.0                           757697.8125      0.00  
+    0:00:10  275699.2      0.00       0.0       0.0                           757697.8125      0.00  
+    0:00:10  275699.2      0.00       0.0       0.0                           757697.8125      0.00  
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+Loading db file '/homes/user/stud/fall19/bws2121/4823/project/memory/sram256w20b/sram256w20b_tt_1p2v_25c_syn.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: The trip points for the library named USERLIB differ from those in the library named scx3_cmos8rf_lpvt_tt_1p2v_25c. (TIM-164)
+  Loading target library 'USERLIB'
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+source -verbose "./mmcm.tcl"
+20
+./reports/da.run.rpt
+da.dc.rpt
+da.area.rpt
+da.power.rpt
+da.timing.rpt
+da.reg.rpt
+da.viol.rpt
+./reports/tt
+da.syn.sdf
+da.syn.sdc
+Using operating conditions 'tt_1p2v_25c' found in library 'scx3_cmos8rf_lpvt_tt_1p2v_25c'.
+1
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/homes/user/stud/fall19/bws2121/4823/project/dc/da/reports/tt/da.syn.sdf'. (WT-3)
+1
+1
+1
+#change_names -rules verilog -hierarchy
+write -hierarchy -format verilog -output "./reports/${top_level}.nl.v"
+Writing verilog file '/homes/user/stud/fall19/bws2121/4823/project/dc/da/reports/da.nl.v'.
+Warning: Verilog writer has added 8 nets to module da using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write -hierarchy -format ddc -output "./reports/${top_level}.ddc"
+Writing ddc file './reports/da.ddc'.
+1
+quit
+
+Thank you...
