@@ -35,9 +35,9 @@ module fir_filter(
 			.CIN		(CIN),
 			.CADDR		(CADDR),
 			.CLOAD		(CLOAD),
-			.start		(start_DA & start_ext),
+			.start		(start_DA & start_ext), // VVV
 			.clk		(clk_fast),
-			.reset		(reset_DA | load),
+			.reset		(reset_DA | load), // Make a single signal determined in control
 			.resetn		(resetn_DA)
 	);
 
@@ -50,7 +50,7 @@ module fir_filter(
 			.A2		(A2),
 			.A1		(A1),
 			.A0		(A0),
-			.load_ext	(load),
+			.load_ext	(load), // This is NOCONN?
 			.start_ext	(start_ext),
 			.w		(din),
 			.enable		(enable_FIFO),
