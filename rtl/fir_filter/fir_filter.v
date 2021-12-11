@@ -35,9 +35,9 @@ module fir_filter(
 			.CIN		(CIN),
 			.CADDR		(CADDR),
 			.CLOAD		(CLOAD),
-			.start		(start_DA & start_ext), // VVV
+			.start		(start_DA & start_ext),
 			.clk		(clk_fast),
-			.reset		(reset_DA | load), // Make a single signal determined in control
+			.reset		(reset_DA | load),
 			.resetn		(resetn_DA)
 	);
 
