@@ -4,12 +4,12 @@
 `define QSIM_OUT_FN_1		"./reports/coefficients.rpt"
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
-`define HALF_FAST_CLK_CYCLE	#2.00
-`define HALF_SLOW_CLK_CYCLE	#384.00
+`define HALF_FAST_CLK_CYCLE	#260.00
+`define HALF_SLOW_CLK_CYCLE	#49920.00
 `define FAST_SLOW_CLK_RATIO	192
-`define QRTR_FAST_CLK_CYCLE	#1.00
-`define QRTR_SLOW_CLK_CYCLE	#192.00
-`define ITER 			50
+`define QRTR_FAST_CLK_CYCLE	#130.00
+`define QRTR_SLOW_CLK_CYCLE	#24960.00
+`define ITER 			10000
 `define PRECOMP			2048
 
 module testbench();
@@ -65,7 +65,7 @@ module testbench();
 	end
 	always	@(negedge clk_fast) begin
 		`QRTR_FAST_CLK_CYCLE;
-		if (((j + 1) % `FAST_SLOW_CLK_RATIO) == 0) begin
+		if (((j + 96) % `FAST_SLOW_CLK_RATIO) == 0) begin
 			if (writing == 1) begin
 				CIN_INT		= COMP_ARRAY[i];
 				CIN		= CIN_INT;
@@ -90,7 +90,7 @@ module testbench();
 	end
 
 	initial begin
-		$sdf_annotate("../../syn/fir_filter/fir_filter.syn.sdf", DUT, , , "maximum");
+		$sdf_annotate("../../dc/fir_filter/reports/tt/fir_filter.syn.sdf", DUT, , , "maximum");
 		$dumpfile("fir_filter.vcd");
 		$dumpvars(0, DUT);
 		writing		= 3;
@@ -140,15 +140,18 @@ module testbench();
 		end
 		@(posedge clk_slow);
 		clk_fast	= 1;
-		@(posedge clk_slow);
+		@(negedge clk_slow);
 		resetn 		= 1;
+		@(posedge clk_slow);
 		CLOAD		= 1;
 		writing		= 1;
 		j		= 0;
 		for (i = 0; i < `PRECOMP; i = i + 1) begin
 			@(posedge clk_slow);
 		end
+		@(negedge clk_slow);
 		CLOAD		= 0;
+		@(posedge clk_slow);
 		valid_in 	= 1;
 		resetn		= 1;
 		writing		= 0;

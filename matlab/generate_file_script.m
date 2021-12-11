@@ -10,8 +10,8 @@ tb_out = fscanf(outputs,'%d');
 %convolved signal
 y = filter_function(x,b);
 
-x_conv = x/(2^16);
-b_conv = b/(2^16);
+x_conv = x/(2^15);
+b_conv = b/(2^15);
 y_conv = filter_function(x_conv,b_conv);
 
 tb_bin_out = dec2bin(tb_out); %truncated binary from tb
@@ -22,9 +22,9 @@ y_bin_out = out(:,27:42); %truncated binary from matlab
 out = binary2decimal(y_bin_out);
 
 
-exact_expected_value = y/(2^32); %exact value
-truncated_expected_value = out/(2^9); %expected decimal w/ truncation
-tb_out_value = tb_out/(2^9);  %observed decimal w/ truncation
+exact_expected_value = y/(2^31); %exact value
+truncated_expected_value = out/(2^8); %expected decimal w/ truncation
+tb_out_value = tb_out/(2^8);  %observed decimal w/ truncation
 
 sum = 0;
 error_count = 0;

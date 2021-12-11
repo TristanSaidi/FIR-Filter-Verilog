@@ -11,35 +11,33 @@ module Control(
 	
 	parameter S0 = 2'b00, S1 = 2'b01, S2 = 2'b10;
 
-	always @(valid_in, resetn, CS) begin
-		if(~resetn) begin		
-			NS = S0;
-		end		
-		case(CS)
-			S0: begin
-				if(CLOAD)
-					NS	= S1; 
-				else
-					NS	= S0;
-			end
-			S1: begin
-				if(valid_in) begin
-					NS 	= S2;
+	always @(valid_in, CLOAD, resetn, CS) begin	
+			case(CS)
+				S0: begin
+					if(CLOAD)
+						NS	= S1; 
+					else
+						NS	= S0;
 				end
-				else begin
-					NS	= S1;
-				end			
-			end
-			S2: begin
-			
-			end
-			default: begin				
-				NS	= S0;
-			end
-		endcase
+				S1: begin
+					if(valid_in) begin
+						NS 	= S2;
+					end
+					else begin
+						NS	= S1;
+					end			
+				end
+				S2: begin
+				
+				end
+				default: begin				
+					NS	= S0;
+				end
+			endcase
 	end
-	
-	always @(posedge clk) begin
+
+	always @(posedge clk,negedge resetn) begin
+		
 		if (!resetn) begin
 			CS	<= 0;
 			global_valid_out <= 0;

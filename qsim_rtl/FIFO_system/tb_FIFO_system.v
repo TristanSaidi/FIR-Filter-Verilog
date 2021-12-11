@@ -1,8 +1,8 @@
 
 `timescale 1ns/1ps
 `define SD #0.010
-`define HALF_CLOCK_PERIOD #5
-`define SLOW_HALF_CLOCK_PERIOD #80
+`define HALF_CLOCK_PERIOD #5000
+`define SLOW_HALF_CLOCK_PERIOD #80000
 `define QSIM_OUT_FN_1	"./reports/output.txt"
 `define MATLAB_0	"./reports/outputA0.txt"
 `define MATLAB_1	"./reports/outputA1.txt"
@@ -18,6 +18,7 @@ module testbench();
 	reg [15:0]	w;
 	reg 		resetn;
 	reg 		enable;
+	reg		enable_single;
 	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0;
 	integer 	i;
 	integer		qsim_out_1;
@@ -28,6 +29,7 @@ module testbench();
 	FIFO_system FIFO_system(
 			.resetn	(resetn),
 			.enable	(enable),
+			.enable_single(enable_single),
 			.clk	(clk1),
 			.clk2	(clk2),
 			.w	(w),
@@ -64,13 +66,15 @@ module testbench();
 		a7 = $fopen(`MATLAB_7,"w");
 		error_count = 0;
 		clk1	= 0;
-		clk2	= 0;
+		clk2	= 1;
 		enable	= 0;
+		enable_single = 0;
 		resetn	= 0;
 		@(posedge clk1);
 		resetn	= 1;
 		w	= 0;
 		enable	= 1;
+		enable_single = 1;
 		for (i = 0; i < 128*16; i = i+1) begin
 			@(posedge clk2);
 			if (i%16 == 0) begin

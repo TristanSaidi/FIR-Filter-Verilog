@@ -13,6 +13,11 @@ clean:
 	rm -rf *.result
 	rm -f error* output* reads writes
 	rm -rf rom
+	rm -rf reports
+	mkdir reports
+	mkdir rom
+	chmod 700 reports
+	chmod 700 rom
 all: clean
 	make run
 

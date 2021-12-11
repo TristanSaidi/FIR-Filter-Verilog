@@ -10,11 +10,14 @@ module testbench();
 	reg [15:0]w;
 	reg resetn;
 	reg enable;
+	reg enable_single;
+	wire load_ext;
+	wire start_ext;
 	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0;
 	integer i;
 	
 
-	FIFO_system FIFO_system(.resetn(resetn),.enable(enable),.clk(clk1),.clk2(clk2),.w(w),.A7(A7),.A6(A6),.A5(A5),.A4(A4),.A3(A3),.A2(A2),.A1(A1),.A0(A0));
+	FIFO_system FIFO_system(.load_ext(load_ext), .start_ext(start_ext),.resetn(resetn),.enable(enable),.enable_single(enable_single),.clk(clk1),.clk2(clk2),.w(w),.A7(A7),.A6(A6),.A5(A5),.A4(A4),.A3(A3),.A2(A2),.A1(A1),.A0(A0));
 
 	
 	always begin
@@ -30,8 +33,9 @@ module testbench();
 		$dumpfile("./FIFO_system.vcd");
 		$dumpvars(0, FIFO_system);
 		clk1 <= 0;
-		clk2 <= 0;
+		clk2 <= 1;
 		enable <= 0;
+		enable_single <= 0;
 		resetn <= 0;
 		
 		@(negedge clk1)
@@ -39,16 +43,17 @@ module testbench();
 		resetn <= 1;
 		w <= 0;	
 		enable <= 1;		
+		enable_single <= 1;
 
 
-
-		for (i = 0; i < 128; i = i+1) begin
+		for (i = 0; i < 16*128; i = i+1) begin
 			
 
-			@(negedge clk1);
-			w <= $urandom%256;
-
-			@(posedge clk1);
+			@(posedge clk2);
+			if (i%15 == 0) begin
+				w <= $urandom%256;
+			end
+			@(negedge clk2);
 
 
 		end

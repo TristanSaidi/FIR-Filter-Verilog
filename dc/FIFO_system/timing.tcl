@@ -6,7 +6,7 @@
 ###################################################################### 
 
 # Setting variables 
-set clk_period 500
+set clk_period 5000
 set clk_uncertainty 0
 set clk_transition 0.010
 set typical_input_delay 0.05
@@ -15,8 +15,8 @@ set typical_wire_load 0.005
 
 #Create real clock if clock port is found
 if {[sizeof_collection [get_ports clk]] > 0} {
-  set clk_name "clk"
-  set clk_port "clk"
+  set clk_name "clk2"
+  set clk_port "clk2"
   #If no waveform is specified, 50% duty cycle is assumed
   create_clock -name $clk_name -period $clk_period [get_ports $clk_port] 
   set_drive 0 [get_clocks $clk_name] 

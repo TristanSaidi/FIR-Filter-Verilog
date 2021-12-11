@@ -707,8 +707,8 @@ endmodule /* fifo_interface */
 module FIFO_system(
 	output	wire	[7:0]	A7,A6,A5,A4,A3,A2,A1,A0,
 	output	wire		load_ext,start_ext,
-	input	wire	[15:0]	w_in,
-	input	wire		enable,enable_single,clk,clk2,resetn
+	input		[15:0]	w,
+	input			enable,enable_single,clk,clk2,resetn
 );	
 	wire		[7:0]	I7,I6,I5,I4,I3,I2,I1,I0;
 	reg		[15:0]	array	[0:63];
@@ -806,23 +806,31 @@ module FIFO_system(
 	assign load_ext = load;
 	assign start_ext = start;	
 	always @(posedge clk) begin
-		if (~resetn) begin
+
+		if (!resetn) begin
 			for (k = 63; k >= 0; k = k-1) begin
-				array[k] <= 16'b0;
+				array[k] = 16'b0;
 			end
 		end
-		else if(enable) begin	
-			for (k = 63; k >= 1; k = k-1) begin
-				array[k] <= array[k-1];
-			end		
-			array[0] <= w;
+		else if(enable) begin
+			
+				for (k = 63; k >= 1; k = k-1) begin
+					array[k] = array[k-1];
+				end
+				
+				array[0] = w;
+
 		end
+		else begin
+		
+		end
+		
 	end
-	always @(posedge clk2) begin
+	
+	always @(negedge clk2) begin
 		
 		if (!resetn) begin
 			i <= 0;
-			x <= 0;
 			load <= 0;
 		end
 		else begin 
@@ -834,6 +842,15 @@ module FIFO_system(
 				i <= i + 1;
 				load <= 0;
 			end
+
+		end
+	end
+	always @(posedge clk2) begin
+		if(!resetn) begin
+			x <= 0;
+			start <= 0;
+		end
+		else begin	
 			if (x == 11) begin
 				x <= 0;
 				start <= 1;
@@ -845,4 +862,3 @@ module FIFO_system(
 		end
 	end
 endmodule
-

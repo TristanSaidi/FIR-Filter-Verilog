@@ -5,6 +5,8 @@ add wave -noupdate -radix unsigned /testbench/clk2
 add wave -noupdate -radix unsigned /testbench/w
 add wave -noupdate -radix unsigned /testbench/resetn
 add wave -noupdate -radix unsigned /testbench/enable
+add wave -noupdate -radix unsigned /testbench/start_ext
+add wave -noupdate -radix unsigned /testbench/load_ext
 add wave -noupdate -radix unsigned /testbench/A0
 add wave -noupdate -radix unsigned /testbench/A1
 add wave -noupdate -radix unsigned /testbench/A2

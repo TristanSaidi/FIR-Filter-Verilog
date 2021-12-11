@@ -5,15 +5,18 @@ add wave -noupdate -radix unsigned /testbench/i
 add wave -noupdate -radix unsigned /testbench/j
 add wave -noupdate /testbench/clk_fast
 add wave -noupdate /testbench/clk_slow
-add wave -noupdate /testbench/COEF_ARRAY
-add wave -noupdate /testbench/COMP_ARRAY
-add wave -noupdate /testbench/COUNT_REG
-add wave -noupdate /testbench/DUT/da.start
-add wave -noupdate /testbench/DUT/da.reset
 add wave -noupdate /testbench/DUT.done
+add wave -noupdate /testbench/DUT/start_DA
+add wave -noupdate /testbench/resetn
+
+
+add wave -noupdate /testbench/DUT/enable_FIFO
 add wave -noupdate -radix decimal /testbench/DUT.load
+add wave -noupdate -radix decimal /testbench/DUT.start
+add wave -noupdate -radix decimal /testbench/valid_in
 add wave -noupdate -radix unsigned /testbench/CADDR
 add wave -noupdate -radix unsigned /testbench/CIN
+add wave -noupdate -radix unsigned /testbench/CLOAD
 add wave -noupdate -radix decimal /testbench/X
 add wave -noupdate -radix decimal /testbench/Y
 add wave -noupdate -radix decimal /testbench/Y_INT

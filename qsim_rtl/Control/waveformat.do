@@ -3,6 +3,7 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate /testbench/clk
 add wave -noupdate -radix signed /testbench/valid_in
 add wave -noupdate -radix signed /testbench/resetn
+add wave -noupdate -radix signed /testbench/CLOAD
 add wave -noupdate -radix signed /testbench/enable_FIFO
 add wave -noupdate -radix signed /testbench/resetn_FIFO
 add wave -noupdate -radix signed /testbench/reset_DA

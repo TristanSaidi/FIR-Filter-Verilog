@@ -4,11 +4,11 @@
 `define QSIM_OUT_FN_1		"./reports/coefficients.rpt"
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
-`define HALF_FAST_CLK_CYCLE	#261.00
-`define HALF_SLOW_CLK_CYCLE	#50112.00
+`define HALF_FAST_CLK_CYCLE	#260.00
+`define HALF_SLOW_CLK_CYCLE	#49920.00
 `define FAST_SLOW_CLK_RATIO	192
-`define QRTR_FAST_CLK_CYCLE	#130.5
-`define QRTR_SLOW_CLK_CYCLE	#25056.00
+`define QRTR_FAST_CLK_CYCLE	#130.00
+`define QRTR_SLOW_CLK_CYCLE	#24960.00
 `define ITER 			10000
 `define PRECOMP			2048
 
@@ -65,7 +65,7 @@ module testbench();
 	end
 	always	@(negedge clk_fast) begin
 		`QRTR_FAST_CLK_CYCLE;
-		if (((j + 1) % `FAST_SLOW_CLK_RATIO) == 0) begin
+		if (((j + 96) % `FAST_SLOW_CLK_RATIO) == 0) begin
 			if (writing == 1) begin
 				CIN_INT		= COMP_ARRAY[i];
 				CIN		= CIN_INT;
@@ -91,6 +91,7 @@ module testbench();
 
 	initial begin
 		writing		= 3;
+		CLOAD 		= 0;
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
 		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
 		qsim_out_3	= $fopen(`QSIM_OUT_FN_3, "w");

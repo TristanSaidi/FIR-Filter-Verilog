@@ -14,14 +14,7 @@ add wave -noupdate -radix unsigned /testbench/A4
 add wave -noupdate -radix unsigned /testbench/A5
 add wave -noupdate -radix unsigned /testbench/A6
 add wave -noupdate -radix unsigned /testbench/A7
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X0
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X1
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X2
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X3
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X4
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X5
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X6
-add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface.X7
+add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface/SREG_0.X
 add wave -noupdate -radix unsigned /testbench/FIFO_system/fifo_interface/SREG_0.Y
 
 TreeUpdate [SetDefaultTree]
