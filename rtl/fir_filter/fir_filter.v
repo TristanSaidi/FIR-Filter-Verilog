@@ -50,7 +50,7 @@ module fir_filter(
 			.A2		(A2),
 			.A1		(A1),
 			.A0		(A0),
-			.load_ext	(load), // This is NOCONN?
+			.load_ext	(load),
 			.start_ext	(start_ext),
 			.w		(din),
 			.enable		(enable_FIFO),
