@@ -6,8 +6,8 @@
 ###################################################################### 
 
 # Setting variables 
-set clk_period 5000
-set clk_uncertainty 0
+set clk_period 520
+set clk_uncertainty 0.010
 set clk_transition 0.010
 set typical_input_delay 0.05
 set typical_output_delay 0.05
@@ -49,4 +49,5 @@ set_output_delay $typical_output_delay [all_outputs] -clock $clk_name
 #set_output_delay 0 next_* -clock $clk_name 
 
 # Set loading of outputs 
-set_load 0.1 [all_outputs] 
+set_load 0.05 [all_outputs] 
+
