@@ -1,6 +1,6 @@
-coefficients = fopen('../qsim_rtl/fir_filter/reports/coefficients.rpt','r');
-inputs = fopen('../qsim_rtl/fir_filter/reports/inputs.rpt','r');
-outputs = fopen('../qsim_rtl/fir_filter/reports/outputs.rpt','r');
+coefficients = fopen('../qsim_dc/fir_filter/reports/coefficients.rpt','r');
+inputs = fopen('../qsim_dc/fir_filter/reports/inputs.rpt','r');
+outputs = fopen('../qsim_dc/fir_filter/reports/outputs.rpt','r');
 
 
 b = fscanf(coefficients,'%d');

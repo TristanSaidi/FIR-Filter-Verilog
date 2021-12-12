@@ -90,9 +90,9 @@ module testbench();
 	end
 
 	initial begin
-		//$sdf_annotate("../../syn/fir_filter/fir_filter.syn.sdf", DUT, , , "maximum");
-		//$dumpfile("fir_filter.vcd");
-		//$dumpvars(0, DUT);
+		$sdf_annotate("../../syn/fir_filter/fir_filter.syn.sdf", DUT, , , "maximum");
+		$dumpfile("fir_filter.vcd");
+		$dumpvars(0, DUT);
 		writing		= 3;
 		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
 		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
@@ -161,8 +161,8 @@ module testbench();
 		$fclose(qsim_out_1);
 		$fclose(qsim_out_2);
 		$fclose(qsim_out_3);
-		//$dumpall;
-		//$dumpflush;
+		$dumpall;
+		$dumpflush;
 		$finish;
 	end
 
