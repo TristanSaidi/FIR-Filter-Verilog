@@ -29,4 +29,8 @@
 **/*.asv
 **/*.alib
 **/log*
+**/nohup*
+**/*.out
+**/run_all.sh
+**/generate_list.py*
 **/misc/
