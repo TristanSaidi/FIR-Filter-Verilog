@@ -2,7 +2,7 @@
 .PHONY: run clean all
 .SILENT: clean
 
-run:
+run: clean
 	pt_shell -file fir_filter.tcl | tee fir_filter.log
 clean:
 	rm -rf *.log

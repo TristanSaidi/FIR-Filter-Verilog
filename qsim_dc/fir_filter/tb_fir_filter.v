@@ -1,6 +1,5 @@
 
 `timescale 1ns/1ps
-`define QSIM_IN_FN_1 		"./reports/golden_block.rpt"
 `define QSIM_OUT_FN_1		"./reports/coefficients.rpt"
 `define QSIM_OUT_FN_2		"./reports/inputs.rpt"
 `define QSIM_OUT_FN_3		"./reports/outputs.rpt"
@@ -9,7 +8,7 @@
 `define FAST_SLOW_CLK_RATIO	192
 `define QRTR_FAST_CLK_CYCLE	#130.00
 `define QRTR_SLOW_CLK_CYCLE	#24960.00
-`define ITER 			10000
+`define ITER 			10064
 `define PRECOMP			2048
 
 module testbench();

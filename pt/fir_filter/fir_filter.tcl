@@ -13,7 +13,7 @@ set search_path "/courses/ee6321/share/ibm13rflpvt/synopsys/ ../../memory/sram25
 set link_path "* scx3_cmos8rf_lpvt_tt_1p2v_25c.db sram256w20b_tt_1p2v_25c_syn.db"
 read_db "scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
 read_db "sram256w20b_tt_1p2v_25c_syn.db"
-set verilog_files {../../dc/fir_filter/reports/fir_filter.nl.v}
+set verilog_files {../../syn/fir_filter/fir_filter.nl.v}
 read_verilog $verilog_files
 link_design -keep_sub_designs $top_level
 

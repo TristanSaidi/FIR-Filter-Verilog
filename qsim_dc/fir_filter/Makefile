@@ -3,7 +3,7 @@
 .SILENT: clean
 
 run: clean
-	vsim -c -do "./sim/runsim.do"
+	nohup vsim -c -do "./sim/runsim.do"
 wave: clean
 	vsim -do "./sim/wavesim.do"
 clean:

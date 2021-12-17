@@ -23,4 +23,10 @@
 **/rom*/
 **/*.ini
 **/*_vmake*
-
+**/alib-52/
+**/reports/
+**/log
+**/*.asv
+**/*.alib
+**/log*
+**/misc/
